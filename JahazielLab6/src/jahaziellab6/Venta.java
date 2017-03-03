@@ -1,25 +1,18 @@
 package jahaziellab6;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-class Ordenes {
-    
-    private ArrayList<ArticuloVenta> articulos;
+public class Venta {
     
     private Clientes cliente;
     private Empleados empleado_atiende;
     private float total;
     Date fechaVenta;
-    
-    
-    
 
-    public Ordenes() {
+    public Venta() {
     }
 
-    public Ordenes(ArrayList<ArticuloVenta> articulos, Clientes cliente, Empleados empleado_atiende, float total, Date fechaVenta) {
-        this.articulos = articulos;
+    public Venta(Clientes cliente, Empleados empleado_atiende, float total, Date fechaVenta) {
         this.cliente = cliente;
         this.empleado_atiende = empleado_atiende;
         this.total = total;
@@ -57,24 +50,11 @@ class Ordenes {
     public void setFechaVenta(Date fechaVenta) {
         this.fechaVenta = fechaVenta;
     }
-    
-    
-
-    public ArrayList<ArticuloVenta> getArticulos() {
-        return articulos;
-    }
-
-    public void setArticulos(ArrayList<ArticuloVenta> articulos) {
-        this.articulos = articulos;
-    }
 
     @Override
     public String toString() {
-        return "Ordenes{" + "articulos=" + articulos + ", cliente=" + cliente + ", empleado_atiende=" + empleado_atiende + ", total=" + total + ", fechaVenta=" + fechaVenta + '}';
+        return "Venta{" + "cliente=" + cliente + ", empleado_atiende=" + empleado_atiende + ", total=" + total + ", fechaVenta=" + fechaVenta + '}';
     }
-
-   
-    
     
     
     
