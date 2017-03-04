@@ -1,19 +1,20 @@
 package jahaziellab6;
 
 import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 
 public class Persona {
     
     protected int edad;
     protected String nombre, colorPiel, ID,  Nacionalidad, Lugar_Nacimiento;
-    protected DefaultTreeModel arbo_genealogico;
+    protected JTree arbo_genealogico;
     Familiar familiar;
 
     public Persona() {
     }
 
-    public Persona(int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, DefaultTreeModel arbo_genealogico, Familiar familiar) {
+    public Persona(int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, Familiar familiar) {
         this.edad = edad;
         this.nombre = nombre;
         this.colorPiel = colorPiel;
@@ -23,6 +24,8 @@ public class Persona {
         this.arbo_genealogico = arbo_genealogico;
         this.familiar = familiar;
     }
+
+    
 
     public int getEdad() {
         return edad;
@@ -72,14 +75,16 @@ public class Persona {
         this.Lugar_Nacimiento = Lugar_Nacimiento;
     }
 
-    public DefaultTreeModel getArbo_genealogico() {
+    public JTree getArbo_genealogico() {
         return arbo_genealogico;
     }
 
-    public void setArbo_genealogico(DefaultTreeModel arbo_genealogico) {
+    public void setArbo_genealogico(JTree arbo_genealogico) {
         this.arbo_genealogico = arbo_genealogico;
     }
 
+    
+    
     public Familiar getFamiliar() {
         return familiar;
     }

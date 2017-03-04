@@ -1,6 +1,7 @@
 package jahaziellab6;
 
 import java.util.ArrayList;
+import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 
 public class Jefe extends Persona{
@@ -14,13 +15,12 @@ public class Jefe extends Persona{
         super();
     }
 
-    public Jefe(String Seccion_trabajo, ArrayList<Empleados> empleados, int Clientes_Atendidos, float Ganancia_actual, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, DefaultTreeModel arbo_genealogico, Familiar familiar) {
+    public Jefe(String Seccion_trabajo, ArrayList<Empleados> empleados, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, Familiar familiar) {
         super(edad, nombre, colorPiel, ID, Nacionalidad, Lugar_Nacimiento, arbo_genealogico, familiar);
         this.Seccion_trabajo = Seccion_trabajo;
         this.empleados = empleados;
-        this.Clientes_Atendidos = Clientes_Atendidos;
-        this.Ganancia_actual = Ganancia_actual;
     }
+
 
     public String getSeccion_trabajo() {
         return Seccion_trabajo;

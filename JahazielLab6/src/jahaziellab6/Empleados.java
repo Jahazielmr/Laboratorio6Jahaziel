@@ -1,5 +1,6 @@
 package jahaziellab6;
 
+import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 
 public class Empleados extends Persona{
@@ -10,7 +11,7 @@ public class Empleados extends Persona{
         super();
     }
 
-    public Empleados(String seccion_trabajo, String estado, int Hora_e, int Hora_s, int sueldo, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, DefaultTreeModel arbo_genealogico, Familiar familiar) {
+    public Empleados(String seccion_trabajo, String estado, int Hora_e, int Hora_s, int sueldo, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, Familiar familiar) {
         super(edad, nombre, colorPiel, ID, Nacionalidad, Lugar_Nacimiento, arbo_genealogico, familiar);
         this.seccion_trabajo = seccion_trabajo;
         this.estado = estado;
@@ -18,6 +19,8 @@ public class Empleados extends Persona{
         this.Hora_s = Hora_s;
         this.sueldo = sueldo;
     }
+
+    
 
     public String getSeccion_trabajo() {
         return seccion_trabajo;
