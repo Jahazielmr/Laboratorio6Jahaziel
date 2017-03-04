@@ -118,7 +118,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         precio_gato = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
-        jTextField19 = new javax.swing.JTextField();
+        pesoc = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
         altura_gato = new javax.swing.JTextField();
         jButton25 = new javax.swing.JButton();
@@ -244,10 +244,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel111 = new javax.swing.JLabel();
         precio_gato1 = new javax.swing.JTextField();
         jLabel112 = new javax.swing.JLabel();
-        jTextField20 = new javax.swing.JTextField();
+        peso1 = new javax.swing.JTextField();
         jLabel113 = new javax.swing.JLabel();
         altura_gato1 = new javax.swing.JTextField();
         jButton34 = new javax.swing.JButton();
+        jLabel128 = new javax.swing.JLabel();
+        cb_GatoModificar = new javax.swing.JComboBox<>();
         BaleadasModificar = new javax.swing.JDialog();
         jPanel54 = new javax.swing.JPanel();
         jLabel114 = new javax.swing.JLabel();
@@ -256,6 +258,8 @@ public class Principal extends javax.swing.JFrame {
         jButton23 = new javax.swing.JButton();
         jLabel115 = new javax.swing.JLabel();
         tf_ingrediente1 = new javax.swing.JTextField();
+        cb_baleadaModificar = new javax.swing.JComboBox<>();
+        jLabel129 = new javax.swing.JLabel();
         FamiliaresModificar = new javax.swing.JDialog();
         jPanel55 = new javax.swing.JPanel();
         jLabel116 = new javax.swing.JLabel();
@@ -281,6 +285,8 @@ public class Principal extends javax.swing.JFrame {
         jButton36 = new javax.swing.JButton();
         jLabel123 = new javax.swing.JLabel();
         jLabel124 = new javax.swing.JLabel();
+        jLabel130 = new javax.swing.JLabel();
+        cb_Familia = new javax.swing.JComboBox<>();
         jTabbedPane7 = new javax.swing.JTabbedPane();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -951,7 +957,7 @@ public class Principal extends javax.swing.JFrame {
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(precio_gato, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                             .addComponent(altura_gato)
-                            .addComponent(jTextField19))))
+                            .addComponent(pesoc))))
                 .addContainerGap(169, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
@@ -970,7 +976,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel48)
-                    .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pesoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73)
                 .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -1700,6 +1706,11 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPanel52.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel52.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel52MouseEntered(evt);
+            }
+        });
 
         jLabel101.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel101.setText("Ingrese sus Datos ");
@@ -1872,6 +1883,11 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPanel53.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel53.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel53MouseEntered(evt);
+            }
+        });
 
         jLabel110.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel110.setText("Ingrese sus Datos ");
@@ -1893,33 +1909,50 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel128.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jLabel128.setText("Gato");
+
+        cb_GatoModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_GatoModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel53Layout = new javax.swing.GroupLayout(jPanel53);
         jPanel53.setLayout(jPanel53Layout);
         jPanel53Layout.setHorizontalGroup(
             jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel53Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel113)
-                    .addComponent(jLabel112, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel111, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(58, 58, 58)
+                .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel113)
+                        .addComponent(jLabel112, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel111, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel128))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel110)
-                        .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(precio_gato1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                            .addComponent(altura_gato1)
-                            .addComponent(jTextField20))))
-                .addContainerGap(169, Short.MAX_VALUE))
+                    .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cb_GatoModificar, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel110)
+                            .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(precio_gato1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                .addComponent(altura_gato1)
+                                .addComponent(peso1)))))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         jPanel53Layout.setVerticalGroup(
             jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel53Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel110)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_GatoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel128))
+                .addGap(4, 4, 4)
                 .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel111)
                     .addComponent(precio_gato1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1930,7 +1963,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel53Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel112)
-                    .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(peso1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73)
                 .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -1943,7 +1976,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(GatosModificarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         GatosModificarLayout.setVerticalGroup(
             GatosModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1954,6 +1987,11 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPanel54.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel54.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel54MouseEntered(evt);
+            }
+        });
 
         jLabel114.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel114.setText("Ingredientes");
@@ -1976,6 +2014,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel115.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel115.setText("Precio");
 
+        cb_baleadaModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_baleadaModificarActionPerformed(evt);
+            }
+        });
+
+        jLabel129.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jLabel129.setText("Baleadas");
+
         javax.swing.GroupLayout jPanel54Layout = new javax.swing.GroupLayout(jPanel54);
         jPanel54.setLayout(jPanel54Layout);
         jPanel54Layout.setHorizontalGroup(
@@ -1985,12 +2032,19 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel54Layout.createSequentialGroup()
-                        .addComponent(jLabel114)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                            .addComponent(precio_baleadas1)
-                            .addComponent(tf_ingrediente1))))
+                        .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel54Layout.createSequentialGroup()
+                                .addComponent(jLabel114)
+                                .addGap(27, 27, 27))
+                            .addGroup(jPanel54Layout.createSequentialGroup()
+                                .addComponent(jLabel129)
+                                .addGap(56, 56, 56)))
+                        .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cb_baleadaModificar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                                .addComponent(precio_baleadas1)
+                                .addComponent(tf_ingrediente1)))))
                 .addContainerGap(209, Short.MAX_VALUE))
             .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel54Layout.createSequentialGroup()
@@ -2001,7 +2055,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel54Layout.setVerticalGroup(
             jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel54Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_baleadaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel129))
+                .addGap(18, 18, 18)
                 .addComponent(precio_baleadas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel54Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -2094,8 +2152,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        cb_Padre1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         Familia2.add(jRadioButton13);
         jRadioButton13.setText("Familia");
         jRadioButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -2111,8 +2167,6 @@ public class Principal extends javax.swing.JFrame {
                 jRadioButton14ActionPerformed(evt);
             }
         });
-
-        cb_hijos1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton36.setText("Agregar Hijos");
         jButton36.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2132,6 +2186,15 @@ public class Principal extends javax.swing.JFrame {
         jLabel124.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel124.setText("Hijos");
 
+        jLabel130.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
+        jLabel130.setText("Familiar");
+
+        cb_Familia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_FamiliaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel55Layout = new javax.swing.GroupLayout(jPanel55);
         jPanel55.setLayout(jPanel55Layout);
         jPanel55Layout.setHorizontalGroup(
@@ -2142,19 +2205,25 @@ public class Principal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel55Layout.createSequentialGroup()
-                                    .addComponent(jLabel122)
-                                    .addGap(105, 105, 105)
-                                    .addComponent(lb_colorFamilia1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jRadioButton13)
-                                .addGroup(jPanel55Layout.createSequentialGroup()
-                                    .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jRadioButton11)
-                                        .addComponent(jLabel123))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jRadioButton12)
-                                        .addComponent(cb_Padre1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel55Layout.createSequentialGroup()
+                                        .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel116)
+                                            .addGroup(jPanel55Layout.createSequentialGroup()
+                                                .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jRadioButton11)
+                                                    .addComponent(jLabel123))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jRadioButton12)
+                                                    .addComponent(cb_Padre1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel130))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel55Layout.createSequentialGroup()
+                                        .addComponent(jLabel122)
+                                        .addGap(105, 105, 105)
+                                        .addComponent(lb_colorFamilia1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel55Layout.createSequentialGroup()
                                 .addComponent(jLabel124)
                                 .addGap(18, 18, 18)
@@ -2162,11 +2231,13 @@ public class Principal extends javax.swing.JFrame {
                                     .addComponent(jRadioButton14)
                                     .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jButton36, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                                        .addComponent(cb_hijos1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(cb_hijos1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGap(18, 18, 18)
+                        .addComponent(cb_Familia, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel55Layout.createSequentialGroup()
                         .addGap(217, 217, 217)
                         .addComponent(Guardar_familia1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
             .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel55Layout.createSequentialGroup()
                     .addGap(15, 15, 15)
@@ -2179,7 +2250,6 @@ public class Principal extends javax.swing.JFrame {
                     .addGap(23, 23, 23)
                     .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(nombre_familia1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                        .addComponent(jLabel116)
                         .addComponent(Id_familia1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                         .addComponent(nacionalidad_familia1)
                         .addComponent(lugarNacimiento_familia1)
@@ -2189,7 +2259,12 @@ public class Principal extends javax.swing.JFrame {
         jPanel55Layout.setVerticalGroup(
             jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel55Layout.createSequentialGroup()
-                .addGap(245, 245, 245)
+                .addContainerGap()
+                .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel130)
+                    .addComponent(jLabel116)
+                    .addComponent(cb_Familia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(210, 210, 210)
                 .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel122)
                     .addComponent(lb_colorFamilia1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -2216,9 +2291,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel55Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel116)
-                    .addGap(19, 19, 19)
+                    .addGap(52, 52, 52)
                     .addGroup(jPanel55Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel117)
                         .addComponent(nombre_familia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -3389,6 +3462,11 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("Guardar Como");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
@@ -3574,6 +3652,13 @@ public class Principal extends javax.swing.JFrame {
                 estado = cb_estado.getItemAt(cb_estado.getSelectedIndex());
                 seccion = cb_seccionTrabajo.getItemAt(cb_seccionTrabajo.getSelectedIndex());
                 
+        if(nombre.equalsIgnoreCase("carlos")||nombre.equalsIgnoreCase("pedro")||nombre.equalsIgnoreCase("juan")||nombre.equalsIgnoreCase("roberto")||nombre.equalsIgnoreCase("eduardo")||!"estadounidense".equalsIgnoreCase(nacionalidad)||
+                !"estadounidense".equalsIgnoreCase(lugar_Nacimiento)||!"blanco".equalsIgnoreCase(color)){
+            
+            JOptionPane.showMessageDialog(this,"No aceptamos latinos");
+            personasNegras.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+        }else if(nacionalidad.equalsIgnoreCase("estadounidense")||lugar_Nacimiento.equalsIgnoreCase("estadounidense")||color.equalsIgnoreCase("blanco")
+                ){          
                 
         jefes.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
         personas.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
@@ -3594,11 +3679,13 @@ public class Principal extends javax.swing.JFrame {
                 sp_HoraS.setValue(0);
                 tempEmpleados.clear();
                 
-                
+        }        
           
             }else{
                 JOptionPane.showMessageDialog(this, "Ya no hay espacio disponible");
             }
+         
+         
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -3693,7 +3780,7 @@ public class Principal extends javax.swing.JFrame {
         try {
         
         altura = Integer.parseInt(altura_gato.getText());
-        peso = Integer.parseInt(jTextField19.getText());
+        peso = Integer.parseInt(pesoc.getText());
         precio = Float.parseFloat((precio_gato.getText()));
         
         
@@ -3701,7 +3788,7 @@ public class Principal extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(this, "Tuvo exito agregando gatos");
                
                 altura_gato.setText("");
-                jTextField19.setText("");
+                pesoc.setText("");
                 precio_gato.setText("");
                 
         
@@ -3824,7 +3911,7 @@ public class Principal extends javax.swing.JFrame {
          ingredientes1.clear();
          
                 altura_gato.setText("");
-                jTextField19.setText("");
+                pesoc.setText("");
                 precio_gato.setText("");
                 
         
@@ -3885,8 +3972,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
          DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < familiares.size(); i++) {
-            modelo.addElement(familiares.get(i));
+        for (int i = 0; i < personas.size(); i++) {
+            modelo.addElement(personas.get(i));
             
         }
         cb_Padre.setModel(modelo);
@@ -4136,6 +4223,10 @@ public class Principal extends javax.swing.JFrame {
         Cant_articulos = Integer.parseInt(sp_cantArticulos.getValue().toString());
         baleada = cb_baleada.getItemAt(cb_baleada.getSelectedIndex());
         fechaTemp = fecha.getDate().getHours();
+        
+        
+        
+        
         
         Money = cliente.getDinero_Diponible();
         
@@ -4483,10 +4574,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_edad_jefe1ActionPerformed
 
     private void GuardarJefes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarJefes1MouseClicked
-       
         //modificar jefes
         
-         String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
+        String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
         Color colors;
         int edad;
         int entrada = 0, salida = 0, sueldo = 0;
@@ -4510,6 +4600,7 @@ public class Principal extends javax.swing.JFrame {
                 seccion = cb_seccionTrabajo1.getItemAt(cb_seccionTrabajo1.getSelectedIndex());
                 
                 
+                
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setNombre(nombre);
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setEdad(edad);
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setID(id);
@@ -4521,14 +4612,7 @@ public class Principal extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(this, "El contacto fue Modificado exitosamente");
 
-           
-                
-                
-                
-                
-        
-            
-                
+                   
                 nombreJefe1.setText("");
                 LugarNacimiento_jefe1.setText("");
                 edad_jefe1.setText("");
@@ -4674,11 +4758,68 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Guardar_clientes1jButton1MouseClicked
 
     private void jButton34jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton34jButton1MouseClicked
-        // TODO add your handling code here:
+        
+        //modificar gatos
+        
+        int altura, peso;
+        float precio;
+       
+        try {
+        
+        altura = Integer.parseInt(altura_gato1.getText());
+        peso = Integer.parseInt(peso1.getText());
+        precio = Float.parseFloat((precio_gato1.getText()));
+        
+                cats.get(cb_GatoModificar.getSelectedIndex()).setAltura(altura);
+                cats.get(cb_GatoModificar.getSelectedIndex()).setPeso(peso);
+                cats.get(cb_GatoModificar.getSelectedIndex()).setPrecio(precio);
+                
+         
+        
+        
+        JOptionPane.showMessageDialog(this, "Tuvo exito modificando  gatos");
+               
+                altura_gato.setText("");
+                pesoc.setText("");
+                precio_gato.setText("");
+                
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
+        }
+        
+        
     }//GEN-LAST:event_jButton34jButton1MouseClicked
 
     private void jButton35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton35MouseClicked
-        // TODO add your handling code here:
+        
+    
+        
+        
+
+        try {
+        
+            float precio;
+            precio=Float.parseFloat(precio_baleadas1.getText());
+            Baleadas baleada=cb_baleadaModificar.getItemAt(cb_baleadaModificar.getSelectedIndex());
+            baleada.setIngredientes(ingredientes1);
+            baleada.setPrecio(precio);
+            JOptionPane.showMessageDialog(this, "La baleada se ha modificado exitosamente");
+            ingredientes1.clear();
+            precio_baleadas1.setText("");
+            
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
+        }
+        
+        
+       
+        
+        
+        
     }//GEN-LAST:event_jButton35MouseClicked
 
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
@@ -4686,7 +4827,46 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton23MouseClicked
 
     private void Guardar_familia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar_familia1MouseClicked
-        // TODO add your handling code here:
+        
+        String nombre,id,nacionalidad,lugar,color = null;
+        int edad,entrada,salida;
+        float sueldo;
+        Object padre=cb_Padre1.getItemAt(cb_Padre1.getSelectedIndex());
+        JTree model = null;
+        Familiar familia=cb_Familia.getItemAt(cb_Familia.getSelectedIndex());
+        
+        nombre = nombre_familia1.getText();
+        edad = Integer.parseInt(edad_familia1.getText());
+        id = Id_familia1.getText();
+        nacionalidad = nacionalidad_familia1.getText();
+        lugar = lugarNacimiento_familia1.getText();
+        if (lb_colorFamilia1.getBackground()== Color.BLACK){
+            color = "Negro";
+        } else if (lb_colorFamilia1.getBackground()==Color.WHITE){
+            color = "blanco";
+        }
+        
+       
+        familia.setArbo_genealogico(model);
+        familia.setColorPiel(color);
+        familia.setEdad(edad);
+        familia.setFamiliares_Hijos(temporalfami);
+        familia.setID(id);
+        familia.setNacionalidad(nacionalidad);
+        familia.setLugar_Nacimiento(lugar);
+      
+        temporalfami.clear();
+         
+        JOptionPane.showMessageDialog(this, "Se modifico un familiar exitosamente!");
+
+        
+        nombre_familia1.setText("");
+        edad_familia1.setText("");
+        nacionalidad_familia1.setText("");
+        lugarNacimiento_familia1.setText("");
+        Id_familia1.setText("");
+        
+        
     }//GEN-LAST:event_Guardar_familia1MouseClicked
 
     private void lb_colorFamilia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorFamilia1MouseClicked
@@ -4694,19 +4874,55 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_colorFamilia1MouseClicked
 
     private void jRadioButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton11ActionPerformed
-        // TODO add your handling code here:
+              DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < familiares.size(); i++) {
+            modelo.addElement(familiares.get(i));
+            
+        }
+        cb_Padre1.setModel(modelo);
+        
+        
+        
     }//GEN-LAST:event_jRadioButton11ActionPerformed
 
     private void jRadioButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton12ActionPerformed
-        // TODO add your handling code here:
+       
+             DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < personas.size(); i++) {
+            modelo.addElement(personas.get(i));
+            
+        }
+        cb_Padre1.setModel(modelo);
+    
+        
+        
+        
     }//GEN-LAST:event_jRadioButton12ActionPerformed
 
     private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
-        // TODO add your handling code here:
+                
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < familiares.size(); i++) {
+            modelo.addElement(familiares.get(i));
+            
+        }
+        cb_hijos1.setModel(modelo);
+
+        
+        
+        
+        
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
     private void jRadioButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton14ActionPerformed
-        // TODO add your handling code here:
+                
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < personas.size(); i++) {
+            modelo.addElement(personas.get(i));
+            
+        }
+        cb_hijos1.setModel(modelo);
+
     }//GEN-LAST:event_jRadioButton14ActionPerformed
 
     private void jButton36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton36MouseClicked
@@ -4740,6 +4956,72 @@ public class Principal extends javax.swing.JFrame {
     private void bt_empleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_empleado1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bt_empleado1ActionPerformed
+
+    private void jPanel52MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel52MouseEntered
+        
+                
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < clientes.size(); i++) {
+            modelo.addElement(clientes.get(i));
+            
+        }
+        cb_ClienteModificar.setModel(modelo);
+
+        
+        
+    }//GEN-LAST:event_jPanel52MouseEntered
+
+    private void jPanel53MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel53MouseEntered
+        
+                
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < cats.size(); i++) {
+            modelo.addElement(cats.get(i));
+            
+        }
+        cb_GatoModificar.setModel(modelo);
+
+        
+        
+        
+    }//GEN-LAST:event_jPanel53MouseEntered
+
+    private void cb_GatoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_GatoModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_GatoModificarActionPerformed
+
+    private void cb_baleadaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_baleadaModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_baleadaModificarActionPerformed
+
+    private void jPanel54MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel54MouseEntered
+        
+                
+                
+         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < baleadas.size(); i++) {
+            modelo.addElement(baleadas.get(i));
+            
+        }
+        cb_baleadaModificar.setModel(modelo);
+        
+        
+        
+    }//GEN-LAST:event_jPanel54MouseEntered
+
+    private void cb_FamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_FamiliaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_FamiliaActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -4832,10 +5114,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_empleado1;
     private javax.swing.ButtonGroup bt_reporteOrdenes;
     private javax.swing.JComboBox<String> cb_ClienteModificar;
+    private javax.swing.JComboBox<Familiar> cb_Familia;
+    private javax.swing.JComboBox<String> cb_GatoModificar;
     private javax.swing.JComboBox<String> cb_JefeModificar;
     private javax.swing.JComboBox<String> cb_Padre;
     private javax.swing.JComboBox<String> cb_Padre1;
     private javax.swing.JComboBox<Baleadas> cb_baleada;
+    private javax.swing.JComboBox<Baleadas> cb_baleadaModificar;
     private javax.swing.JComboBox<Clientes> cb_clientesOrden;
     private javax.swing.JComboBox<Clientes> cb_clientesOrdenGatos;
     private javax.swing.JComboBox<String> cb_empleadoModificar;
@@ -4928,7 +5213,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel125;
     private javax.swing.JLabel jLabel126;
     private javax.swing.JLabel jLabel127;
+    private javax.swing.JLabel jLabel128;
+    private javax.swing.JLabel jLabel129;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel130;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -5126,8 +5414,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane8;
     private javax.swing.JTabbedPane jTabbedPane9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField20;
     private javax.swing.JButton lb_color;
     private javax.swing.JButton lb_color1;
     private javax.swing.JButton lb_colorClientes;
@@ -5152,6 +5438,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField nombre_familia1;
     private javax.swing.JProgressBar pb_barra;
     private javax.swing.JProgressBar pb_barra1;
+    private javax.swing.JTextField peso1;
+    private javax.swing.JTextField pesoc;
     private javax.swing.JTextField precio_baleadas;
     private javax.swing.JTextField precio_baleadas1;
     private javax.swing.JTextField precio_gato;
@@ -5192,12 +5480,15 @@ public class Principal extends javax.swing.JFrame {
     ArrayList <Persona> personas = new ArrayList();
     ArrayList <Familiar> padre = new ArrayList();
     ArrayList hijos = new ArrayList();
+    ArrayList hijosa = new ArrayList();
     ArrayList  temporalfami = new ArrayList();
     ArrayList <Ordenes> ordenes = new ArrayList();
     private int acum1 =0;
     private float gananciaGatos;
     private float gananciaBaleadas;
     ArrayList <Empleados> temporal = new ArrayList();
+    ArrayList <Persona> personasNegras = new ArrayList();
+    ArrayList <Persona> personasblancas = new ArrayList();
     
     ArrayList <Venta> ventas = new ArrayList();
 }
