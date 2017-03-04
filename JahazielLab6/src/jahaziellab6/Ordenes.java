@@ -6,7 +6,7 @@ import java.util.Date;
 class Ordenes {
     
     private ArrayList<ArticuloVenta> articulos;
-    
+    private int Cantidad_articulos;
     private Clientes cliente;
     private Empleados empleado_atiende;
     private float total;
@@ -18,13 +18,24 @@ class Ordenes {
     public Ordenes() {
     }
 
-    public Ordenes(ArrayList<ArticuloVenta> articulos, Clientes cliente, Empleados empleado_atiende, float total, Date fechaVenta) {
+    public Ordenes(ArrayList<ArticuloVenta> articulos, int Cantidad_articulos, Clientes cliente, Empleados empleado_atiende, float total, Date fechaVenta) {
         this.articulos = articulos;
+        this.Cantidad_articulos = Cantidad_articulos;
         this.cliente = cliente;
         this.empleado_atiende = empleado_atiende;
         this.total = total;
         this.fechaVenta = fechaVenta;
     }
+
+    public int getCantidad_articulos() {
+        return Cantidad_articulos;
+    }
+
+    public void setCantidad_articulos(int Cantidad_articulos) {
+        this.Cantidad_articulos = Cantidad_articulos;
+    }
+
+    
 
     public Clientes getCliente() {
         return cliente;
