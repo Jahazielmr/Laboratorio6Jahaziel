@@ -64,7 +64,7 @@ public class Empleados extends Persona{
 
     @Override
     public String toString() {
-        return super.toString()+ "seccion_trabajo=" + seccion_trabajo + ", estado=" + estado + ", Hora_e=" + Hora_e + ", Hora_s=" + Hora_s + ", sueldo=" + sueldo + '}';
+        return super.toString();
     }
     
     
