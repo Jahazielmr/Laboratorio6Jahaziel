@@ -5338,9 +5338,26 @@ public class Principal extends javax.swing.JFrame {
         escribirArchivo("Empleados", texto);
     }
 
+    static void guardarGatos() {
+        String texto = "";
+        for (gatos tempGatos : cats) {
+            texto
+                            += tempGatos.getPrecio() + ","
+                            + tempGatos.getPeso()+ ","
+                            + tempGatos.getAltura()+ ";";
+        }
+        escribirArchivo("Gatos", texto);
+    }
 
-    
-    
+    static void guardarBaleadas (){
+        String texto = "";
+        for (Baleadas tempBaleadas : baleadas) {
+            texto
+                            +=tempBaleadas.getPrecio() + ","
+                            + tempBaleadas.getIngredientes()+  ";";
+        }
+        escribirArchivo("Gatos", texto);
+    }
 
     static void escribirArchivo(String nombreArchivo, String texto) {
 
