@@ -1579,16 +1579,19 @@
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel88" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel89" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel84" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel86" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel85" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel82" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel80" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel87" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel90" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel91" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel125" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel87" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jButton37" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel89" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -1703,11 +1706,14 @@
                                   <Component id="cb_estado1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="GuardarEmpleados1" min="-2" pref="62" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="GuardarEmpleados1" pref="62" max="32767" attributes="0"/>
+                                  <Component id="jButton37" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jScrollPane5" min="-2" pref="466" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1902,6 +1908,11 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton37">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -3275,6 +3286,22 @@
         </Container>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JPopupMenu" name="MenuInicio">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="MenuAbrir">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Abrir menu"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuAbrirActionPerformed"/>
+          </Events>
+        </MenuItem>
+      </SubComponents>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -3291,14 +3318,6 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Crear Directorio"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
@@ -3466,6 +3485,9 @@
                           <TreeModel code="Archivos&#xa;"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ArbolStartMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

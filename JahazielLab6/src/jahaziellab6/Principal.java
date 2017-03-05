@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,18 +34,16 @@ import javax.swing.tree.DefaultTreeModel;
  * @author Jahaziel
  */
 public class Principal extends javax.swing.JFrame {
+
     private int ticket;
-    private int acumulador =0;
-    
+    private int acumulador = 0;
+
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
-        
-        
-       
-        
+
     }
 
     /**
@@ -206,6 +205,7 @@ public class Principal extends javax.swing.JFrame {
         ArbolEmpleados1 = new javax.swing.JTree();
         jLabel125 = new javax.swing.JLabel();
         cb_empleadoModificar = new javax.swing.JComboBox<>();
+        jButton37 = new javax.swing.JButton();
         JefesModificar = new javax.swing.JDialog();
         jPanel50 = new javax.swing.JPanel();
         jLabel92 = new javax.swing.JLabel();
@@ -304,6 +304,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel124 = new javax.swing.JLabel();
         jLabel130 = new javax.swing.JLabel();
         cb_Familia = new javax.swing.JComboBox<>();
+        MenuInicio = new javax.swing.JPopupMenu();
+        MenuAbrir = new javax.swing.JMenuItem();
         jTabbedPane7 = new javax.swing.JTabbedPane();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
@@ -413,7 +415,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -1392,6 +1393,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel125.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel125.setText("Nombre: ");
 
+        jButton37.setText("Eliminar");
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
@@ -1400,16 +1403,18 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel88)
-                    .addComponent(jLabel89)
                     .addComponent(jLabel84)
                     .addComponent(jLabel86)
                     .addComponent(jLabel85)
                     .addComponent(jLabel82)
                     .addComponent(jLabel80)
-                    .addComponent(jLabel87)
                     .addComponent(jLabel90)
                     .addComponent(jLabel91)
-                    .addComponent(jLabel125))
+                    .addComponent(jLabel125)
+                    .addComponent(jLabel87)
+                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButton37, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel89, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(GuardarEmpleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1499,10 +1504,12 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel91)
                             .addComponent(cb_estado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(GuardarEmpleados1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(GuardarEmpleados1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                            .addComponent(jButton37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 18, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -2352,12 +2359,25 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        MenuAbrir.setText("Abrir menu");
+        MenuAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuAbrirActionPerformed(evt);
+            }
+        });
+        MenuInicio.add(MenuAbrir);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel24.setBackground(new java.awt.Color(0, 153, 153));
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Archivos");
         ArbolStart.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        ArbolStart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ArbolStartMouseClicked(evt);
+            }
+        });
         jScrollPane13.setViewportView(ArbolStart);
 
         jButton24.setText("Listar archivos en el arbol");
@@ -3500,14 +3520,6 @@ public class Principal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem6.setText("Crear Directorio");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem6);
-
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Guardar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -3558,33 +3570,33 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        //Guardar
-        
+   
         JFileChooser fileChooser = new JFileChooser();
         int seleccion = fileChooser.showSaveDialog(this);
-        if (seleccion==JFileChooser.APPROVE_OPTION&&Guardo) {
-            File dir = fileChooser.getSelectedFile();
-            boolean fueCreado = dir.mkdir();
-            DefaultMutableTreeNode Raiz = new DefaultMutableTreeNode();
-            DefaultTreeModel modeloArbol = (DefaultTreeModel) ArbolStart.getModel();
-            DefaultMutableTreeNode directory = new DefaultMutableTreeNode(dir);
-            Raiz.add(directory);
-            if (fueCreado) {
-                carpeta_guardada = dir;
-                Guardo =true;
-                JOptionPane.showMessageDialog(this, "Directorio creado exitosamente");
-            }else{
-                JOptionPane.showMessageDialog(this, "El directorio no fue creado");
+        if (!Guardo) {
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                File dir = fileChooser.getSelectedFile();
+                boolean fueCreado = dir.mkdir();
+                DefaultMutableTreeNode Raiz = new DefaultMutableTreeNode();
+                DefaultTreeModel modeloArbol = (DefaultTreeModel) ArbolStart.getModel();
+                DefaultMutableTreeNode directory = new DefaultMutableTreeNode(dir);
+                Raiz.add(directory);
+                if (fueCreado) {
+                    carpeta_guardada = dir;
+                    Guardo = true;
+                    guardarTodo();
+                    JOptionPane.showMessageDialog(this, "Directorio creado exitosamente");
+                } else {
+                    JOptionPane.showMessageDialog(this, "El directorio no fue creado");
+                }
+            } else {
+                guardarTodo();
             }
-        } else if (Guardo){
-            
+
         }
-        
-        
-        
-        
-        
-        
+
+
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
@@ -3626,9 +3638,8 @@ public class Principal extends javax.swing.JFrame {
         Jefes.pack();
         Jefes.setLocationRelativeTo(this);
         Jefes.setVisible(true);
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -3651,144 +3662,126 @@ public class Principal extends javax.swing.JFrame {
         Empleados.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
-    
-    
-    
-    
-    
-    
-    
+
     private void GuardarEmpleadosjButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarEmpleadosjButton1MouseClicked
-        
+
         String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
         Color colors;
         int entrada, salida, sueldo, edad;
         JTree Model = ArbolEmpleados;
-        
+
         try {
-        
-        nombre = tf_nombre.getText();
-        edad = Integer.parseInt(tf_edad.getText());
-        id = tf_ID.getText();
-        nacionalidad = tf_nacionalidad.getText();
-        lugar_Nacimiento = tf_LugarNacimiento.getText();
-        if (lb_color.getBackground()== Color.BLACK){
-            color = "Negro";
-        } else if (lb_color.getBackground()==Color.WHITE){
-            color = "blanco";
-        }
-        
-        sueldo = Integer.parseInt(tf_sueldo.getText());
-        estado = cb_estado.getItemAt(cb_estado.getSelectedIndex());
-        seccion = cb_seccionTrabajo.getItemAt(cb_seccionTrabajo.getSelectedIndex());
-        entrada = Integer.parseInt(sp_HoraE.getValue().toString());
-        salida = Integer.parseInt(sp_HoraE.getValue().toString());
-      
-        empleados.add(new Empleados(seccion, estado, entrada, salida, sueldo, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, ArbolEmpleados, null));
-        personas.add((new Empleados(seccion, estado, entrada, salida, sueldo, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, ArbolEmpleados, null)));
-        JOptionPane.showMessageDialog(this, "Tuve exito agregando Empleados");
-               
-                tf_nombre.setText("");
-                tf_LugarNacimiento.setText("");
-                tf_edad.setText("");
-                tf_sueldo.setText("");
-                tf_nacionalidad.setText("");
-                tf_ID.setText("");
-                cb_estado.setSelectedIndex(0);
-                cb_seccionTrabajo.setSelectedIndex(0);
-                cb_trabajoJefe.setSelectedIndex(0);
-                sp_HoraE.setValue(0);
-                sp_HoraS.setValue(0);
-        
-        
+
+            nombre = tf_nombre.getText();
+            edad = Integer.parseInt(tf_edad.getText());
+            id = tf_ID.getText();
+            nacionalidad = tf_nacionalidad.getText();
+            lugar_Nacimiento = tf_LugarNacimiento.getText();
+            if (lb_color.getBackground() == Color.BLACK) {
+                color = "Negro";
+            } else if (lb_color.getBackground() == Color.WHITE) {
+                color = "blanco";
+            }
+
+            sueldo = Integer.parseInt(tf_sueldo.getText());
+            estado = cb_estado.getItemAt(cb_estado.getSelectedIndex());
+            seccion = cb_seccionTrabajo.getItemAt(cb_seccionTrabajo.getSelectedIndex());
+            entrada = Integer.parseInt(sp_HoraE.getValue().toString());
+            salida = Integer.parseInt(sp_HoraE.getValue().toString());
+
+            empleados.add(new Empleados(seccion, estado, entrada, salida, sueldo, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, ArbolEmpleados, null));
+            personas.add((new Empleados(seccion, estado, entrada, salida, sueldo, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, ArbolEmpleados, null)));
+            JOptionPane.showMessageDialog(this, "Tuve exito agregando Empleados");
+
+            tf_nombre.setText("");
+            tf_LugarNacimiento.setText("");
+            tf_edad.setText("");
+            tf_sueldo.setText("");
+            tf_nacionalidad.setText("");
+            tf_ID.setText("");
+            cb_estado.setSelectedIndex(0);
+            cb_seccionTrabajo.setSelectedIndex(0);
+            cb_trabajoJefe.setSelectedIndex(0);
+            sp_HoraE.setValue(0);
+            sp_HoraS.setValue(0);
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
+
+
     }//GEN-LAST:event_GuardarEmpleadosjButton1MouseClicked
 
     private void lb_colorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorMouseClicked
-        
+
         Color c;
         c = JColorChooser.showDialog(this, "seleccione", Color.BLUE);
         lb_color.setForeground(c);
-              
+
     }//GEN-LAST:event_lb_colorMouseClicked
 
     private void GuardarJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarJefesMouseClicked
-       String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
+        String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
         Color colors;
         int edad;
         int entrada = 0, salida = 0, sueldo = 0;
         JTree Model = JtreeJefes;
-        
+
         try {
             //programar
-            if (pb_barra.getValue()<3){
-                
+            if (pb_barra.getValue() < 3) {
+
                 nombre = nombreJefe.getText();
                 edad = Integer.parseInt(edad_jefe.getText());
                 id = Id_jefe.getText();
                 nacionalidad = nacionalidad_jefe.getText();
                 lugar_Nacimiento = nacionalidad_jefe.getText();
-                if (lb_colorjefes.getBackground()== Color.BLACK){
+                if (lb_colorjefes.getBackground() == Color.BLACK) {
                     color = "Negro";
-                } else if (lb_colorjefes.getBackground()==Color.WHITE){
+                } else if (lb_colorjefes.getBackground() == Color.WHITE) {
                     color = "blanco";
                 }
-        
+
                 estado = cb_estado.getItemAt(cb_estado.getSelectedIndex());
                 seccion = cb_seccionTrabajo.getItemAt(cb_seccionTrabajo.getSelectedIndex());
-                
-        if(nombre.equalsIgnoreCase("carlos")||nombre.equalsIgnoreCase("pedro")||nombre.equalsIgnoreCase("juan")||nombre.equalsIgnoreCase("roberto")||nombre.equalsIgnoreCase("eduardo")||!"estadounidense".equalsIgnoreCase(nacionalidad)||
-                !"estadounidense".equalsIgnoreCase(lugar_Nacimiento)||!"blanco".equalsIgnoreCase(color)){
-            
-            JOptionPane.showMessageDialog(this,"No aceptamos latinos");
-            personasNegras.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
-        }else if(nacionalidad.equalsIgnoreCase("estadounidense")||lugar_Nacimiento.equalsIgnoreCase("estadounidense")||color.equalsIgnoreCase("blanco")
-                ){          
-                
-        jefes.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
-        personas.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
-        temporal.clear();
-        
-        
-        JOptionPane.showMessageDialog(this, "Tuvo exito agregando Jefes");
-            
-                
-                nombreJefe.setText("");
-                LugarNacimiento_jefe.setText("");
-                edad_jefe.setText("");
-                nacionalidad_jefe.setText("");
-                Id_jefe.setText("");
-                cb_trabajoJefe.setSelectedIndex(0);
-                cb_empleadosJefe.setSelectedIndex(0);
-                sp_HoraE.setValue(0);
-                sp_HoraS.setValue(0);
-                tempEmpleados.clear();
-                
-        }        
-          
-            }else{
+
+                if (nombre.equalsIgnoreCase("carlos") || nombre.equalsIgnoreCase("pedro") || nombre.equalsIgnoreCase("juan") || nombre.equalsIgnoreCase("roberto") || nombre.equalsIgnoreCase("eduardo") || !"estadounidense".equalsIgnoreCase(nacionalidad)
+                        || !"estadounidense".equalsIgnoreCase(lugar_Nacimiento) || !"blanco".equalsIgnoreCase(color)) {
+
+                    JOptionPane.showMessageDialog(this, "No aceptamos latinos");
+                    personasNegras.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+                } else if (nacionalidad.equalsIgnoreCase("estadounidense") || lugar_Nacimiento.equalsIgnoreCase("estadounidense") || color.equalsIgnoreCase("blanco")) {
+
+                    jefes.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+                    personas.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+                    temporal.clear();
+
+                    JOptionPane.showMessageDialog(this, "Tuvo exito agregando Jefes");
+
+                    nombreJefe.setText("");
+                    LugarNacimiento_jefe.setText("");
+                    edad_jefe.setText("");
+                    nacionalidad_jefe.setText("");
+                    Id_jefe.setText("");
+                    cb_trabajoJefe.setSelectedIndex(0);
+                    cb_empleadosJefe.setSelectedIndex(0);
+                    sp_HoraE.setValue(0);
+                    sp_HoraS.setValue(0);
+                    tempEmpleados.clear();
+
+                }
+
+            } else {
                 JOptionPane.showMessageDialog(this, "Ya no hay espacio disponible");
             }
-         
-         
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_GuardarJefesMouseClicked
 
     private void lb_colorClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorClientesMouseClicked
@@ -3802,96 +3795,79 @@ public class Principal extends javax.swing.JFrame {
         int edad;
         float Dinero;
         JTree Model = arbol_Clientes;
-        
+
         try {
-        
-        nombre = nombre_clientes.getText();
-        edad = Integer.parseInt(edad_clientes.getText());
-        id = id_clientes.getText();
-        nacionalidad = nacionalidad_clientes.getText();
-        lugar_Nacimiento = LugarNacimiento_clientes.getText();
-        if (lb_colorClientes.getBackground()== Color.BLACK){
-            color = "Negro";
-        } else if (lb_colorClientes.getBackground()==Color.WHITE){
-            color = "blanco";
-        }
-        
-        Dinero = Float.parseFloat((Dinero_clientes.getText()));
-        
-        
-        clientes.add(new Clientes(ticket, Dinero, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
-        personas.add(new Clientes(ticket, Dinero, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
-        
-        
-        
-        JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
-               
-                tf_nombre.setText("");
-                tf_LugarNacimiento.setText("");
-                tf_edad.setText("");
-                tf_sueldo.setText("");
-                tf_nacionalidad.setText("");
-                tf_ID.setText("");
-                cb_estado.setSelectedIndex(0);
-                cb_seccionTrabajo.setSelectedIndex(0);
-                cb_trabajoJefe.setSelectedIndex(0);
-                sp_HoraE.setValue(0);
-                sp_HoraS.setValue(0);
-        
-        
+
+            nombre = nombre_clientes.getText();
+            edad = Integer.parseInt(edad_clientes.getText());
+            id = id_clientes.getText();
+            nacionalidad = nacionalidad_clientes.getText();
+            lugar_Nacimiento = LugarNacimiento_clientes.getText();
+            if (lb_colorClientes.getBackground() == Color.BLACK) {
+                color = "Negro";
+            } else if (lb_colorClientes.getBackground() == Color.WHITE) {
+                color = "blanco";
+            }
+
+            Dinero = Float.parseFloat((Dinero_clientes.getText()));
+
+            clientes.add(new Clientes(ticket, Dinero, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+            personas.add(new Clientes(ticket, Dinero, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+
+            JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
+
+            tf_nombre.setText("");
+            tf_LugarNacimiento.setText("");
+            tf_edad.setText("");
+            tf_sueldo.setText("");
+            tf_nacionalidad.setText("");
+            tf_ID.setText("");
+            cb_estado.setSelectedIndex(0);
+            cb_seccionTrabajo.setSelectedIndex(0);
+            cb_trabajoJefe.setSelectedIndex(0);
+            sp_HoraE.setValue(0);
+            sp_HoraS.setValue(0);
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_Guardar_clientesjButton1MouseClicked
 
     private void lb_colorjefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorjefesMouseClicked
-        
+
         Color c;
         c = JColorChooser.showDialog(this, "seleccione", Color.BLUE);
         lb_colorjefes.setForeground(c);
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_lb_colorjefesMouseClicked
 
     private void jButton25jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25jButton1MouseClicked
         int altura, peso;
         float precio;
-       
+
         try {
-        
-        altura = Integer.parseInt(altura_gato.getText());
-        peso = Integer.parseInt(pesoc.getText());
-        precio = Float.parseFloat((precio_gato.getText()));
-        
-        
-        cats.add(new gatos(altura, peso, precio));
-         JOptionPane.showMessageDialog(this, "Tuvo exito agregando gatos");
-               
-                altura_gato.setText("");
-                pesoc.setText("");
-                precio_gato.setText("");
-                
-        
+
+            altura = Integer.parseInt(altura_gato.getText());
+            peso = Integer.parseInt(pesoc.getText());
+            precio = Float.parseFloat((precio_gato.getText()));
+
+            cats.add(new gatos(altura, peso, precio));
+            JOptionPane.showMessageDialog(this, "Tuvo exito agregando gatos");
+
+            altura_gato.setText("");
+            pesoc.setText("");
+            precio_gato.setText("");
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton25jButton1MouseClicked
 
     private void Guardar_familiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar_familiaMouseClicked
@@ -3901,52 +3877,43 @@ public class Principal extends javax.swing.JFrame {
         float Dinero;
         Object padre = cb_Padre.getItemAt(cb_Padre.getSelectedIndex());
         JTree Model = ArbolEmpleados;
-        
+
         try {
-        
-        nombre = nombre_familia.getText();
-        edad = Integer.parseInt(edad_familia.getText());
-        id = Id_familia.getText();
-        nacionalidad = nacionalidad_familia.getText();
-        lugar_Nacimiento = lugarNacimiento_familia.getText();
-        if (lb_colorFamilia.getBackground()== Color.BLACK){
-            color = "Negro";
-        } else if (lb_colorFamilia.getBackground()==Color.WHITE){
-            color = "blanco";
-        }
-        
-        
-        
-        familiares.add(new Familiar(temporalfami, padre, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
-         JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
-         
-         temporalfami.clear();
-         
-                tf_nombre.setText("");
-                tf_LugarNacimiento.setText("");
-                tf_edad.setText("");
-                tf_sueldo.setText("");
-                tf_nacionalidad.setText("");
-                tf_ID.setText("");
-                cb_estado.setSelectedIndex(0);
-                cb_seccionTrabajo.setSelectedIndex(0);
-                cb_trabajoJefe.setSelectedIndex(0);
-                sp_HoraE.setValue(0);
-                sp_HoraS.setValue(0);
-        
-        
+
+            nombre = nombre_familia.getText();
+            edad = Integer.parseInt(edad_familia.getText());
+            id = Id_familia.getText();
+            nacionalidad = nacionalidad_familia.getText();
+            lugar_Nacimiento = lugarNacimiento_familia.getText();
+            if (lb_colorFamilia.getBackground() == Color.BLACK) {
+                color = "Negro";
+            } else if (lb_colorFamilia.getBackground() == Color.WHITE) {
+                color = "blanco";
+            }
+
+            familiares.add(new Familiar(temporalfami, padre, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+            JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
+
+            temporalfami.clear();
+
+            tf_nombre.setText("");
+            tf_LugarNacimiento.setText("");
+            tf_edad.setText("");
+            tf_sueldo.setText("");
+            tf_nacionalidad.setText("");
+            tf_ID.setText("");
+            cb_estado.setSelectedIndex(0);
+            cb_seccionTrabajo.setSelectedIndex(0);
+            cb_trabajoJefe.setSelectedIndex(0);
+            sp_HoraE.setValue(0);
+            sp_HoraS.setValue(0);
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_Guardar_familiaMouseClicked
 
     private void lb_colorFamiliaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorFamiliaMouseClicked
@@ -3955,13 +3922,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void cb_trabajoJefeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_trabajoJefeItemStateChanged
         for (Jefe temp : jefes) {
-            if(cb_trabajoJefe.getItemAt(cb_trabajoJefe.getSelectedIndex()).equalsIgnoreCase(temp.getSeccion_trabajo())){
+            if (cb_trabajoJefe.getItemAt(cb_trabajoJefe.getSelectedIndex()).equalsIgnoreCase(temp.getSeccion_trabajo())) {
                 GuardarJefes.disable();
             }
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_cb_trabajoJefeItemStateChanged
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
@@ -3973,58 +3939,48 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_edad_jefeActionPerformed
 
     private void bt_empleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_empleadoMouseClicked
-        
+
         Empleados empleado;
         empleado = cb_empleadosJefe.getItemAt(cb_empleadosJefe.getSelectedIndex());
         temporal.add(empleado);
-        
+
         JOptionPane.showMessageDialog(this, "Se agrego empleado satisfactoriamente");
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_bt_empleadoMouseClicked
 
     private void jButton26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseClicked
-        
+
         float precio;
-       
+
         try {
-            
-        precio = Float.parseFloat((precio_gato.getText()));
-        
-        
-        baleadas.add(new Baleadas(ingredientes1, precio));
-         JOptionPane.showMessageDialog(this, "Tuvo exito agregando gatos");
-         ingredientes1.clear();
-         
-                altura_gato.setText("");
-                pesoc.setText("");
-                precio_gato.setText("");
-                
-        
+
+            precio = Float.parseFloat((precio_gato.getText()));
+
+            baleadas.add(new Baleadas(ingredientes1, precio));
+            JOptionPane.showMessageDialog(this, "Tuvo exito agregando gatos");
+            ingredientes1.clear();
+
+            altura_gato.setText("");
+            pesoc.setText("");
+            precio_gato.setText("");
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton26MouseClicked
 
     private void jButton22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton22MouseClicked
-        
+
         String ingre;
         ingre = tf_ingrediente.getText();
         ingredientes1.add(ingre);
         tf_ingrediente.setText("");
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton22MouseClicked
 
     private void jButton21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton21MouseEntered
@@ -4032,86 +3988,78 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton21MouseEntered
 
     private void jPanel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseEntered
-       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < empleados.size(); i++) {
             modelo.addElement(empleados.get(i));
-            
+
         }
         cb_empleadosJefe.setModel(modelo);
-        
+
     }//GEN-LAST:event_jPanel14MouseEntered
 
     private void jPanel19MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseDragged
-        
-        
-        
+
+
     }//GEN-LAST:event_jPanel19MouseDragged
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-       DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < familiares.size(); i++) {
             modelo.addElement(familiares.get(i));
-            
+
         }
         cb_Padre.setModel(modelo);
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < personas.size(); i++) {
             modelo.addElement(personas.get(i));
-            
+
         }
         cb_Padre.setModel(modelo);
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < familiares.size(); i++) {
             modelo.addElement(familiares.get(i));
-            
+
         }
         cb_hijos.setModel(modelo);
-        
-        
-        
+
+
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < personas.size(); i++) {
             modelo.addElement(personas.get(i));
-            
+
         }
         cb_hijos.setModel(modelo);
-        
-        
-        
+
+
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
     private void jButton27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton27MouseClicked
-        hijos.add( cb_hijos.getItemAt(cb_hijos.getSelectedIndex()));
+        hijos.add(cb_hijos.getItemAt(cb_hijos.getSelectedIndex()));
         JOptionPane.showMessageDialog(this, "Se agrego satisfactoriamente");
-                
-  
+
+
     }//GEN-LAST:event_jButton27MouseClicked
 
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Nombre", "Edad", "Nacionalidad", "Seccion de trabajo",
-                }
+                    "Nombre", "Edad", "Nacionalidad", "Seccion de trabajo",}
         ));
         DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
 
@@ -4119,27 +4067,20 @@ public class Principal extends javax.swing.JFrame {
             Object[] row = {
                 jefes.get(i).getNombre(),
                 jefes.get(i).getSeccion_trabajo(),
-                jefes.get(i).getEdad(), 
-                jefes.get(i).getNacionalidad(),
-            };
+                jefes.get(i).getEdad(),
+                jefes.get(i).getNacionalidad(),};
             modelo.addRow(row);
         }
         Tabla.setModel(modelo);
 
-        
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
-       Tabla.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Nombre", "Estado", "Sueldo", "Seccion de trabajo",
-                }
+                    "Nombre", "Estado", "Sueldo", "Seccion de trabajo",}
         ));
         DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
 
@@ -4147,9 +4088,8 @@ public class Principal extends javax.swing.JFrame {
             Object[] row = {
                 empleados.get(i).getNombre(),
                 empleados.get(i).getEstado(),
-                empleados.get(i).getSueldo(), 
-                empleados.get(i).getSeccion_trabajo(),
-            };
+                empleados.get(i).getSueldo(),
+                empleados.get(i).getSeccion_trabajo(),};
             modelo.addRow(row);
         }
         Tabla.setModel(modelo);
@@ -4157,12 +4097,11 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton6ActionPerformed
 
     private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
-        
+
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Nombre", "ID", "Dinero Disponible", "Nacionalidad",
-                }
+                    "Nombre", "ID", "Dinero Disponible", "Nacionalidad",}
         ));
         DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
 
@@ -4170,24 +4109,20 @@ public class Principal extends javax.swing.JFrame {
             Object[] row = {
                 clientes.get(i).getNombre(),
                 clientes.get(i).getID(),
-                clientes.get(i).getDinero_Diponible(), 
-                clientes.get(i).Nacionalidad,
-            };
+                clientes.get(i).getDinero_Diponible(),
+                clientes.get(i).Nacionalidad,};
             modelo.addRow(row);
         }
         Tabla.setModel(modelo);
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jRadioButton7ActionPerformed
 
     private void jRadioButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton8ActionPerformed
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Precio", "Peso", "Altura",
-                }
+                    "Precio", "Peso", "Altura",}
         ));
         DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
 
@@ -4195,50 +4130,38 @@ public class Principal extends javax.swing.JFrame {
             Object[] row = {
                 cats.get(i).getPrecio(),
                 cats.get(i).getPeso(),
-                cats.get(i).getAltura(), 
-                
-            };
+                cats.get(i).getAltura(),};
             modelo.addRow(row);
         }
         Tabla.setModel(modelo);
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jRadioButton8ActionPerformed
 
     private void jRadioButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton9ActionPerformed
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Precio", "Lista de Ingredientes",
-                }
+                    "Precio", "Lista de Ingredientes",}
         ));
         DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
 
         for (int i = 0; i < baleadas.size(); i++) {
             Object[] row = {
                 baleadas.get(i).getPrecio(),
-                baleadas.get(i).getIngredientes(),
-      
-            };
+                baleadas.get(i).getIngredientes(),};
             modelo.addRow(row);
         }
         Tabla.setModel(modelo);
-        
-        
-  
+
+
     }//GEN-LAST:event_jRadioButton9ActionPerformed
 
     private void jRadioButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton10ActionPerformed
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                    "Nombre", "Edad", "Nacionalidad", "Lugar de nacimiento",
-                }
+                    "Nombre", "Edad", "Nacionalidad", "Lugar de nacimiento",}
         ));
         DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
 
@@ -4246,46 +4169,39 @@ public class Principal extends javax.swing.JFrame {
             Object[] row = {
                 familiares.get(i).getNombre(),
                 familiares.get(i).getEdad(),
-                familiares.get(i).getNacionalidad(), 
-                familiares.get(i).getLugar_Nacimiento(),
-            };
+                familiares.get(i).getNacionalidad(),
+                familiares.get(i).getLugar_Nacimiento(),};
             modelo.addRow(row);
         }
         Tabla.setModel(modelo);
-        
-   
-        
+
+
     }//GEN-LAST:event_jRadioButton10ActionPerformed
 
     private void jPanel28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel28MouseEntered
-    
+
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < empleados.size(); i++) {
             modelo.addElement(empleados.get(i));
-            
+
         }
         cb_empleadoOrden.setModel(modelo);
-       
+
         modelo = new DefaultComboBoxModel();
         for (int i = 0; i < baleadas.size(); i++) {
             modelo.addElement(baleadas.get(i));
-            
+
         }
         cb_baleada.setModel(modelo);
-       
+
         modelo = new DefaultComboBoxModel();
         for (int i = 0; i < clientes.size(); i++) {
             modelo.addElement(clientes.get(i));
-            
+
         }
         cb_clientesOrden.setModel(modelo);
-       
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jPanel28MouseEntered
 
     private void cb_clientesOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clientesOrdenActionPerformed
@@ -4293,7 +4209,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_clientesOrdenActionPerformed
 
     private void btMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btMouseClicked
-       
+
         // crear Orden
         Baleadas baleada;
         Clientes cliente;
@@ -4304,91 +4220,75 @@ public class Principal extends javax.swing.JFrame {
         double totalaux;
         float Money;
         int fechaTemp;
-        
-        
+
         try {
-        
-        cliente = cb_clientesOrden.getItemAt(cb_clientesOrden.getSelectedIndex());
-        empleado = cb_empleadoOrden.getItemAt(cb_empleadoOrden.getSelectedIndex());
-        fechaCreacion = fecha.getDate();
-        Cant_articulos = Integer.parseInt(sp_cantArticulos.getValue().toString());
-        baleada = cb_baleada.getItemAt(cb_baleada.getSelectedIndex());
-        fechaTemp = fecha.getDate().getHours();
-        
-        
-        
-        
-        Money = cliente.getDinero_Diponible();
-        
-        total = Cant_articulos*baleada.getPrecio();
-        if(cliente.colorPiel.equalsIgnoreCase("blanco")){
-            totalaux= (Cant_articulos*baleada.getPrecio())*0.25;
-            total = (float)totalaux;
-        }else{
-            total = Cant_articulos*baleada.getPrecio();
-        }
-        
-        if (empleado.getHora_e()<fechaTemp&&empleado.getHora_s()<fechaTemp){
-        if (Money>= total&& Pb_limite.getValue()<3){
-            ordenes.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
-            
-            
-             JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
-             acumulador++;
-             tf_totalNoeditablegatos.setText(""+total);
-             Pb_limite.setValue(acumulador);
-            
-            
-        } else if (Money>= total&& Pb_limite.getValue()==3){
-            ventas.add(new Venta(cliente, empleado, total, fechaCreacion));
-            
-                DefaultListModel modelo = (DefaultListModel) Jl_baleadasVenta.getModel();
-                modelo.addElement(new Venta(cliente, empleado, total, fechaCreacion));
-                Jl_baleadasVenta.setModel(modelo);
-                gananciaBaleadas += total;
-                tf_totalBaleadas.setText(""+ gananciaBaleadas);
-            
-                
-             JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
-             acumulador = 0;
-             tf_totalNoeditablegatos.setText(""+total);
-            Pb_limite.setValue(acumulador);
-        } else{
-            JOptionPane.showMessageDialog(this, "No dispone de suficiente Dinero para crear esta venta");
-            
-        }
-        
-        
-         
-        } else{
-            JOptionPane.showMessageDialog(this, "Empleado no disponibe");
-            
-        }
-        
+
+            cliente = cb_clientesOrden.getItemAt(cb_clientesOrden.getSelectedIndex());
+            empleado = cb_empleadoOrden.getItemAt(cb_empleadoOrden.getSelectedIndex());
+            fechaCreacion = fecha.getDate();
+            Cant_articulos = Integer.parseInt(sp_cantArticulos.getValue().toString());
+            baleada = cb_baleada.getItemAt(cb_baleada.getSelectedIndex());
+            fechaTemp = fecha.getDate().getHours();
+
+            Money = cliente.getDinero_Diponible();
+
+            total = Cant_articulos * baleada.getPrecio();
+            if (cliente.colorPiel.equalsIgnoreCase("blanco")) {
+                totalaux = (Cant_articulos * baleada.getPrecio()) * 0.25;
+                total = (float) totalaux;
+            } else {
+                total = Cant_articulos * baleada.getPrecio();
+            }
+
+            if (empleado.getHora_e() < fechaTemp && empleado.getHora_s() < fechaTemp) {
+                if (Money >= total && Pb_limite.getValue() < 3) {
+                    ordenes.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
+
+                    JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
+                    acumulador++;
+                    tf_totalNoeditablegatos.setText("" + total);
+                    Pb_limite.setValue(acumulador);
+
+                } else if (Money >= total && Pb_limite.getValue() == 3) {
+                    ventas.add(new Venta(cliente, empleado, total, fechaCreacion));
+
+                    DefaultListModel modelo = (DefaultListModel) Jl_baleadasVenta.getModel();
+                    modelo.addElement(new Venta(cliente, empleado, total, fechaCreacion));
+                    Jl_baleadasVenta.setModel(modelo);
+                    gananciaBaleadas += total;
+                    tf_totalBaleadas.setText("" + gananciaBaleadas);
+
+                    JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
+                    acumulador = 0;
+                    tf_totalNoeditablegatos.setText("" + total);
+                    Pb_limite.setValue(acumulador);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No dispone de suficiente Dinero para crear esta venta");
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Empleado no disponibe");
+
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btMouseClicked
 
     private void btStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_btStateChanged
-        
-        if (Pb_limite.getValue()==3){
+
+        if (Pb_limite.getValue() == 3) {
             bt.setText("Venta");
-        } else 
-        {
+        } else {
             bt.setText("Orden");
         }
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_btStateChanged
 
     private void cb_clientesOrdenGatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clientesOrdenGatosActionPerformed
@@ -4396,21 +4296,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_clientesOrdenGatosActionPerformed
 
     private void bt1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_bt1StateChanged
-        
-                    
-        if (Pb_limitegatos.getValue()==3){
+
+        if (Pb_limitegatos.getValue() == 3) {
             bt1.setText("Venta");
-        } else 
-        {
+        } else {
             bt1.setText("Orden");
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_bt1StateChanged
 
     private void bt1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt1MouseClicked
-        
+
         Baleadas baleada;
         gatos Gatos;
         Clientes cliente;
@@ -4422,103 +4319,88 @@ public class Principal extends javax.swing.JFrame {
         float Money;
         int fechaTemp;
         try {
-        
-        cliente = cb_clientesOrdenGatos.getItemAt(cb_clientesOrdenGatos.getSelectedIndex());
-        empleado = cb_empleadoOrdenGatos.getItemAt(cb_empleadoOrdenGatos.getSelectedIndex());
-        fechaCreacion = fechaGatos.getDate();
-        Cant_articulos = Integer.parseInt(sp_cantArticulosGatos.getValue().toString());
-        Gatos = cb_gatos.getItemAt(cb_gatos.getSelectedIndex());
-       
-        Money = cliente.getDinero_Diponible();
-        
-        total = Cant_articulos*Gatos.getPrecio();
-        
-         if(cliente.colorPiel.equalsIgnoreCase("blanco")){
-            totalaux= (Cant_articulos*Gatos.getPrecio())*0.25;
-            total = (float)totalaux;
-        }else{
-            total = Cant_articulos*Gatos.getPrecio();
-        }
-       
-        fechaTemp = fechaGatos.getDate().getHours();
-        if (empleado.getHora_e()<fechaTemp&&empleado.getHora_s()<fechaTemp){
-        if (Money>= total&& Pb_limitegatos.getValue()<3){
-            ordenes.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
-             JOptionPane.showMessageDialog(this, "Tuve exito agregando Ordenes de gatos");
-             acumulador++;
-             tf_totalNoeditablegatos.setText(""+total);
-             Pb_limitegatos.setValue(acumulador);
-            
-            
-        } else if (Money>= total&& Pb_limite.getValue()==3){
-            ventas.add(new Venta(cliente, empleado, total, fechaCreacion));
-            
-            DefaultListModel modelo = (DefaultListModel) Jl_gatosVenta.getModel();
-                modelo.addElement(new Venta(cliente, empleado, total, fechaCreacion));
-                Jl_gatosVenta.setModel(modelo);
-                gananciaGatos += total;
-                tf_totalGatos.setText(""+ gananciaGatos);
-            
-             JOptionPane.showMessageDialog(this, "Tuve exito Ordenes de gatos");
-             acumulador = 0;
-             tf_totalNoeditablegatos.setText(""+total);
-            Pb_limitegatos.setValue(acumulador);
-        } else{
-            JOptionPane.showMessageDialog(this, "No dispone de suficiente Dinero para crear esta venta");
-            
-        }
-        
-        }else{
-            JOptionPane.showMessageDialog(this, "empleado no disponible");
-            
-        }
-         
-        
-         
-        
+
+            cliente = cb_clientesOrdenGatos.getItemAt(cb_clientesOrdenGatos.getSelectedIndex());
+            empleado = cb_empleadoOrdenGatos.getItemAt(cb_empleadoOrdenGatos.getSelectedIndex());
+            fechaCreacion = fechaGatos.getDate();
+            Cant_articulos = Integer.parseInt(sp_cantArticulosGatos.getValue().toString());
+            Gatos = cb_gatos.getItemAt(cb_gatos.getSelectedIndex());
+
+            Money = cliente.getDinero_Diponible();
+
+            total = Cant_articulos * Gatos.getPrecio();
+
+            if (cliente.colorPiel.equalsIgnoreCase("blanco")) {
+                totalaux = (Cant_articulos * Gatos.getPrecio()) * 0.25;
+                total = (float) totalaux;
+            } else {
+                total = Cant_articulos * Gatos.getPrecio();
+            }
+
+            fechaTemp = fechaGatos.getDate().getHours();
+            if (empleado.getHora_e() < fechaTemp && empleado.getHora_s() < fechaTemp) {
+                if (Money >= total && Pb_limitegatos.getValue() < 3) {
+                    ordenes.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
+                    JOptionPane.showMessageDialog(this, "Tuve exito agregando Ordenes de gatos");
+                    acumulador++;
+                    tf_totalNoeditablegatos.setText("" + total);
+                    Pb_limitegatos.setValue(acumulador);
+
+                } else if (Money >= total && Pb_limite.getValue() == 3) {
+                    ventas.add(new Venta(cliente, empleado, total, fechaCreacion));
+
+                    DefaultListModel modelo = (DefaultListModel) Jl_gatosVenta.getModel();
+                    modelo.addElement(new Venta(cliente, empleado, total, fechaCreacion));
+                    Jl_gatosVenta.setModel(modelo);
+                    gananciaGatos += total;
+                    tf_totalGatos.setText("" + gananciaGatos);
+
+                    JOptionPane.showMessageDialog(this, "Tuve exito Ordenes de gatos");
+                    acumulador = 0;
+                    tf_totalNoeditablegatos.setText("" + total);
+                    Pb_limitegatos.setValue(acumulador);
+                } else {
+                    JOptionPane.showMessageDialog(this, "No dispone de suficiente Dinero para crear esta venta");
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "empleado no disponible");
+
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_bt1MouseClicked
 
     private void jPanel29MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel29MouseEntered
-        
-            
+
         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < empleados.size(); i++) {
             modelo.addElement(empleados.get(i));
-            
+
         }
         cb_empleadoOrdenGatos.setModel(modelo);
-       
+
         modelo = new DefaultComboBoxModel();
         for (int i = 0; i < cats.size(); i++) {
             modelo.addElement(cats.get(i));
-            
+
         }
         cb_gatos.setModel(modelo);
-       
+
         modelo = new DefaultComboBoxModel();
         for (int i = 0; i < clientes.size(); i++) {
             modelo.addElement(clientes.get(i));
-            
+
         }
         cb_clientesOrdenGatos.setModel(modelo);
-       
 
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_jPanel29MouseEntered
 
     private void btActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActionPerformed
@@ -4530,22 +4412,18 @@ public class Principal extends javax.swing.JFrame {
         EmpleadosModificar.pack();
         EmpleadosModificar.setLocationRelativeTo(this);
         EmpleadosModificar.setVisible(true);
-    
-       
-        
+
+
     }//GEN-LAST:event_jButton28jButton1MouseClicked
 
     private void jButton29jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton29jButton2MouseClicked
-        
+
         ClientesModificar.setModal(true);
         ClientesModificar.pack();
         ClientesModificar.setLocationRelativeTo(this);
         ClientesModificar.setVisible(true);
-    
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton29jButton2MouseClicked
 
     private void jButton29jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29jButton2ActionPerformed
@@ -4557,7 +4435,7 @@ public class Principal extends javax.swing.JFrame {
         JefesModificar.pack();
         JefesModificar.setLocationRelativeTo(this);
         JefesModificar.setVisible(true);
-     
+
     }//GEN-LAST:event_jButton30jButton3MouseClicked
 
     private void jButton30MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton30MouseEntered
@@ -4569,15 +4447,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton30jButton3ActionPerformed
 
     private void jButton31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton31MouseClicked
-        
+
         GatosModificar.setModal(true);
         GatosModificar.pack();
         GatosModificar.setLocationRelativeTo(this);
         GatosModificar.setVisible(true);
-    
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton31MouseClicked
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
@@ -4585,14 +4461,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton32MouseClicked
-        
+
         BaleadasModificar.setModal(true);
         BaleadasModificar.pack();
         BaleadasModificar.setLocationRelativeTo(this);
         BaleadasModificar.setVisible(true);
-    
-        
-        
+
+
     }//GEN-LAST:event_jButton32MouseClicked
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
@@ -4605,70 +4480,62 @@ public class Principal extends javax.swing.JFrame {
 
     private void GuardarEmpleados1jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarEmpleados1jButton1MouseClicked
         //modificarEmpleados
-                
-                
+
         String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
         Color colors;
         int entrada, salida, sueldo, edad;
         JTree Model = ArbolEmpleados1;
-        
-        try {
-        
-        nombre = tf_nombre1.getText();
-        edad = Integer.parseInt(tf_edad1.getText());
-        id = tf_ID1.getText();
-        nacionalidad = tf_nacionalidad1.getText();
-        lugar_Nacimiento = tf_LugarNacimiento1.getText();
-        if (lb_color1.getBackground()== Color.BLACK){
-            color = "Negro";
-        } else if (lb_color1.getBackground()==Color.WHITE){
-            color = "blanco";
-        }
-        
-        sueldo = Integer.parseInt(tf_sueldo1.getText());
-        estado = cb_estado1.getItemAt(cb_estado1.getSelectedIndex());
-        seccion = cb_seccionTrabajo1.getItemAt(cb_seccionTrabajo1.getSelectedIndex());
-        entrada = Integer.parseInt(sp_HoraE1.getValue().toString());
-        salida = Integer.parseInt(sp_HoraE1.getValue().toString());
-      
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setNombre(nombre);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setEdad(edad);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setID(id);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setNacionalidad(nacionalidad);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setLugar_Nacimiento(lugar_Nacimiento);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setColorPiel(color);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setSueldo(sueldo);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setEstado(estado);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setSeccion_trabajo(seccion);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setHora_e(entrada);
-                empleados.get(cb_empleadoModificar.getSelectedIndex()).setHora_s(salida);
-                
-                JOptionPane.showMessageDialog(this, "El contacto fue Modificado exitosamente");
 
-       
-                        
-                tf_nombre1.setText("");
-                tf_LugarNacimiento1.setText("");
-                tf_edad1.setText("");
-                tf_sueldo1.setText("");
-                tf_nacionalidad1.setText("");
-                tf_ID1.setText("");
-                cb_estado1.setSelectedIndex(0);
-                cb_seccionTrabajo1.setSelectedIndex(0);
-                sp_HoraE1.setValue(0);
-                sp_HoraS1.setValue(0);
-        
-       
-              
-        
+        try {
+
+            nombre = tf_nombre1.getText();
+            edad = Integer.parseInt(tf_edad1.getText());
+            id = tf_ID1.getText();
+            nacionalidad = tf_nacionalidad1.getText();
+            lugar_Nacimiento = tf_LugarNacimiento1.getText();
+            if (lb_color1.getBackground() == Color.BLACK) {
+                color = "Negro";
+            } else if (lb_color1.getBackground() == Color.WHITE) {
+                color = "blanco";
+            }
+
+            sueldo = Integer.parseInt(tf_sueldo1.getText());
+            estado = cb_estado1.getItemAt(cb_estado1.getSelectedIndex());
+            seccion = cb_seccionTrabajo1.getItemAt(cb_seccionTrabajo1.getSelectedIndex());
+            entrada = Integer.parseInt(sp_HoraE1.getValue().toString());
+            salida = Integer.parseInt(sp_HoraE1.getValue().toString());
+
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setNombre(nombre);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setEdad(edad);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setID(id);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setNacionalidad(nacionalidad);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setLugar_Nacimiento(lugar_Nacimiento);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setColorPiel(color);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setSueldo(sueldo);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setEstado(estado);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setSeccion_trabajo(seccion);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setHora_e(entrada);
+            empleados.get(cb_empleadoModificar.getSelectedIndex()).setHora_s(salida);
+
+            JOptionPane.showMessageDialog(this, "El contacto fue Modificado exitosamente");
+
+            tf_nombre1.setText("");
+            tf_LugarNacimiento1.setText("");
+            tf_edad1.setText("");
+            tf_sueldo1.setText("");
+            tf_nacionalidad1.setText("");
+            tf_ID1.setText("");
+            cb_estado1.setSelectedIndex(0);
+            cb_seccionTrabajo1.setSelectedIndex(0);
+            sp_HoraE1.setValue(0);
+            sp_HoraS1.setValue(0);
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-  
-              
-        
-        
+
+
     }//GEN-LAST:event_GuardarEmpleados1jButton1MouseClicked
 
     private void lb_color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_color1MouseClicked
@@ -4681,32 +4548,30 @@ public class Principal extends javax.swing.JFrame {
 
     private void GuardarJefes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarJefes1MouseClicked
         //modificar jefes
-        
+
         String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
         Color colors;
         int edad;
         int entrada = 0, salida = 0, sueldo = 0;
         JTree Model = JtreeJefes1;
-        
+
         try {
             //programar
-            if (pb_barra1.getValue()<3){
-                
+            if (pb_barra1.getValue() < 3) {
+
                 nombre = nombreJefe1.getText();
                 edad = Integer.parseInt(edad_jefe1.getText());
                 id = Id_jefe1.getText();
                 nacionalidad = nacionalidad_jefe1.getText();
                 lugar_Nacimiento = nacionalidad_jefe1.getText();
-                if (lb_colorjefes1.getBackground()== Color.BLACK){
+                if (lb_colorjefes1.getBackground() == Color.BLACK) {
                     color = "Negro";
-                } else if (lb_colorjefes1.getBackground()==Color.WHITE){
+                } else if (lb_colorjefes1.getBackground() == Color.WHITE) {
                     color = "blanco";
                 }
-       
+
                 seccion = cb_seccionTrabajo1.getItemAt(cb_seccionTrabajo1.getSelectedIndex());
-                
-                
-                
+
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setNombre(nombre);
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setEdad(edad);
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setID(id);
@@ -4715,10 +4580,9 @@ public class Principal extends javax.swing.JFrame {
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setColorPiel(color);
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setSeccion_trabajo(seccion);
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setEmpleados(temporal);
-                
+
                 JOptionPane.showMessageDialog(this, "El contacto fue Modificado exitosamente");
 
-                   
                 nombreJefe1.setText("");
                 LugarNacimiento_jefe1.setText("");
                 edad_jefe1.setText("");
@@ -4729,28 +4593,17 @@ public class Principal extends javax.swing.JFrame {
                 sp_HoraE1.setValue(0);
                 sp_HoraS1.setValue(0);
                 temporal.clear();
-                
-                
-          
-            }else{
+
+            } else {
                 JOptionPane.showMessageDialog(this, "Ya no hay espacio disponible");
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-    
-       
-               
-              
-        
-       
-        
-        
-        
+
+
     }//GEN-LAST:event_GuardarJefes1MouseClicked
 
     private void cb_trabajoJefe1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_trabajoJefe1ItemStateChanged
@@ -4762,37 +4615,33 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_colorjefes1MouseClicked
 
     private void bt_empleado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_empleado1MouseClicked
-       
-             
+
         Empleados empleado;
         empleado = cb_empleadosJefe1.getItemAt(cb_empleadosJefe1.getSelectedIndex());
         temporal.add(empleado);
-        
+
         JOptionPane.showMessageDialog(this, "Se agrego empleado satisfactoriamente");
-   
-        
-        
+
+
     }//GEN-LAST:event_bt_empleado1MouseClicked
 
     private void jPanel50MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel50MouseEntered
-        
-        
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < jefes.size(); i++) {
             modelo.addElement(jefes.get(i));
-            
+
         }
         cb_JefeModificar.setModel(modelo);
-      
+
         modelo = new DefaultComboBoxModel();
         for (int i = 0; i < empleados.size(); i++) {
             modelo.addElement(empleados.get(i));
-            
+
         }
         cb_empleadosJefe1.setModel(modelo);
-        
-        
-        
+
+
     }//GEN-LAST:event_jPanel50MouseEntered
 
     private void lb_colorClientes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorClientes1MouseClicked
@@ -4800,132 +4649,109 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_colorClientes1MouseClicked
 
     private void Guardar_clientes1jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar_clientes1jButton1MouseClicked
-        
+
         //modificar clientes
-        
         ticket++;
         String nombre, id, nacionalidad, lugar_Nacimiento, color = null, seccion;
         Color colors;
         int edad;
         float Dinero;
         JTree Model = arbol_Clientes1;
-        
+
         try {
-        
-        nombre = nombre_clientes1.getText();
-        edad = Integer.parseInt(edad_clientes1.getText());
-        id = id_clientes1.getText();
-        nacionalidad = nacionalidad_clientes1.getText();
-        lugar_Nacimiento = LugarNacimiento_clientes1.getText();
-        if (lb_colorClientes1.getBackground()== Color.BLACK){
-            color = "Negro";
-        } else if (lb_colorClientes1.getBackground()==Color.WHITE){
-            color = "blanco";
-        }
-        
-                Dinero = Float.parseFloat((Dinero_clientes1.getText()));
-        
-         
-                clientes.get(cb_ClienteModificar.getSelectedIndex()).setNombre(nombre);
-                clientes.get(cb_ClienteModificar.getSelectedIndex()).setEdad(edad);
-                clientes.get(cb_ClienteModificar.getSelectedIndex()).setID(id);
-                clientes.get(cb_ClienteModificar.getSelectedIndex()).setNacionalidad(nacionalidad);
-                clientes.get(cb_ClienteModificar.getSelectedIndex()).setLugar_Nacimiento(lugar_Nacimiento);
-                clientes.get(cb_ClienteModificar.getSelectedIndex()).setColorPiel(color);
-                clientes.get(cb_ClienteModificar.getSelectedIndex()).setDinero_Diponible(Dinero);
-               
-        
-        
-        
-        JOptionPane.showMessageDialog(this, "Tuve exito Modificando Clientes");
-               
-                tf_nombre1.setText("");
-                tf_LugarNacimiento1.setText("");
-                tf_edad1.setText("");
-                tf_sueldo1.setText("");
-                tf_nacionalidad1.setText("");
-                tf_ID1.setText("");
-                cb_estado1.setSelectedIndex(0);
-                cb_seccionTrabajo1.setSelectedIndex(0);
-                cb_trabajoJefe1.setSelectedIndex(0);
-                sp_HoraE1.setValue(0);
-                sp_HoraS1.setValue(0);
-        
-        
+
+            nombre = nombre_clientes1.getText();
+            edad = Integer.parseInt(edad_clientes1.getText());
+            id = id_clientes1.getText();
+            nacionalidad = nacionalidad_clientes1.getText();
+            lugar_Nacimiento = LugarNacimiento_clientes1.getText();
+            if (lb_colorClientes1.getBackground() == Color.BLACK) {
+                color = "Negro";
+            } else if (lb_colorClientes1.getBackground() == Color.WHITE) {
+                color = "blanco";
+            }
+
+            Dinero = Float.parseFloat((Dinero_clientes1.getText()));
+
+            clientes.get(cb_ClienteModificar.getSelectedIndex()).setNombre(nombre);
+            clientes.get(cb_ClienteModificar.getSelectedIndex()).setEdad(edad);
+            clientes.get(cb_ClienteModificar.getSelectedIndex()).setID(id);
+            clientes.get(cb_ClienteModificar.getSelectedIndex()).setNacionalidad(nacionalidad);
+            clientes.get(cb_ClienteModificar.getSelectedIndex()).setLugar_Nacimiento(lugar_Nacimiento);
+            clientes.get(cb_ClienteModificar.getSelectedIndex()).setColorPiel(color);
+            clientes.get(cb_ClienteModificar.getSelectedIndex()).setDinero_Diponible(Dinero);
+
+            JOptionPane.showMessageDialog(this, "Tuve exito Modificando Clientes");
+
+            tf_nombre1.setText("");
+            tf_LugarNacimiento1.setText("");
+            tf_edad1.setText("");
+            tf_sueldo1.setText("");
+            tf_nacionalidad1.setText("");
+            tf_ID1.setText("");
+            cb_estado1.setSelectedIndex(0);
+            cb_seccionTrabajo1.setSelectedIndex(0);
+            cb_trabajoJefe1.setSelectedIndex(0);
+            sp_HoraE1.setValue(0);
+            sp_HoraS1.setValue(0);
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-        
-        
-      
+
+
     }//GEN-LAST:event_Guardar_clientes1jButton1MouseClicked
 
     private void jButton34jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton34jButton1MouseClicked
-        
+
         //modificar gatos
-        
         int altura, peso;
         float precio;
-       
+
         try {
-        
-        altura = Integer.parseInt(altura_gato1.getText());
-        peso = Integer.parseInt(peso1.getText());
-        precio = Float.parseFloat((precio_gato1.getText()));
-        
-                cats.get(cb_GatoModificar.getSelectedIndex()).setAltura(altura);
-                cats.get(cb_GatoModificar.getSelectedIndex()).setPeso(peso);
-                cats.get(cb_GatoModificar.getSelectedIndex()).setPrecio(precio);
-                
-         
-        
-        
-        JOptionPane.showMessageDialog(this, "Tuvo exito modificando  gatos");
-               
-                altura_gato.setText("");
-                pesoc.setText("");
-                precio_gato.setText("");
-                
-        
+
+            altura = Integer.parseInt(altura_gato1.getText());
+            peso = Integer.parseInt(peso1.getText());
+            precio = Float.parseFloat((precio_gato1.getText()));
+
+            cats.get(cb_GatoModificar.getSelectedIndex()).setAltura(altura);
+            cats.get(cb_GatoModificar.getSelectedIndex()).setPeso(peso);
+            cats.get(cb_GatoModificar.getSelectedIndex()).setPrecio(precio);
+
+            JOptionPane.showMessageDialog(this, "Tuvo exito modificando  gatos");
+
+            altura_gato.setText("");
+            pesoc.setText("");
+            precio_gato.setText("");
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
+
+
     }//GEN-LAST:event_jButton34jButton1MouseClicked
 
     private void jButton35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton35MouseClicked
-        
-    
-        
-        
 
         try {
-        
+
             float precio;
-            precio=Float.parseFloat(precio_baleadas1.getText());
-            Baleadas baleada=cb_baleadaModificar.getItemAt(cb_baleadaModificar.getSelectedIndex());
+            precio = Float.parseFloat(precio_baleadas1.getText());
+            Baleadas baleada = cb_baleadaModificar.getItemAt(cb_baleadaModificar.getSelectedIndex());
             baleada.setIngredientes(ingredientes1);
             baleada.setPrecio(precio);
             JOptionPane.showMessageDialog(this, "La baleada se ha modificado exitosamente");
             ingredientes1.clear();
             precio_baleadas1.setText("");
-            
-        
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-        
-        
-       
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton35MouseClicked
 
     private void jButton23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton23MouseClicked
@@ -4933,26 +4759,25 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton23MouseClicked
 
     private void Guardar_familia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar_familia1MouseClicked
-        
-        String nombre,id,nacionalidad,lugar,color = null;
-        int edad,entrada,salida;
+
+        String nombre, id, nacionalidad, lugar, color = null;
+        int edad, entrada, salida;
         float sueldo;
-        Object padre=cb_Padre1.getItemAt(cb_Padre1.getSelectedIndex());
+        Object padre = cb_Padre1.getItemAt(cb_Padre1.getSelectedIndex());
         JTree model = null;
-        Familiar familia=cb_Familia.getItemAt(cb_Familia.getSelectedIndex());
-        
+        Familiar familia = cb_Familia.getItemAt(cb_Familia.getSelectedIndex());
+
         nombre = nombre_familia1.getText();
         edad = Integer.parseInt(edad_familia1.getText());
         id = Id_familia1.getText();
         nacionalidad = nacionalidad_familia1.getText();
         lugar = lugarNacimiento_familia1.getText();
-        if (lb_colorFamilia1.getBackground()== Color.BLACK){
+        if (lb_colorFamilia1.getBackground() == Color.BLACK) {
             color = "Negro";
-        } else if (lb_colorFamilia1.getBackground()==Color.WHITE){
+        } else if (lb_colorFamilia1.getBackground() == Color.WHITE) {
             color = "blanco";
         }
-        
-       
+
         familia.setArbo_genealogico(model);
         familia.setColorPiel(color);
         familia.setEdad(edad);
@@ -4960,19 +4785,18 @@ public class Principal extends javax.swing.JFrame {
         familia.setID(id);
         familia.setNacionalidad(nacionalidad);
         familia.setLugar_Nacimiento(lugar);
-      
+
         temporalfami.clear();
-         
+
         JOptionPane.showMessageDialog(this, "Se modifico un familiar exitosamente!");
 
-        
         nombre_familia1.setText("");
         edad_familia1.setText("");
         nacionalidad_familia1.setText("");
         lugarNacimiento_familia1.setText("");
         Id_familia1.setText("");
-        
-        
+
+
     }//GEN-LAST:event_Guardar_familia1MouseClicked
 
     private void lb_colorFamilia1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorFamilia1MouseClicked
@@ -4980,52 +4804,46 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_colorFamilia1MouseClicked
 
     private void jRadioButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton11ActionPerformed
-              DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < familiares.size(); i++) {
             modelo.addElement(familiares.get(i));
-            
+
         }
         cb_Padre1.setModel(modelo);
-        
-        
-        
+
+
     }//GEN-LAST:event_jRadioButton11ActionPerformed
 
     private void jRadioButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton12ActionPerformed
-       
-             DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < personas.size(); i++) {
             modelo.addElement(personas.get(i));
-            
+
         }
         cb_Padre1.setModel(modelo);
-    
-        
-        
-        
+
+
     }//GEN-LAST:event_jRadioButton12ActionPerformed
 
     private void jRadioButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton13ActionPerformed
-                
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < familiares.size(); i++) {
             modelo.addElement(familiares.get(i));
-            
+
         }
         cb_hijos1.setModel(modelo);
 
-        
-        
-        
-        
+
     }//GEN-LAST:event_jRadioButton13ActionPerformed
 
     private void jRadioButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton14ActionPerformed
-                
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < personas.size(); i++) {
             modelo.addElement(personas.get(i));
-            
+
         }
         cb_hijos1.setModel(modelo);
 
@@ -5044,19 +4862,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel55MouseDragged
 
     private void jPanel21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel21MouseEntered
-        
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < empleados.size(); i++) {
             modelo.addElement(empleados.get(i));
-            
+
         }
         cb_empleadoModificar.setModel(modelo);
-      
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jPanel21MouseEntered
 
     private void bt_empleado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_empleado1ActionPerformed
@@ -5064,32 +4878,27 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_empleado1ActionPerformed
 
     private void jPanel52MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel52MouseEntered
-        
-                
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < clientes.size(); i++) {
             modelo.addElement(clientes.get(i));
-            
+
         }
         cb_ClienteModificar.setModel(modelo);
 
-        
-        
+
     }//GEN-LAST:event_jPanel52MouseEntered
 
     private void jPanel53MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel53MouseEntered
-        
-                
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < cats.size(); i++) {
             modelo.addElement(cats.get(i));
-            
+
         }
         cb_GatoModificar.setModel(modelo);
 
-        
-        
-        
+
     }//GEN-LAST:event_jPanel53MouseEntered
 
     private void cb_GatoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_GatoModificarActionPerformed
@@ -5101,18 +4910,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_baleadaModificarActionPerformed
 
     private void jPanel54MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel54MouseEntered
-        
-                
-                
-         DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
         for (int i = 0; i < baleadas.size(); i++) {
             modelo.addElement(baleadas.get(i));
-            
+
         }
         cb_baleadaModificar.setModel(modelo);
-        
-        
-        
+
+
     }//GEN-LAST:event_jPanel54MouseEntered
 
     private void cb_FamiliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_FamiliaActionPerformed
@@ -5120,7 +4926,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_FamiliaActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        
+
         JFileChooser jfc = new JFileChooser();
         int seleccion = jfc.showSaveDialog(this);
         File Empleado = jfc.getSelectedFile();
@@ -5143,7 +4949,7 @@ public class Principal extends javax.swing.JFrame {
                             + Empleado1.getHora_e() + ","
                             + Empleado1.getHora_s() + ","
                             + Empleado1.getEdad() + ","
-                            + Empleado1.getFamiliar()+ ","
+                            + Empleado1.getFamiliar() + ","
                             + Empleado1.getEstado() + ","
                             + Empleado1.getSueldo() + ";";
                 }
@@ -5153,26 +4959,26 @@ public class Principal extends javax.swing.JFrame {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        String ClientesAux="";
+
+        String ClientesAux = "";
         File Cliente = jfc.getSelectedFile();
-        
+
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             try {
                 fw = new FileWriter(Cliente);
                 bw = new BufferedWriter(fw);
                 for (Clientes clientes1 : clientes) {
                     ClientesAux
-                            +=clientes1.getNombre() + ","
+                            += clientes1.getNombre() + ","
                             + clientes1.getID() + ","
                             + clientes1.getColorPiel() + ","
-                            + clientes1.getDinero_Diponible()+ ","
+                            + clientes1.getDinero_Diponible() + ","
                             + clientes1.getEdad() + ","
                             + clientes1.getOrdenes() + ","
                             + clientes1.getNacionalidad() + ","
                             + clientes1.getOrdenes() + ","
                             + clientes1.getEdad() + ","
-                            + clientes1.getFamiliar()+ ";";
+                            + clientes1.getFamiliar() + ";";
                 }
                 bw.write(ClientesAux);
                 bw.flush();
@@ -5180,27 +4986,26 @@ public class Principal extends javax.swing.JFrame {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        String JefesAux="";
+
+        String JefesAux = "";
         File Jefes = jfc.getSelectedFile();
-        
-        
+
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             try {
                 fw = new FileWriter(Jefes);
                 bw = new BufferedWriter(fw);
                 for (Jefe jefe1 : jefes) {
                     JefesAux
-                            +=jefe1.getNombre() + ","
+                            += jefe1.getNombre() + ","
                             + jefe1.getID() + ","
                             + jefe1.getColorPiel() + ","
-                            + jefe1.getSeccion_trabajo()+ ","
+                            + jefe1.getSeccion_trabajo() + ","
                             + jefe1.getEdad() + ","
                             + jefe1.getFamiliar() + ","
                             + jefe1.getNacionalidad() + ","
                             + jefe1.getEmpleados() + ","
                             + jefe1.getEdad() + ","
-                            + jefe1.getFamiliar()+ ";";
+                            + jefe1.getFamiliar() + ";";
                 }
                 bw.write(JefesAux);
                 bw.flush();
@@ -5208,19 +5013,17 @@ public class Principal extends javax.swing.JFrame {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        
-        String gatos_auxiliar="";
+
+        String gatos_auxiliar = "";
         File Gatos = jfc.getSelectedFile();
-        
-        
+
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             try {
                 fw = new FileWriter(Gatos);
                 bw = new BufferedWriter(fw);
                 for (gatos gato1 : cats) {
                     gatos_auxiliar
-                            +=gato1.getPeso() + ","
+                            += gato1.getPeso() + ","
                             + gato1.getAltura() + ","
                             + gato1.getPrecio() + ";";
                 }
@@ -5230,19 +5033,17 @@ public class Principal extends javax.swing.JFrame {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        
-        String baleadas_auxiliar="";
+
+        String baleadas_auxiliar = "";
         File Balea = jfc.getSelectedFile();
-        
-        
+
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             try {
                 fw = new FileWriter(Balea);
                 bw = new BufferedWriter(fw);
                 for (Baleadas baleada1 : baleadas) {
                     baleadas_auxiliar
-                            +=baleada1.getIngredientes() + ","
+                            += baleada1.getIngredientes() + ","
                             + baleada1.getPrecio() + ";";
                 }
                 bw.write(baleadas_auxiliar);
@@ -5251,26 +5052,24 @@ public class Principal extends javax.swing.JFrame {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        String familiar_auxiliar="";
+
+        String familiar_auxiliar = "";
         File famili = jfc.getSelectedFile();
-        
-        
+
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             try {
                 fw = new FileWriter(famili);
                 bw = new BufferedWriter(fw);
                 for (Familiar familiar1 : familiares) {
-                    familiar_auxiliar+=
-                            familiar1.getColorPiel() + ","
-                            +familiar1.getNombre() + ","
-                            +familiar1.getEdad() + ","
-                            +familiar1.getFamiliar_padre() + ","
-                            +familiar1.getID() + ","
-                            +familiar1.getNacionalidad() + ","
-                            +familiar1.getFamiliar() + ","
-                            +familiar1.getLugar_Nacimiento() + ","
-                           
+                    familiar_auxiliar
+                            += familiar1.getColorPiel() + ","
+                            + familiar1.getNombre() + ","
+                            + familiar1.getEdad() + ","
+                            + familiar1.getFamiliar_padre() + ","
+                            + familiar1.getID() + ","
+                            + familiar1.getNacionalidad() + ","
+                            + familiar1.getFamiliar() + ","
+                            + familiar1.getLugar_Nacimiento() + ","
                             + familiar1.getFamiliares_Hijos() + ";";
                 }
                 bw.write(familiar_auxiliar);
@@ -5279,59 +5078,33 @@ public class Principal extends javax.swing.JFrame {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-            empleados.clear();
+        
         JFileChooser jfc = new JFileChooser();
         int seleccion = jfc.showOpenDialog(this);
-        File Archivo = null;
-        FileReader fr;
-        BufferedReader br;
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-                Archivo = jfc.getSelectedFile();
-                fr = new FileReader(Archivo);
-                br = new BufferedReader(fr);
-                Scanner sc = new Scanner(br);
-                sc.useDelimiter(";");
-                while (sc.hasNext()) {
-                    String empleado = sc.next();
-                    Scanner sc2 = new Scanner(empleado);
-                    sc2.useDelimiter(",");
-                    empleados.add(new Empleados());
-                    int pos = empleados.size() - 1;
-                    empleados.get(pos).setNombre(sc2.next());
-                    try {
-                        empleados.get(pos).setID(Integer.parseInt(sc2.next()));
-                    } catch (Exception e) {
-                    }
-                    String fecha=sc2.next();
-                    Scanner sc3=new Scanner(fecha);
-                    sc3.useDelimiter("/");
-                    Date Fecha=new Date();
-                    Fecha.setDate(sc3.nextInt());
-                    Fecha.setMonth(sc3.nextInt());
-                    Fecha.setYear(sc3.nextInt());
-                    Empleados.get(pos).setFechaDeNacimiento(Fecha);
-                    Empleados.get(pos).setRol(sc2.next());
-                    Empleados.get(pos).setHoraDeLlegada(Integer.parseInt(sc2.next()));
-                    Empleados.get(pos).setHoraDeSalida(Integer.parseInt(sc2.next()));
-                    Empleados.get(pos).setSueldo(Float.parseFloat(sc2.next()));
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if (seleccion == JFileChooser.APPROVE_OPTION){
+            carpeta_guardada = jfc.getCurrentDirectory();
+        
+            DefaultTreeModel modeloArbol = (DefaultTreeModel) ArbolStart.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+            DefaultMutableTreeNode carpeta = new DefaultMutableTreeNode(carpeta_guardada);
+            raiz.add(carpeta);
+            
+            modeloArbol.setRoot(raiz);
+            
+            ArbolStart.setModel(modeloArbol);
         }
         
-        
-
 
         
         
         
+
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
@@ -5341,59 +5114,111 @@ public class Principal extends javax.swing.JFrame {
         int s = jf.showOpenDialog(this);
         File f = jf.getSelectedFile();
         m.setRoot(new DefaultMutableTreeNode(f.getName()));
-        listar_todoRecusivo(f,(DefaultMutableTreeNode)m.getRoot());
-        
+        listar_todoRecusivo(f, (DefaultMutableTreeNode) m.getRoot());
+
     }//GEN-LAST:event_jButton24ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    String DirectAux="";
+    
+    private void ArbolStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ArbolStartMouseClicked
         
-        JFileChooser fileChooser = new JFileChooser();
-        int seleccion = fileChooser.showSaveDialog(this);
-        if (seleccion==JFileChooser.APPROVE_OPTION&&Guardo) {
-            File dir = fileChooser.getSelectedFile();
-            boolean fueCreado = dir.mkdir();
-            DefaultMutableTreeNode Raiz = new DefaultMutableTreeNode();
-            DefaultTreeModel modeloArbol = (DefaultTreeModel) ArbolStart.getModel();
-            DefaultMutableTreeNode directory = new DefaultMutableTreeNode(dir);
-            Raiz.add(directory);
-            if (fueCreado) {
-                carpeta_guardada = dir;
-                Guardo =true;
-                guardarTodo();
-                JOptionPane.showMessageDialog(this, "Directorio creado exitosamente");
-            }else{
-                JOptionPane.showMessageDialog(this, "El directorio no fue creado");
-            }
-        } else if (Guardo){
+        if ( evt.isMetaDown()){
+            MenuInicio.show(ArbolStart, getX(), getY());
+            int pos= ArbolStart.getClosestRowForLocation(evt.getX(),evt.getY());
+            ArbolStart.setSelectionRow(pos);
+            Object aux = ArbolStart.getSelectionPath().getLastPathComponent();
             
         }
         
         
         
         
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_ArbolStartMouseClicked
 
-    
-    public static void guardarTodo(){
+    private void MenuAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuAbrirActionPerformed
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_MenuAbrirActionPerformed
+
+    public static void guardarTodo() {
+        guardarJefes();
+        
+        
+        /*
         try {
-            String carpeta ="";
-            carpeta+= carpeta_guardada;
-            
-            FileWriter fw = null;
+            String carpeta = "";
+            carpeta += carpeta_guardada;
+
+            FileWriter fw = new FileWriter(carpeta + "/empleados.tx");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write("high");
-            
+
             bw.flush();
-            
-            
-            
+
         } catch (Exception e) {
         }
+/*
+        try {
+            bw.
+        } catch (Exception e) {
+        }
+*/
+    }
+
+    static void guardarJefes() {
+        String texto = "";
+        for (Jefe tempJefe : jefes) {
+            texto
+                    += tempJefe.getNombre() + ","
+                    + tempJefe.getID() + ","
+                    + tempJefe.getColorPiel() + ","
+                    + tempJefe.getLugar_Nacimiento()+","
+                            + tempJefe.getEdad() + ","
+                            + tempJefe.getSeccion_trabajo() + ","
+                            + tempJefe.getNacionalidad() + ","
+                            + tempJefe.getClientes_Atendidos() + ","
+                            + tempJefe.getEmpleados() + ","
+                            + tempJefe.getGanancia_actual() + ","
+                            + tempJefe.getFamiliar() + ";";
+        }
+        escribirArchivo(texto, "Jefes");
+    }
+
+    static void escribirArchivo(String nombreArchivo, String texto) {
+
+        try {
+            String carpeta = "";
+            carpeta += carpeta_guardada;
+
+            FileWriter fw = new FileWriter(carpeta + "/" + nombreArchivo + ".tx");
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(texto);
+
+            bw.flush();
+
+        } catch (Exception e) {
+        }
+
     }
     
-    public boolean Guardo=false;
+    static void cargar() throws FileNotFoundException{
+        String arch = "";
+        arch +=carpeta_guardada+"Jefes.txt";
+        
+        FileReader fr= new FileReader(arch);
+        BufferedReader br = new BufferedReader(fr);
+        
+        
+        
+    }
+
+    public boolean Guardo = false;
     public static File carpeta_guardada;
-    
+
     /**
      * @param args the command line arguments
      */
@@ -5473,6 +5298,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField LugarNacimiento_clientes1;
     private javax.swing.JTextField LugarNacimiento_jefe;
     private javax.swing.JTextField LugarNacimiento_jefe1;
+    private javax.swing.JMenuItem MenuAbrir;
+    private javax.swing.JPopupMenu MenuInicio;
     private javax.swing.JProgressBar Pb_limite;
     private javax.swing.JProgressBar Pb_limitegatos;
     private javax.swing.JTable Tabla;
@@ -5549,6 +5376,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -5690,7 +5518,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -5843,53 +5670,50 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_totalGatos;
     private javax.swing.JTextField tf_totalNoeditablegatos;
     // End of variables declaration//GEN-END:variables
-    
-    ArrayList <Jefe> jefes = new ArrayList();
-    ArrayList <Empleados> empleados = new ArrayList();
-    ArrayList <Empleados> tempEmpleados = new ArrayList();
-    ArrayList <Clientes> clientes = new ArrayList();
-    ArrayList <gatos> cats = new ArrayList();
-    ArrayList <Baleadas> baleadas = new ArrayList();
-    ArrayList <String> ingredientes1 = new ArrayList();
-    ArrayList <Familiar> familiares = new ArrayList();
-    ArrayList <Persona> personas = new ArrayList();
-    ArrayList <Familiar> padre = new ArrayList();
-    ArrayList hijos = new ArrayList();
-    ArrayList hijosa = new ArrayList();
-    ArrayList  temporalfami = new ArrayList();
-    ArrayList <Ordenes> ordenes = new ArrayList();
-    private int acum1 =0;
+
+    static ArrayList<Jefe> jefes = new ArrayList();
+    static ArrayList<Empleados> empleados = new ArrayList();
+    static ArrayList<Empleados> tempEmpleados = new ArrayList();
+    static ArrayList<Clientes> clientes = new ArrayList();
+    static ArrayList<gatos> cats = new ArrayList();
+    static ArrayList<Baleadas> baleadas = new ArrayList();
+    static ArrayList<String> ingredientes1 = new ArrayList();
+    static ArrayList<Familiar> familiares = new ArrayList();
+    static ArrayList<Persona> personas = new ArrayList();
+    static ArrayList<Familiar> padre = new ArrayList();
+    static ArrayList hijos = new ArrayList();
+    static ArrayList hijosa = new ArrayList();
+    static ArrayList temporalfami = new ArrayList();
+    static ArrayList<Ordenes> ordenes = new ArrayList();
+     private int acum1 = 0;
     private float gananciaGatos;
     private float gananciaBaleadas;
-    ArrayList <Empleados> temporal = new ArrayList();
-    ArrayList <Persona> personasNegras = new ArrayList();
-    ArrayList <Persona> personasblancas = new ArrayList();
-    
-    ArrayList <Venta> ventas = new ArrayList();
-    
-    
-    public void listar_todoRecusivo(File p_raiz,DefaultMutableTreeNode nodo){
-     
-    try {
-       for(File temp : p_raiz.listFiles()){
-           
-           if(temp.isFile()){
-               DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp.getName());
-               nodo.add(n);
-               
-           }else{
-               DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp.getName());
-               nodo.add(n);
-               listar_todoRecusivo(temp,n);
-               
-           }
-       } 
-    } catch (Exception e) {
-        
+    static ArrayList<Empleados> temporal = new ArrayList();
+    static ArrayList<Persona> personasNegras = new ArrayList();
+    static ArrayList<Persona> personasblancas = new ArrayList();
+
+    static ArrayList<Venta> ventas = new ArrayList();
+
+    public void listar_todoRecusivo(File p_raiz, DefaultMutableTreeNode nodo) {
+
+        try {
+            for (File temp : p_raiz.listFiles()) {
+
+                if (temp.isFile()) {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp.getName());
+                    nodo.add(n);
+
+                } else {
+                    DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp.getName());
+                    nodo.add(n);
+                    listar_todoRecusivo(temp, n);
+
+                }
+            }
+        } catch (Exception e) {
+
+        }
+
     }
 
-}
-    
-    
-    
 }
