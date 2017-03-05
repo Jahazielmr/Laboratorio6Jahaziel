@@ -6,14 +6,27 @@
 package jahaziellab6;
 
 import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTree;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -28,6 +41,10 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        
+        
+       
+        
     }
 
     /**
@@ -290,6 +307,9 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane7 = new javax.swing.JTabbedPane();
         jPanel23 = new javax.swing.JPanel();
         jPanel24 = new javax.swing.JPanel();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        ArbolStart = new javax.swing.JTree();
+        jButton24 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -393,6 +413,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -2335,15 +2356,38 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel24.setBackground(new java.awt.Color(0, 153, 153));
 
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Archivos");
+        ArbolStart.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane13.setViewportView(ArbolStart);
+
+        jButton24.setText("Listar archivos en el arbol");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(78, 78, 78)
+                .addComponent(jButton24)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel24Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(147, 147, 147))
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jButton24)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
@@ -3449,7 +3493,20 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Abrir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
+
+        jMenuItem6.setText("Crear Directorio");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem6);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setText("Guardar");
@@ -3487,7 +3544,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                .addComponent(jTabbedPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 693, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -3501,7 +3558,33 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        //Guardar
+        
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(this);
+        if (seleccion==JFileChooser.APPROVE_OPTION&&Guardo) {
+            File dir = fileChooser.getSelectedFile();
+            boolean fueCreado = dir.mkdir();
+            DefaultMutableTreeNode Raiz = new DefaultMutableTreeNode();
+            DefaultTreeModel modeloArbol = (DefaultTreeModel) ArbolStart.getModel();
+            DefaultMutableTreeNode directory = new DefaultMutableTreeNode(dir);
+            Raiz.add(directory);
+            if (fueCreado) {
+                carpeta_guardada = dir;
+                Guardo =true;
+                JOptionPane.showMessageDialog(this, "Directorio creado exitosamente");
+            }else{
+                JOptionPane.showMessageDialog(this, "El directorio no fue creado");
+            }
+        } else if (Guardo){
+            
+        }
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
@@ -3568,6 +3651,13 @@ public class Principal extends javax.swing.JFrame {
         Empleados.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
+    
+    
+    
+    
+    
+    
+    
     private void GuardarEmpleadosjButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarEmpleadosjButton1MouseClicked
         
         String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
@@ -4211,6 +4301,7 @@ public class Principal extends javax.swing.JFrame {
         Date fechaCreacion;
         int Cant_articulos;
         float total = 0;
+        double totalaux;
         float Money;
         int fechaTemp;
         
@@ -4227,10 +4318,16 @@ public class Principal extends javax.swing.JFrame {
         
         
         
-        
         Money = cliente.getDinero_Diponible();
         
         total = Cant_articulos*baleada.getPrecio();
+        if(cliente.colorPiel.equalsIgnoreCase("blanco")){
+            totalaux= (Cant_articulos*baleada.getPrecio())*0.25;
+            total = (float)totalaux;
+        }else{
+            total = Cant_articulos*baleada.getPrecio();
+        }
+        
         if (empleado.getHora_e()<fechaTemp&&empleado.getHora_s()<fechaTemp){
         if (Money>= total&& Pb_limite.getValue()<3){
             ordenes.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
@@ -4321,6 +4418,7 @@ public class Principal extends javax.swing.JFrame {
         Date fechaCreacion;
         int Cant_articulos;
         float total = 0;
+        double totalaux;
         float Money;
         int fechaTemp;
         try {
@@ -4330,10 +4428,18 @@ public class Principal extends javax.swing.JFrame {
         fechaCreacion = fechaGatos.getDate();
         Cant_articulos = Integer.parseInt(sp_cantArticulosGatos.getValue().toString());
         Gatos = cb_gatos.getItemAt(cb_gatos.getSelectedIndex());
-        
+       
         Money = cliente.getDinero_Diponible();
         
         total = Cant_articulos*Gatos.getPrecio();
+        
+         if(cliente.colorPiel.equalsIgnoreCase("blanco")){
+            totalaux= (Cant_articulos*Gatos.getPrecio())*0.25;
+            total = (float)totalaux;
+        }else{
+            total = Cant_articulos*Gatos.getPrecio();
+        }
+       
         fechaTemp = fechaGatos.getDate().getHours();
         if (empleado.getHora_e()<fechaTemp&&empleado.getHora_s()<fechaTemp){
         if (Money>= total&& Pb_limitegatos.getValue()<3){
@@ -5015,14 +5121,279 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         
+        JFileChooser jfc = new JFileChooser();
+        int seleccion = jfc.showSaveDialog(this);
+        File Empleado = jfc.getSelectedFile();
+        FileWriter fw;
+        BufferedWriter bw;
+        String empleadosAux = "";
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                fw = new FileWriter(Empleado);
+                bw = new BufferedWriter(fw);
+                for (Empleados Empleado1 : empleados) {
+                    empleadosAux
+                            += Empleado1.getNombre() + ","
+                            + Empleado1.getID() + ","
+                            + Empleado1.getColorPiel() + ","
+                            + Empleado1.getEstado() + ","
+                            + Empleado1.getEdad() + ","
+                            + Empleado1.getSeccion_trabajo() + ","
+                            + Empleado1.getNacionalidad() + ","
+                            + Empleado1.getHora_e() + ","
+                            + Empleado1.getHora_s() + ","
+                            + Empleado1.getEdad() + ","
+                            + Empleado1.getFamiliar()+ ","
+                            + Empleado1.getEstado() + ","
+                            + Empleado1.getSueldo() + ";";
+                }
+                bw.write(empleadosAux);
+                bw.flush();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        String ClientesAux="";
+        File Cliente = jfc.getSelectedFile();
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                fw = new FileWriter(Cliente);
+                bw = new BufferedWriter(fw);
+                for (Clientes clientes1 : clientes) {
+                    ClientesAux
+                            +=clientes1.getNombre() + ","
+                            + clientes1.getID() + ","
+                            + clientes1.getColorPiel() + ","
+                            + clientes1.getDinero_Diponible()+ ","
+                            + clientes1.getEdad() + ","
+                            + clientes1.getOrdenes() + ","
+                            + clientes1.getNacionalidad() + ","
+                            + clientes1.getOrdenes() + ","
+                            + clientes1.getEdad() + ","
+                            + clientes1.getFamiliar()+ ";";
+                }
+                bw.write(ClientesAux);
+                bw.flush();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        String JefesAux="";
+        File Jefes = jfc.getSelectedFile();
         
         
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                fw = new FileWriter(Jefes);
+                bw = new BufferedWriter(fw);
+                for (Jefe jefe1 : jefes) {
+                    JefesAux
+                            +=jefe1.getNombre() + ","
+                            + jefe1.getID() + ","
+                            + jefe1.getColorPiel() + ","
+                            + jefe1.getSeccion_trabajo()+ ","
+                            + jefe1.getEdad() + ","
+                            + jefe1.getFamiliar() + ","
+                            + jefe1.getNacionalidad() + ","
+                            + jefe1.getEmpleados() + ","
+                            + jefe1.getEdad() + ","
+                            + jefe1.getFamiliar()+ ";";
+                }
+                bw.write(JefesAux);
+                bw.flush();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
         
+        String gatos_auxiliar="";
+        File Gatos = jfc.getSelectedFile();
+        
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                fw = new FileWriter(Gatos);
+                bw = new BufferedWriter(fw);
+                for (gatos gato1 : cats) {
+                    gatos_auxiliar
+                            +=gato1.getPeso() + ","
+                            + gato1.getAltura() + ","
+                            + gato1.getPrecio() + ";";
+                }
+                bw.write(gatos_auxiliar);
+                bw.flush();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        
+        String baleadas_auxiliar="";
+        File Balea = jfc.getSelectedFile();
+        
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                fw = new FileWriter(Balea);
+                bw = new BufferedWriter(fw);
+                for (Baleadas baleada1 : baleadas) {
+                    baleadas_auxiliar
+                            +=baleada1.getIngredientes() + ","
+                            + baleada1.getPrecio() + ";";
+                }
+                bw.write(baleadas_auxiliar);
+                bw.flush();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        String familiar_auxiliar="";
+        File famili = jfc.getSelectedFile();
+        
+        
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                fw = new FileWriter(famili);
+                bw = new BufferedWriter(fw);
+                for (Familiar familiar1 : familiares) {
+                    familiar_auxiliar+=
+                            familiar1.getColorPiel() + ","
+                            +familiar1.getNombre() + ","
+                            +familiar1.getEdad() + ","
+                            +familiar1.getFamiliar_padre() + ","
+                            +familiar1.getID() + ","
+                            +familiar1.getNacionalidad() + ","
+                            +familiar1.getFamiliar() + ","
+                            +familiar1.getLugar_Nacimiento() + ","
+                           
+                            + familiar1.getFamiliares_Hijos() + ";";
+                }
+                bw.write(familiar_auxiliar);
+                bw.flush();
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+            empleados.clear();
+        JFileChooser jfc = new JFileChooser();
+        int seleccion = jfc.showOpenDialog(this);
+        File Archivo = null;
+        FileReader fr;
+        BufferedReader br;
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            try {
+                Archivo = jfc.getSelectedFile();
+                fr = new FileReader(Archivo);
+                br = new BufferedReader(fr);
+                Scanner sc = new Scanner(br);
+                sc.useDelimiter(";");
+                while (sc.hasNext()) {
+                    String empleado = sc.next();
+                    Scanner sc2 = new Scanner(empleado);
+                    sc2.useDelimiter(",");
+                    empleados.add(new Empleados());
+                    int pos = empleados.size() - 1;
+                    empleados.get(pos).setNombre(sc2.next());
+                    try {
+                        empleados.get(pos).setID(Integer.parseInt(sc2.next()));
+                    } catch (Exception e) {
+                    }
+                    String fecha=sc2.next();
+                    Scanner sc3=new Scanner(fecha);
+                    sc3.useDelimiter("/");
+                    Date Fecha=new Date();
+                    Fecha.setDate(sc3.nextInt());
+                    Fecha.setMonth(sc3.nextInt());
+                    Fecha.setYear(sc3.nextInt());
+                    Empleados.get(pos).setFechaDeNacimiento(Fecha);
+                    Empleados.get(pos).setRol(sc2.next());
+                    Empleados.get(pos).setHoraDeLlegada(Integer.parseInt(sc2.next()));
+                    Empleados.get(pos).setHoraDeSalida(Integer.parseInt(sc2.next()));
+                    Empleados.get(pos).setSueldo(Float.parseFloat(sc2.next()));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        
+        
+
+
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        DefaultTreeModel m = (DefaultTreeModel) ArbolStart.getModel();
+        JFileChooser jf = new JFileChooser();
+        jf.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int s = jf.showOpenDialog(this);
+        File f = jf.getSelectedFile();
+        m.setRoot(new DefaultMutableTreeNode(f.getName()));
+        listar_todoRecusivo(f,(DefaultMutableTreeNode)m.getRoot());
+        
+    }//GEN-LAST:event_jButton24ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(this);
+        if (seleccion==JFileChooser.APPROVE_OPTION&&Guardo) {
+            File dir = fileChooser.getSelectedFile();
+            boolean fueCreado = dir.mkdir();
+            DefaultMutableTreeNode Raiz = new DefaultMutableTreeNode();
+            DefaultTreeModel modeloArbol = (DefaultTreeModel) ArbolStart.getModel();
+            DefaultMutableTreeNode directory = new DefaultMutableTreeNode(dir);
+            Raiz.add(directory);
+            if (fueCreado) {
+                carpeta_guardada = dir;
+                Guardo =true;
+                guardarTodo();
+                JOptionPane.showMessageDialog(this, "Directorio creado exitosamente");
+            }else{
+                JOptionPane.showMessageDialog(this, "El directorio no fue creado");
+            }
+        } else if (Guardo){
+            
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    
+    public static void guardarTodo(){
+        try {
+            String carpeta ="";
+            carpeta+= carpeta_guardada;
+            
+            FileWriter fw = null;
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("high");
+            
+            bw.flush();
+            
+            
+            
+        } catch (Exception e) {
+        }
+    }
+    
+    public boolean Guardo=false;
+    public static File carpeta_guardada;
+    
     /**
      * @param args the command line arguments
      */
@@ -5061,6 +5432,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTree ArbolEmpleados;
     private javax.swing.JTree ArbolEmpleados1;
+    private javax.swing.JTree ArbolStart;
     private javax.swing.JDialog Baleadas;
     private javax.swing.JDialog BaleadasModificar;
     private javax.swing.JDialog Clientes;
@@ -5163,6 +5535,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
@@ -5317,6 +5690,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -5390,6 +5764,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -5491,4 +5866,30 @@ public class Principal extends javax.swing.JFrame {
     ArrayList <Persona> personasblancas = new ArrayList();
     
     ArrayList <Venta> ventas = new ArrayList();
+    
+    
+    public void listar_todoRecusivo(File p_raiz,DefaultMutableTreeNode nodo){
+     
+    try {
+       for(File temp : p_raiz.listFiles()){
+           
+           if(temp.isFile()){
+               DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp.getName());
+               nodo.add(n);
+               
+           }else{
+               DefaultMutableTreeNode n = new DefaultMutableTreeNode(temp.getName());
+               nodo.add(n);
+               listar_todoRecusivo(temp,n);
+               
+           }
+       } 
+    } catch (Exception e) {
+        
+    }
+
+}
+    
+    
+    
 }
