@@ -372,13 +372,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel63 = new javax.swing.JLabel();
         sp_cantArticulos = new javax.swing.JSpinner();
         jLabel64 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel65 = new javax.swing.JLabel();
         fecha = new com.toedter.calendar.JDateChooser();
         bt = new javax.swing.JButton();
         jLabel66 = new javax.swing.JLabel();
         cb_baleada = new javax.swing.JComboBox<>();
         Pb_limite = new javax.swing.JProgressBar();
+        jButton42 = new javax.swing.JButton();
         jPanel27 = new javax.swing.JPanel();
         jPanel29 = new javax.swing.JPanel();
         jLabel67 = new javax.swing.JLabel();
@@ -388,13 +388,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel69 = new javax.swing.JLabel();
         sp_cantArticulosGatos = new javax.swing.JSpinner();
         jLabel70 = new javax.swing.JLabel();
-        tf_totalNoeditablegatos = new javax.swing.JTextField();
         jLabel71 = new javax.swing.JLabel();
         fechaGatos = new com.toedter.calendar.JDateChooser();
         bt1 = new javax.swing.JButton();
         jLabel72 = new javax.swing.JLabel();
         cb_gatos = new javax.swing.JComboBox<>();
         Pb_limitegatos = new javax.swing.JProgressBar();
+        jButton43 = new javax.swing.JButton();
         jPanel30 = new javax.swing.JPanel();
         jTabbedPane9 = new javax.swing.JTabbedPane();
         jPanel31 = new javax.swing.JPanel();
@@ -402,11 +402,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel35 = new javax.swing.JPanel();
         jPanel37 = new javax.swing.JPanel();
         jLabel73 = new javax.swing.JLabel();
-        tf_totalGatos = new javax.swing.JTextField();
+        jButton45 = new javax.swing.JButton();
         jPanel36 = new javax.swing.JPanel();
         jPanel38 = new javax.swing.JPanel();
         jLabel74 = new javax.swing.JLabel();
-        tf_totalBaleadas = new javax.swing.JTextField();
+        jButton44 = new javax.swing.JButton();
         jPanel32 = new javax.swing.JPanel();
         jTabbedPane14 = new javax.swing.JTabbedPane();
         jPanel45 = new javax.swing.JPanel();
@@ -602,6 +602,9 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel14.setBackground(new java.awt.Color(0, 153, 153));
         jPanel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel14MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel14MouseEntered(evt);
             }
@@ -640,6 +643,11 @@ public class Principal extends javax.swing.JFrame {
                 GuardarJefesMouseClicked(evt);
             }
         });
+        GuardarJefes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarJefesActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(JtreeJefes);
 
@@ -655,6 +663,12 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel45.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel45.setText("Empleados");
+
+        cb_empleadosJefe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cb_empleadosJefeMouseClicked(evt);
+            }
+        });
 
         lb_colorjefes.setText("Color");
         lb_colorjefes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1039,7 +1053,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton22.setText("Agregar Persona");
+        jButton22.setText("Agregar Ingrediente");
         jButton22.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton22MouseClicked(evt);
@@ -2433,6 +2447,12 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTabbedPane7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane7MouseClicked(evt);
+            }
+        });
+
         jPanel24.setBackground(new java.awt.Color(0, 153, 153));
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Archivos");
@@ -2705,6 +2725,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel20.setBackground(new java.awt.Color(0, 153, 153));
 
+        Listar.add(jRadioButton5);
         jRadioButton5.setText("Jefes");
         jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2712,6 +2733,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        Listar.add(jRadioButton6);
         jRadioButton6.setText("Empleados");
         jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2719,6 +2741,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        Listar.add(jRadioButton7);
         jRadioButton7.setText("Clientes ");
         jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2726,6 +2749,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        Listar.add(jRadioButton8);
         jRadioButton8.setText("Gatos");
         jRadioButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2733,6 +2757,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        Listar.add(jRadioButton9);
         jRadioButton9.setText("Baleadas");
         jRadioButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2740,6 +2765,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        Listar.add(jRadioButton10);
         jRadioButton10.setText("Familiares");
         jRadioButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -3066,8 +3092,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel64.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel64.setText("Total:");
 
-        jTextField1.setEnabled(false);
-
         jLabel65.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel65.setText("Fecha de Orden:");
 
@@ -3093,6 +3117,13 @@ public class Principal extends javax.swing.JFrame {
 
         Pb_limite.setMaximum(3);
 
+        jButton42.setText("Ver Total");
+        jButton42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton42MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel28Layout = new javax.swing.GroupLayout(jPanel28);
         jPanel28.setLayout(jPanel28Layout);
         jPanel28Layout.setHorizontalGroup(
@@ -3110,15 +3141,14 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel63)
                             .addComponent(jLabel66))
                         .addGap(83, 83, 83)
-                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(sp_cantArticulos)
-                                .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                .addComponent(cb_clientesOrden, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cb_empleadoOrden, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1)
-                                .addComponent(cb_baleada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bt, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addComponent(sp_cantArticulos)
+                            .addComponent(fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_clientesOrden, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_empleadoOrden, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_baleada, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton42, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel28Layout.setVerticalGroup(
@@ -3144,9 +3174,9 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sp_cantArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel64))
+                .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel64)
+                    .addComponent(jButton42))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel65)
@@ -3155,7 +3185,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(Pb_limite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(bt, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
@@ -3202,8 +3232,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel70.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel70.setText("Total:");
 
-        tf_totalNoeditablegatos.setEnabled(false);
-
         jLabel71.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel71.setText("Fecha de Orden:");
 
@@ -3224,6 +3252,13 @@ public class Principal extends javax.swing.JFrame {
 
         Pb_limitegatos.setMaximum(3);
 
+        jButton43.setText("Ver total");
+        jButton43.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton43MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
         jPanel29.setLayout(jPanel29Layout);
         jPanel29Layout.setHorizontalGroup(
@@ -3241,15 +3276,14 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel69)
                             .addComponent(jLabel72))
                         .addGap(83, 83, 83)
-                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(sp_cantArticulosGatos)
-                                .addComponent(fechaGatos, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                .addComponent(cb_clientesOrdenGatos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cb_empleadoOrdenGatos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tf_totalNoeditablegatos)
-                                .addComponent(cb_gatos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bt1, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addComponent(sp_cantArticulosGatos)
+                            .addComponent(fechaGatos, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addComponent(cb_clientesOrdenGatos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_empleadoOrdenGatos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cb_gatos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton43, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel29Layout.setVerticalGroup(
@@ -3275,9 +3309,9 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(sp_cantArticulosGatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tf_totalNoeditablegatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel70))
+                .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel70)
+                    .addComponent(jButton43))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel71)
@@ -3286,7 +3320,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(Pb_limitegatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(bt1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
@@ -3314,7 +3348,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane8)
+                .addComponent(jTabbedPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
@@ -3348,7 +3382,12 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel73.setText("Ganancias ");
 
-        tf_totalGatos.setEnabled(false);
+        jButton45.setText("ver Ganancia gatos");
+        jButton45.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton45MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
         jPanel37.setLayout(jPanel37Layout);
@@ -3357,9 +3396,9 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel37Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel73)
-                .addGap(18, 18, 18)
-                .addComponent(tf_totalGatos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jButton45)
+                .addContainerGap(384, Short.MAX_VALUE))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3367,7 +3406,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel73, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_totalGatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton45))
                 .addContainerGap(335, Short.MAX_VALUE))
         );
 
@@ -3394,7 +3433,12 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel74.setText("Ganancias ");
 
-        tf_totalBaleadas.setEnabled(false);
+        jButton44.setText("Ver ganancia de Baleadas");
+        jButton44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton44MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel38Layout = new javax.swing.GroupLayout(jPanel38);
         jPanel38.setLayout(jPanel38Layout);
@@ -3403,9 +3447,9 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel74)
-                .addGap(18, 18, 18)
-                .addComponent(tf_totalBaleadas, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jButton44)
+                .addContainerGap(351, Short.MAX_VALUE))
         );
         jPanel38Layout.setVerticalGroup(
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3413,7 +3457,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(47, 47, 47)
                 .addGroup(jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tf_totalBaleadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton44))
                 .addContainerGap(335, Short.MAX_VALUE))
         );
 
@@ -3442,7 +3486,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane10)
+                .addComponent(jTabbedPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel31Layout.setVerticalGroup(
@@ -3541,7 +3585,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane14)
+                .addComponent(jTabbedPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel32Layout.setVerticalGroup(
@@ -3560,7 +3604,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane9)
+                .addComponent(jTabbedPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
@@ -3620,7 +3664,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                .addComponent(jTabbedPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 693, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -3698,6 +3742,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            for (int i = 0; i < empleados.size(); i++) {
+            modelo.addElement(empleados.get(i));
+
+            }
+            cb_empleadosJefe.setModel(modelo);
+
+        
+        
         Jefes.setModal(true);
         Jefes.pack();
         Jefes.setLocationRelativeTo(this);
@@ -3741,8 +3794,8 @@ public class Principal extends javax.swing.JFrame {
             id = tf_ID.getText();
             nacionalidad = tf_nacionalidad.getText();
             lugar_Nacimiento = tf_LugarNacimiento.getText();
-            if (lb_color.getBackground() == Color.BLACK) {
-                color = "Negro";
+            if (lb_color.getForeground() == Color.BLACK||lb_color.getForeground() == Color.BLACK) {
+                color = "negro";
             } else if (lb_color.getBackground() == Color.WHITE) {
                 color = "blanco";
             }
@@ -3753,22 +3806,32 @@ public class Principal extends javax.swing.JFrame {
             entrada = Integer.parseInt(sp_HoraE.getValue().toString());
             salida = Integer.parseInt(sp_HoraE.getValue().toString());
 
-            empleados.add(new Empleados(seccion, estado, entrada, salida, sueldo, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, ArbolEmpleados, null));
-            personas.add((new Empleados(seccion, estado, entrada, salida, sueldo, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, ArbolEmpleados, null)));
-            JOptionPane.showMessageDialog(this, "Tuve exito agregando Empleados");
+            if (nacionalidad.equalsIgnoreCase("estadounidense")&&lugar_Nacimiento.equalsIgnoreCase("estadounidense")&&color.equalsIgnoreCase("blanco")){
+                
+                JOptionPane.showMessageDialog(this, "No cumple con los requisitos");
+                
+            } else if (nombre.equalsIgnoreCase("carlos") || nombre.equalsIgnoreCase("pedro") || nombre.equalsIgnoreCase("juan") || nombre.equalsIgnoreCase("roberto") || nombre.equalsIgnoreCase("eduardo")&& !"estadounidense".equalsIgnoreCase(nacionalidad)
+                        && !"estadounidense".equalsIgnoreCase(lugar_Nacimiento) && !"blanco".equalsIgnoreCase(color)){
+                            
+                               empleados.add(new Empleados(seccion, estado, entrada, salida, sueldo, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, ArbolEmpleados, null));
+                                personas.add((new Empleados(seccion, estado, entrada, salida, sueldo, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, ArbolEmpleados, null)));
+                                JOptionPane.showMessageDialog(this, "Tuve exito agregando Empleados");
 
-            tf_nombre.setText("");
-            tf_LugarNacimiento.setText("");
-            tf_edad.setText("");
-            tf_sueldo.setText("");
-            tf_nacionalidad.setText("");
-            tf_ID.setText("");
-            cb_estado.setSelectedIndex(0);
-            cb_seccionTrabajo.setSelectedIndex(0);
-            cb_trabajoJefe.setSelectedIndex(0);
-            sp_HoraE.setValue(0);
-            sp_HoraS.setValue(0);
+                            tf_nombre.setText("");
+                            tf_LugarNacimiento.setText("");
+                            tf_edad.setText("");
+                            tf_sueldo.setText("");
+                            tf_nacionalidad.setText("");
+                            tf_ID.setText("");
+                            cb_estado.setSelectedIndex(0);
+                            cb_seccionTrabajo.setSelectedIndex(0);
+                            cb_trabajoJefe.setSelectedIndex(0);
+                            sp_HoraE.setValue(0);
+                            sp_HoraS.setValue(0);
 
+                            
+            }
+            
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
@@ -3786,6 +3849,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_lb_colorMouseClicked
 
     private void GuardarJefesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarJefesMouseClicked
+        boolean crear = true;
+        for (Jefe t : jefes) {
+            if (cb_trabajoJefe.getItemAt(cb_trabajoJefe.getSelectedIndex())==t.getSeccion_trabajo()){
+                JOptionPane.showMessageDialog(this, "Ya hay un jefe en esta area");
+                    crear = false;
+            }
+        }
+        
+        while(crear ==true){
         String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
         Color colors;
         int edad;
@@ -3801,22 +3873,22 @@ public class Principal extends javax.swing.JFrame {
                 id = Id_jefe.getText();
                 nacionalidad = nacionalidad_jefe.getText();
                 lugar_Nacimiento = nacionalidad_jefe.getText();
-                if (lb_colorjefes.getBackground() == Color.BLACK) {
+                if (lb_colorjefes.getForeground() == Color.BLACK||lb_colorjefes.getForeground()==Color.black) {
                     color = "Negro";
-                } else if (lb_colorjefes.getBackground() == Color.WHITE) {
+                } else if (lb_colorjefes.getForeground() == Color.WHITE||lb_colorjefes.getForeground() == Color.white) {
                     color = "blanco";
                 }
 
                 estado = cb_estado.getItemAt(cb_estado.getSelectedIndex());
                 seccion = cb_seccionTrabajo.getItemAt(cb_seccionTrabajo.getSelectedIndex());
 
-                if (nombre.equalsIgnoreCase("carlos") || nombre.equalsIgnoreCase("pedro") || nombre.equalsIgnoreCase("juan") || nombre.equalsIgnoreCase("roberto") || nombre.equalsIgnoreCase("eduardo") || !"estadounidense".equalsIgnoreCase(nacionalidad)
-                        || !"estadounidense".equalsIgnoreCase(lugar_Nacimiento) || !"blanco".equalsIgnoreCase(color)) {
+                if (nombre.equalsIgnoreCase("carlos") || nombre.equalsIgnoreCase("pedro") || nombre.equalsIgnoreCase("juan") || nombre.equalsIgnoreCase("roberto") || nombre.equalsIgnoreCase("eduardo")&& !"estadounidense".equalsIgnoreCase(nacionalidad)
+                        && !"estadounidense".equalsIgnoreCase(lugar_Nacimiento) && !"negro".equalsIgnoreCase(color)) {
 
                     JOptionPane.showMessageDialog(this, "No aceptamos latinos");
                     personasNegras.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
-                } else if (nacionalidad.equalsIgnoreCase("estadounidense") || lugar_Nacimiento.equalsIgnoreCase("estadounidense") || color.equalsIgnoreCase("blanco")) {
-
+                } else if (nacionalidad.equalsIgnoreCase("estadounidense") && lugar_Nacimiento.equalsIgnoreCase("estadounidense") || color.equalsIgnoreCase("blanco")) {
+                        
                     jefes.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
                     personas.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
                     temporal.clear();
@@ -3845,11 +3917,15 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
 
-
+        } 
     }//GEN-LAST:event_GuardarJefesMouseClicked
 
     private void lb_colorClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorClientesMouseClicked
-        // TODO add your handling code here:
+        Color c;
+        c=JColorChooser.showDialog(jMenu1, "Seleccione", Color.white);
+        lb_colorClientes.setForeground(c);
+        
+        
     }//GEN-LAST:event_lb_colorClientesMouseClicked
 
     private void Guardar_clientesjButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar_clientesjButton1MouseClicked
@@ -3867,30 +3943,45 @@ public class Principal extends javax.swing.JFrame {
             id = id_clientes.getText();
             nacionalidad = nacionalidad_clientes.getText();
             lugar_Nacimiento = LugarNacimiento_clientes.getText();
-            if (lb_colorClientes.getBackground() == Color.BLACK) {
+            if (lb_colorClientes.getForeground()== Color.BLACK||lb_colorClientes.getForeground()== Color.black) {
                 color = "Negro";
-            } else if (lb_colorClientes.getBackground() == Color.WHITE) {
+            } else if (lb_colorClientes.getForeground()== Color.WHITE||lb_colorClientes.getForeground()== Color.white) {
                 color = "blanco";
             }
 
             Dinero = Float.parseFloat((Dinero_clientes.getText()));
 
-            clientes.add(new Clientes(ticket, Dinero, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+            
+            if (nacionalidad.equalsIgnoreCase("estounidense")||lugar_Nacimiento.equalsIgnoreCase("estadounidense")||color.equalsIgnoreCase("blanco")){
+                
+                JOptionPane.showMessageDialog(this, "No cumple con los requisitos");
+                
+            } else if (nombre.equalsIgnoreCase("carlos") || nombre.equalsIgnoreCase("pedro") || nombre.equalsIgnoreCase("juan") || nombre.equalsIgnoreCase("roberto") || nombre.equalsIgnoreCase("eduardo")&& !"estadounidense".equalsIgnoreCase(nacionalidad)
+                        && !"estadounidense".equalsIgnoreCase(lugar_Nacimiento) && !"blanco".equalsIgnoreCase(color)){
+                
+                        clientes.add(new Clientes(ticket, Dinero, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
             personas.add(new Clientes(ticket, Dinero, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
 
             JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
 
-            tf_nombre.setText("");
-            tf_LugarNacimiento.setText("");
-            tf_edad.setText("");
-            tf_sueldo.setText("");
-            tf_nacionalidad.setText("");
-            tf_ID.setText("");
-            cb_estado.setSelectedIndex(0);
-            cb_seccionTrabajo.setSelectedIndex(0);
-            cb_trabajoJefe.setSelectedIndex(0);
-            sp_HoraE.setValue(0);
-            sp_HoraS.setValue(0);
+                tf_nombre.setText("");
+                tf_LugarNacimiento.setText("");
+                tf_edad.setText("");
+                tf_sueldo.setText("");
+                tf_nacionalidad.setText("");
+                tf_ID.setText("");
+                cb_estado.setSelectedIndex(0);
+                cb_seccionTrabajo.setSelectedIndex(0);
+                cb_trabajoJefe.setSelectedIndex(0);
+                sp_HoraE.setValue(0);
+                sp_HoraS.setValue(0);
+                
+                
+            }
+            
+            
+            
+            
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -4052,13 +4143,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton21MouseEntered
 
     private void jPanel14MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseEntered
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < empleados.size(); i++) {
-            modelo.addElement(empleados.get(i));
-
-        }
-        cb_empleadosJefe.setModel(modelo);
-
+      
     }//GEN-LAST:event_jPanel14MouseEntered
 
     private void jPanel19MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel19MouseDragged
@@ -4244,28 +4329,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanel28MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel28MouseEntered
 
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < empleados.size(); i++) {
-            modelo.addElement(empleados.get(i));
-
-        }
-        cb_empleadoOrden.setModel(modelo);
-
-        modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < baleadas.size(); i++) {
-            modelo.addElement(baleadas.get(i));
-
-        }
-        cb_baleada.setModel(modelo);
-
-        modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < clientes.size(); i++) {
-            modelo.addElement(clientes.get(i));
-
-        }
-        cb_clientesOrden.setModel(modelo);
-
-
     }//GEN-LAST:event_jPanel28MouseEntered
 
     private void cb_clientesOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_clientesOrdenActionPerformed
@@ -4280,7 +4343,7 @@ public class Principal extends javax.swing.JFrame {
         Empleados empleado;
         Date fechaCreacion;
         int Cant_articulos;
-        float total = 0;
+    
         double totalaux;
         float Money;
         int fechaTemp;
@@ -4295,7 +4358,6 @@ public class Principal extends javax.swing.JFrame {
             fechaTemp = fecha.getDate().getHours();
 
             Money = cliente.getDinero_Diponible();
-
             total = Cant_articulos * baleada.getPrecio();
             if (cliente.colorPiel.equalsIgnoreCase("blanco")) {
                 totalaux = (Cant_articulos * baleada.getPrecio()) * 0.25;
@@ -4310,7 +4372,6 @@ public class Principal extends javax.swing.JFrame {
 
                     JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
                     acumulador++;
-                    tf_totalNoeditablegatos.setText("" + total);
                     Pb_limite.setValue(acumulador);
 
                 } else if (Money >= total && Pb_limite.getValue() == 3) {
@@ -4320,11 +4381,9 @@ public class Principal extends javax.swing.JFrame {
                     modelo.addElement(new Venta(cliente, empleado, total, fechaCreacion));
                     Jl_baleadasVenta.setModel(modelo);
                     gananciaBaleadas += total;
-                    tf_totalBaleadas.setText("" + gananciaBaleadas);
-
+                    
                     JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
                     acumulador = 0;
-                    tf_totalNoeditablegatos.setText("" + total);
                     Pb_limite.setValue(acumulador);
                 } else {
                     JOptionPane.showMessageDialog(this, "No dispone de suficiente Dinero para crear esta venta");
@@ -4392,36 +4451,33 @@ public class Principal extends javax.swing.JFrame {
 
             Money = cliente.getDinero_Diponible();
 
-            total = Cant_articulos * Gatos.getPrecio();
+            totalGat = Cant_articulos * Gatos.getPrecio();
 
             if (cliente.colorPiel.equalsIgnoreCase("blanco")) {
                 totalaux = (Cant_articulos * Gatos.getPrecio()) * 0.25;
-                total = (float) totalaux;
+                totalGat = (float) totalaux;
             } else {
-                total = Cant_articulos * Gatos.getPrecio();
+                totalGat = Cant_articulos * Gatos.getPrecio();
             }
 
             fechaTemp = fechaGatos.getDate().getHours();
             if (empleado.getHora_e() < fechaTemp && empleado.getHora_s() < fechaTemp) {
-                if (Money >= total && Pb_limitegatos.getValue() < 3) {
-                    ordenes.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
+                if (Money >= totalGat && Pb_limitegatos.getValue() < 3) {
+                    ordenes.add(new Ordenes(null, Cant_articulos, cliente, empleado, totalGat, fechaCreacion));
                     JOptionPane.showMessageDialog(this, "Tuve exito agregando Ordenes de gatos");
                     acumulador++;
-                    tf_totalNoeditablegatos.setText("" + total);
                     Pb_limitegatos.setValue(acumulador);
 
-                } else if (Money >= total && Pb_limite.getValue() == 3) {
-                    ventas.add(new Venta(cliente, empleado, total, fechaCreacion));
+                } else if (Money >= totalGat && Pb_limite.getValue() == 3) {
+                    ventas.add(new Venta(cliente, empleado, totalGat, fechaCreacion));
 
                     DefaultListModel modelo = (DefaultListModel) Jl_gatosVenta.getModel();
-                    modelo.addElement(new Venta(cliente, empleado, total, fechaCreacion));
+                    modelo.addElement(new Venta(cliente, empleado, totalGat, fechaCreacion));
                     Jl_gatosVenta.setModel(modelo);
-                    gananciaGatos += total;
-                    tf_totalGatos.setText("" + gananciaGatos);
-
+                    gananciaGatos += totalGat;
+                    
                     JOptionPane.showMessageDialog(this, "Tuve exito Ordenes de gatos");
                     acumulador = 0;
-                    tf_totalNoeditablegatos.setText("" + total);
                     Pb_limitegatos.setValue(acumulador);
                 } else {
                     JOptionPane.showMessageDialog(this, "No dispone de suficiente Dinero para crear esta venta");
@@ -4443,28 +4499,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanel29MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel29MouseEntered
 
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < empleados.size(); i++) {
-            modelo.addElement(empleados.get(i));
-
-        }
-        cb_empleadoOrdenGatos.setModel(modelo);
-
-        modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < cats.size(); i++) {
-            modelo.addElement(cats.get(i));
-
-        }
-        cb_gatos.setModel(modelo);
-
-        modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < clientes.size(); i++) {
-            modelo.addElement(clientes.get(i));
-
-        }
-        cb_clientesOrdenGatos.setModel(modelo);
-
-
     }//GEN-LAST:event_jPanel29MouseEntered
 
     private void btActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActionPerformed
@@ -4472,6 +4506,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btActionPerformed
 
     private void jButton28jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton28jButton1MouseClicked
+        
+        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < empleados.size(); i++) {
+            modelo.addElement(empleados.get(i));
+
+        }
+        cb_empleadoModificar.setModel(modelo);
+
+        
+        
         EmpleadosModificar.setModal(true);
         EmpleadosModificar.pack();
         EmpleadosModificar.setLocationRelativeTo(this);
@@ -4482,6 +4527,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton29jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton29jButton2MouseClicked
 
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < clientes.size(); i++) {
+            modelo.addElement(clientes.get(i));
+
+        }
+        cb_ClienteModificar.setModel(modelo);
+
+
+        
         ClientesModificar.setModal(true);
         ClientesModificar.pack();
         ClientesModificar.setLocationRelativeTo(this);
@@ -4495,6 +4549,25 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton29jButton2ActionPerformed
 
     private void jButton30jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton30jButton3MouseClicked
+        
+                DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < jefes.size(); i++) {
+            modelo.addElement(jefes.get(i));
+
+        }
+        cb_JefeModificar.setModel(modelo);
+
+        modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < empleados.size(); i++) {
+            modelo.addElement(empleados.get(i));
+
+        }
+        cb_empleadosJefe1.setModel(modelo);
+
+
+        
+        
+        
         JefesModificar.setModal(true);
         JefesModificar.pack();
         JefesModificar.setLocationRelativeTo(this);
@@ -4512,6 +4585,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton31MouseClicked
 
+        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < cats.size(); i++) {
+            modelo.addElement(cats.get(i));
+
+        }
+        cb_GatoModificar.setModel(modelo);
+
+        
         GatosModificar.setModal(true);
         GatosModificar.pack();
         GatosModificar.setLocationRelativeTo(this);
@@ -4525,7 +4607,17 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void jButton32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton32MouseClicked
+        
+        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < baleadas.size(); i++) {
+            modelo.addElement(baleadas.get(i));
 
+        }
+        cb_baleadaModificar.setModel(modelo);
+
+        
+        
         BaleadasModificar.setModal(true);
         BaleadasModificar.pack();
         BaleadasModificar.setLocationRelativeTo(this);
@@ -4539,7 +4631,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jButton33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton33MouseClicked
-        // TODO add your handling code here:
+        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            for (int i = 0; i < familiares.size(); i++) {
+                modelo.addElement(familiares.get(i));
+            }
+            cb_Familia.setModel(modelo);
+
+        
+        
     }//GEN-LAST:event_jButton33MouseClicked
 
     private void GuardarEmpleados1jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarEmpleados1jButton1MouseClicked
@@ -4557,9 +4657,9 @@ public class Principal extends javax.swing.JFrame {
             id = tf_ID1.getText();
             nacionalidad = tf_nacionalidad1.getText();
             lugar_Nacimiento = tf_LugarNacimiento1.getText();
-            if (lb_color1.getBackground() == Color.BLACK) {
+            if (lb_color1.getForeground() == Color.BLACK||lb_color1.getForeground() == Color.black) {
                 color = "Negro";
-            } else if (lb_color1.getBackground() == Color.WHITE) {
+            } else if (lb_color1.getForeground()== Color.WHITE||lb_color1.getForeground()== Color.white) {
                 color = "blanco";
             }
 
@@ -4569,7 +4669,14 @@ public class Principal extends javax.swing.JFrame {
             entrada = Integer.parseInt(sp_HoraE1.getValue().toString());
             salida = Integer.parseInt(sp_HoraE1.getValue().toString());
 
-            empleados.get(cb_empleadoModificar.getSelectedIndex()).setNombre(nombre);
+            if (nacionalidad.equalsIgnoreCase("estounidense")||lugar_Nacimiento.equalsIgnoreCase("estadounidense")||color.equalsIgnoreCase("blanco")){
+                
+                JOptionPane.showMessageDialog(this, "No cumple con los requisitos");
+                
+            } else if (nombre.equalsIgnoreCase("carlos") || nombre.equalsIgnoreCase("pedro") || nombre.equalsIgnoreCase("juan") || nombre.equalsIgnoreCase("roberto") || nombre.equalsIgnoreCase("eduardo")&& !"estadounidense".equalsIgnoreCase(nacionalidad)
+                        && !"estadounidense".equalsIgnoreCase(lugar_Nacimiento) && !"blanco".equalsIgnoreCase(color)){
+                
+                        empleados.get(cb_empleadoModificar.getSelectedIndex()).setNombre(nombre);
             empleados.get(cb_empleadoModificar.getSelectedIndex()).setEdad(edad);
             empleados.get(cb_empleadoModificar.getSelectedIndex()).setID(id);
             empleados.get(cb_empleadoModificar.getSelectedIndex()).setNacionalidad(nacionalidad);
@@ -4593,7 +4700,12 @@ public class Principal extends javax.swing.JFrame {
             cb_seccionTrabajo1.setSelectedIndex(0);
             sp_HoraE1.setValue(0);
             sp_HoraS1.setValue(0);
-
+            
+                        
+            }
+            
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
@@ -4603,7 +4715,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_GuardarEmpleados1jButton1MouseClicked
 
     private void lb_color1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_color1MouseClicked
-        // TODO add your handling code here:
+        
+        Color c;
+        c=JColorChooser.showDialog(jMenu1, "Seleccione", Color.white);
+        lb_color1.setForeground(c);
+        
+        
     }//GEN-LAST:event_lb_color1MouseClicked
 
     private void edad_jefe1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edad_jefe1ActionPerformed
@@ -4613,6 +4730,18 @@ public class Principal extends javax.swing.JFrame {
     private void GuardarJefes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarJefes1MouseClicked
         //modificar jefes
 
+        boolean crear = true;
+        for (Jefe t : jefes) {
+            if (cb_trabajoJefe.getItemAt(cb_trabajoJefe.getSelectedIndex())==t.getSeccion_trabajo()){
+                JOptionPane.showMessageDialog(this, "Ya hay un jefe en esta area");
+                    crear = false;
+            }
+        }
+        
+        while(crear ==true){
+        
+        
+        
         String nombre, id, nacionalidad, lugar_Nacimiento, color = null, estado, seccion;
         Color colors;
         int edad;
@@ -4628,14 +4757,22 @@ public class Principal extends javax.swing.JFrame {
                 id = Id_jefe1.getText();
                 nacionalidad = nacionalidad_jefe1.getText();
                 lugar_Nacimiento = nacionalidad_jefe1.getText();
-                if (lb_colorjefes1.getBackground() == Color.BLACK) {
+                if (lb_colorjefes1.getForeground() == Color.BLACK||lb_colorjefes1.getForeground() == Color.black) {
                     color = "Negro";
-                } else if (lb_colorjefes1.getBackground() == Color.WHITE) {
+                } else if (lb_colorjefes1.getForeground() == Color.WHITE||lb_colorjefes1.getForeground() == Color.white) {
                     color = "blanco";
                 }
 
                 seccion = cb_seccionTrabajo1.getItemAt(cb_seccionTrabajo1.getSelectedIndex());
+                
+                if (nombre.equalsIgnoreCase("carlos") || nombre.equalsIgnoreCase("pedro") || nombre.equalsIgnoreCase("juan") || nombre.equalsIgnoreCase("roberto") || nombre.equalsIgnoreCase("eduardo")&& !"estadounidense".equalsIgnoreCase(nacionalidad)
+                        && !"estadounidense".equalsIgnoreCase(lugar_Nacimiento) && !"negro".equalsIgnoreCase(color)) {
 
+                    JOptionPane.showMessageDialog(this, "No aceptamos latinos");
+                    personasNegras.add(new Jefe(seccion, temporal, edad, nombre, color, id, nacionalidad, lugar_Nacimiento, Model, null));
+                } else if (nacionalidad.equalsIgnoreCase("estadounidense") && lugar_Nacimiento.equalsIgnoreCase("estadounidense") || color.equalsIgnoreCase("blanco")){
+                    
+                          
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setNombre(nombre);
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setEdad(edad);
                 jefes.get(cb_JefeModificar.getSelectedIndex()).setID(id);
@@ -4658,6 +4795,10 @@ public class Principal extends javax.swing.JFrame {
                 sp_HoraS1.setValue(0);
                 temporal.clear();
 
+                
+                    
+                } 
+              
             } else {
                 JOptionPane.showMessageDialog(this, "Ya no hay espacio disponible");
             }
@@ -4666,8 +4807,8 @@ public class Principal extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
         }
-
-
+        
+        } 
     }//GEN-LAST:event_GuardarJefes1MouseClicked
 
     private void cb_trabajoJefe1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_trabajoJefe1ItemStateChanged
@@ -4675,7 +4816,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_trabajoJefe1ItemStateChanged
 
     private void lb_colorjefes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorjefes1MouseClicked
-        // TODO add your handling code here:
+        
+        Color c;
+        c=JColorChooser.showDialog(jMenu1, "Seleccione", Color.white);
+        lb_colorjefes1.setForeground(c);
+        
+        
     }//GEN-LAST:event_lb_colorjefes1MouseClicked
 
     private void bt_empleado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_empleado1MouseClicked
@@ -4691,25 +4837,13 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanel50MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel50MouseEntered
 
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < jefes.size(); i++) {
-            modelo.addElement(jefes.get(i));
-
-        }
-        cb_JefeModificar.setModel(modelo);
-
-        modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < empleados.size(); i++) {
-            modelo.addElement(empleados.get(i));
-
-        }
-        cb_empleadosJefe1.setModel(modelo);
-
 
     }//GEN-LAST:event_jPanel50MouseEntered
 
     private void lb_colorClientes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lb_colorClientes1MouseClicked
-        // TODO add your handling code here:
+        Color c;
+        c=JColorChooser.showDialog(jMenu1, "Seleccione", Color.white);
+        lb_colorClientes1.setForeground(c);
     }//GEN-LAST:event_lb_colorClientes1MouseClicked
 
     private void Guardar_clientes1jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Guardar_clientes1jButton1MouseClicked
@@ -4729,21 +4863,28 @@ public class Principal extends javax.swing.JFrame {
             id = id_clientes1.getText();
             nacionalidad = nacionalidad_clientes1.getText();
             lugar_Nacimiento = LugarNacimiento_clientes1.getText();
-            if (lb_colorClientes1.getBackground() == Color.BLACK) {
+            if (lb_colorClientes1.getForeground() == Color.BLACK||lb_colorClientes1.getForeground() == Color.black) {
                 color = "Negro";
-            } else if (lb_colorClientes1.getBackground() == Color.WHITE) {
+            } else if (lb_colorClientes1.getForeground() == Color.WHITE||lb_colorClientes1.getForeground() == Color.white) {
                 color = "blanco";
             }
 
             Dinero = Float.parseFloat((Dinero_clientes1.getText()));
 
-            clientes.get(cb_ClienteModificar.getSelectedIndex()).setNombre(nombre);
-            clientes.get(cb_ClienteModificar.getSelectedIndex()).setEdad(edad);
-            clientes.get(cb_ClienteModificar.getSelectedIndex()).setID(id);
-            clientes.get(cb_ClienteModificar.getSelectedIndex()).setNacionalidad(nacionalidad);
-            clientes.get(cb_ClienteModificar.getSelectedIndex()).setLugar_Nacimiento(lugar_Nacimiento);
-            clientes.get(cb_ClienteModificar.getSelectedIndex()).setColorPiel(color);
-            clientes.get(cb_ClienteModificar.getSelectedIndex()).setDinero_Diponible(Dinero);
+            if (nacionalidad.equalsIgnoreCase("estounidense")||lugar_Nacimiento.equalsIgnoreCase("estadounidense")||color.equalsIgnoreCase("blanco")){
+                
+                JOptionPane.showMessageDialog(this, "No cumple con los requisitos");
+                
+            } else if (nombre.equalsIgnoreCase("carlos") || nombre.equalsIgnoreCase("pedro") || nombre.equalsIgnoreCase("juan") || nombre.equalsIgnoreCase("roberto") || nombre.equalsIgnoreCase("eduardo")&& !"estadounidense".equalsIgnoreCase(nacionalidad)
+                        && !"estadounidense".equalsIgnoreCase(lugar_Nacimiento) && !"blanco".equalsIgnoreCase(color)){
+                        
+                clientes.get(cb_ClienteModificar.getSelectedIndex()).setNombre(nombre);
+                clientes.get(cb_ClienteModificar.getSelectedIndex()).setEdad(edad);
+                clientes.get(cb_ClienteModificar.getSelectedIndex()).setID(id);
+                clientes.get(cb_ClienteModificar.getSelectedIndex()).setNacionalidad(nacionalidad);
+                clientes.get(cb_ClienteModificar.getSelectedIndex()).setLugar_Nacimiento(lugar_Nacimiento);
+                clientes.get(cb_ClienteModificar.getSelectedIndex()).setColorPiel(color);
+                clientes.get(cb_ClienteModificar.getSelectedIndex()).setDinero_Diponible(Dinero);
 
             JOptionPane.showMessageDialog(this, "Tuve exito Modificando Clientes");
 
@@ -4759,6 +4900,11 @@ public class Principal extends javax.swing.JFrame {
             sp_HoraE1.setValue(0);
             sp_HoraS1.setValue(0);
 
+          
+                
+            }
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocurrio un error y no se guardan los datos");
@@ -4927,13 +5073,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanel21MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel21MouseEntered
 
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < empleados.size(); i++) {
-            modelo.addElement(empleados.get(i));
-
-        }
-        cb_empleadoModificar.setModel(modelo);
-
 
     }//GEN-LAST:event_jPanel21MouseEntered
 
@@ -4943,24 +5082,10 @@ public class Principal extends javax.swing.JFrame {
 
     private void jPanel52MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel52MouseEntered
 
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < clientes.size(); i++) {
-            modelo.addElement(clientes.get(i));
-
-        }
-        cb_ClienteModificar.setModel(modelo);
-
-
+        
     }//GEN-LAST:event_jPanel52MouseEntered
 
     private void jPanel53MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel53MouseEntered
-
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < cats.size(); i++) {
-            modelo.addElement(cats.get(i));
-
-        }
-        cb_GatoModificar.setModel(modelo);
 
 
     }//GEN-LAST:event_jPanel53MouseEntered
@@ -4974,13 +5099,6 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_baleadaModificarActionPerformed
 
     private void jPanel54MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel54MouseEntered
-
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        for (int i = 0; i < baleadas.size(); i++) {
-            modelo.addElement(baleadas.get(i));
-
-        }
-        cb_baleadaModificar.setModel(modelo);
 
 
     }//GEN-LAST:event_jPanel54MouseEntered
@@ -5254,6 +5372,97 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton41MouseClicked
 
+    private void GuardarJefesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarJefesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GuardarJefesActionPerformed
+
+    private void cb_empleadosJefeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cb_empleadosJefeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_empleadosJefeMouseClicked
+
+    private void jPanel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel14MouseClicked
+        
+    }//GEN-LAST:event_jPanel14MouseClicked
+
+    private void jButton42MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton42MouseClicked
+        // total;
+        JOptionPane.showMessageDialog(this, "El total de esta venta es:"+total+"Dollars");
+        
+        
+        
+    }//GEN-LAST:event_jButton42MouseClicked
+
+    private void jButton43MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton43MouseClicked
+        
+        // total gatos
+                JOptionPane.showMessageDialog(this, "El total de esta venta es:"+total+"Dollars");
+
+        
+        
+        
+    }//GEN-LAST:event_jButton43MouseClicked
+
+    private void jButton44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton44MouseClicked
+        JOptionPane.showMessageDialog(this, "El total de venta de baleadas es:"+gananciaBaleadas);
+    }//GEN-LAST:event_jButton44MouseClicked
+
+    private void jButton45MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton45MouseClicked
+        JOptionPane.showMessageDialog(this, "El total de venta de baleadas es:"+gananciaGatos);
+    
+    }//GEN-LAST:event_jButton45MouseClicked
+
+    private void jTabbedPane7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane7MouseClicked
+        
+        
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < empleados.size(); i++) {
+            modelo.addElement(empleados.get(i));
+
+        }
+        cb_empleadoOrdenGatos.setModel(modelo);
+
+        modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < cats.size(); i++) {
+            modelo.addElement(cats.get(i));
+
+        }
+        cb_gatos.setModel(modelo);
+
+        modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < clientes.size(); i++) {
+            modelo.addElement(clientes.get(i));
+
+        }
+        cb_clientesOrdenGatos.setModel(modelo);
+
+
+        
+         modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < empleados.size(); i++) {
+            modelo.addElement(empleados.get(i));
+
+        }
+        cb_empleadoOrden.setModel(modelo);
+
+        modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < baleadas.size(); i++) {
+            modelo.addElement(baleadas.get(i));
+
+        }
+        cb_baleada.setModel(modelo);
+
+        modelo = new DefaultComboBoxModel();
+        for (int i = 0; i < clientes.size(); i++) {
+            modelo.addElement(clientes.get(i));
+
+        }
+        cb_clientesOrden.setModel(modelo);
+
+
+        
+        
+    }//GEN-LAST:event_jTabbedPane7MouseClicked
+
     public static void guardarTodo() {
         guardarJefes();
         guardarClientes();
@@ -5292,9 +5501,25 @@ public class Principal extends javax.swing.JFrame {
                             + tempJefe.getSeccion_trabajo() + ","
                             + tempJefe.getNacionalidad() + ","
                             + tempJefe.getClientes_Atendidos() + ","
-                            + tempJefe.getEmpleados() + ","
+                            
                             + tempJefe.getGanancia_actual() + ","
-                            + tempJefe.getFamiliar() + ";";
+                            + tempJefe.getFamiliar() + ","
+                            + tempJefe.getEmpleados() +";";
+                            for (Empleados t1 : tempJefe.getEmpleados()) {
+                                 texto+=
+                                         t1.getNombre() +"#"
+                                        +t1.getColorPiel()+ "#"
+                                        +t1.getEdad() + "#"
+                                        +t1.getSeccion_trabajo()+"#"
+                                        +t1.getEstado()+"#"
+                                        +t1.getNacionalidad()+ "#"
+                                        +t1.getID()+"#"
+                                        +t1.getSeccion_trabajo()+"#"
+                                        +t1.getLugar_Nacimiento()+"#"
+                                        +t1.getHora_e()+"#"
+                                        +t1.getHora_s()+"#"
+                                        +t1.getFamiliar()+"#";// falta el fore de familiare y cambiar el arraylist familiares
+                            }
         }
         escribirArchivo("Jefes", texto);
     }
@@ -5354,9 +5579,26 @@ public class Principal extends javax.swing.JFrame {
         for (Baleadas tempBaleadas : baleadas) {
             texto
                             +=tempBaleadas.getPrecio() + ","
-                            + tempBaleadas.getIngredientes()+  ";";
+                            + tempBaleadas.getIngredientes()+ ";";
         }
-        escribirArchivo("Gatos", texto);
+        escribirArchivo("Baleadas", texto);
+    }
+    
+    static void guardarOrdenes() {
+        String texto = "";
+        SimpleDateFormat formato=new SimpleDateFormat("dd/MM/yyyy");
+        
+        for (Ordenes tempOrdenes : ordenes) {
+            texto
+                            +=tempOrdenes.getTotal() + ","
+                            + tempOrdenes.getFechaVenta() + ","
+                            + formato.format(tempOrdenes.getCliente()) + ","
+                            + tempOrdenes.getCantidad_articulos()+","
+                            + tempOrdenes.getEmpleado_atiende() + ","
+                            + tempOrdenes.getArticulos() + ","
+                            + tempOrdenes.getCliente() + ";";
+        }
+        escribirArchivo("Ordenes", texto);
     }
 
     static void escribirArchivo(String nombreArchivo, String texto) {
@@ -5365,7 +5607,7 @@ public class Principal extends javax.swing.JFrame {
             String carpeta = "";
             carpeta += carpeta_guardada;
 
-            FileWriter fw = new FileWriter(carpeta + "/" + nombreArchivo + ".tx");
+            FileWriter fw = new FileWriter(carpeta + "/" + nombreArchivo + ".txt");
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(texto);
 
@@ -5378,7 +5620,7 @@ public class Principal extends javax.swing.JFrame {
     
     static void cargar() throws FileNotFoundException{
         String arch = "";
-        arch +=carpeta_guardada+"Jefes.txt";
+        arch +=carpeta_guardada+"Jefes.txt"+"Clientes.txt"+"Empleados.txt"+"Gatos.txt"+"Baleadas.txt"+"Ordenes.txt";
         
         FileReader fr= new FileReader(arch);
         BufferedReader br = new BufferedReader(fr);
@@ -5555,6 +5797,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton40;
     private javax.swing.JButton jButton41;
+    private javax.swing.JButton jButton42;
+    private javax.swing.JButton jButton43;
+    private javax.swing.JButton jButton44;
+    private javax.swing.JButton jButton45;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -5792,7 +6038,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JTabbedPane jTabbedPane8;
     private javax.swing.JTabbedPane jTabbedPane9;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton lb_color;
     private javax.swing.JButton lb_color1;
     private javax.swing.JButton lb_colorClientes;
@@ -5843,9 +6088,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombre1;
     private javax.swing.JTextField tf_sueldo;
     private javax.swing.JTextField tf_sueldo1;
-    private javax.swing.JTextField tf_totalBaleadas;
-    private javax.swing.JTextField tf_totalGatos;
-    private javax.swing.JTextField tf_totalNoeditablegatos;
     // End of variables declaration//GEN-END:variables
 
     static ArrayList<Jefe> jefes = new ArrayList();
@@ -5892,5 +6134,8 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }
-
+    // 
+    
+    static float total;
+    static float totalGat;
 }

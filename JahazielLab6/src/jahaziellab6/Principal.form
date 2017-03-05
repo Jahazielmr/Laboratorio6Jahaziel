@@ -357,6 +357,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel14MouseClicked"/>
             <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel14MouseEntered"/>
           </Events>
 
@@ -557,6 +558,7 @@
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="GuardarJefesMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GuardarJefesActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -609,6 +611,9 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cb_empleadosJefeMouseClicked"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Empleados&gt;"/>
               </AuxValues>
@@ -1152,7 +1157,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton22">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar Persona"/>
+                <Property name="text" type="java.lang.String" value="Agregar Ingrediente"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton22MouseClicked"/>
@@ -3471,6 +3476,9 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="jTabbedPane7">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTabbedPane7MouseClicked"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
@@ -3968,6 +3976,9 @@
               <SubComponents>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton5">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="Listar"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Jefes"/>
                   </Properties>
                   <Events>
@@ -3976,6 +3987,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton6">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="Listar"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Empleados"/>
                   </Properties>
                   <Events>
@@ -3984,6 +3998,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton7">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="Listar"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Clientes "/>
                   </Properties>
                   <Events>
@@ -3992,6 +4009,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton8">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="Listar"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Gatos"/>
                   </Properties>
                   <Events>
@@ -4000,6 +4020,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton9">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="Listar"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Baleadas"/>
                   </Properties>
                   <Events>
@@ -4008,6 +4031,9 @@
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButton10">
                   <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="Listar"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Familiares"/>
                   </Properties>
                   <Events>
@@ -4395,7 +4421,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTabbedPane8" max="32767" attributes="0"/>
+                          <Component id="jTabbedPane8" pref="648" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -4499,16 +4525,14 @@
                                                   <Component id="jLabel66" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="bt" min="-2" pref="174" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="sp_cantArticulos" max="32767" attributes="0"/>
-                                                      <Component id="fecha" pref="174" max="32767" attributes="0"/>
-                                                      <Component id="cb_clientesOrden" max="32767" attributes="0"/>
-                                                      <Component id="cb_empleadoOrden" max="32767" attributes="0"/>
-                                                      <Component id="jTextField1" max="32767" attributes="0"/>
-                                                      <Component id="cb_baleada" alignment="0" max="32767" attributes="0"/>
-                                                  </Group>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="bt" pref="174" max="32767" attributes="0"/>
+                                                  <Component id="sp_cantArticulos" max="32767" attributes="0"/>
+                                                  <Component id="fecha" max="32767" attributes="0"/>
+                                                  <Component id="cb_clientesOrden" max="32767" attributes="0"/>
+                                                  <Component id="cb_empleadoOrden" max="32767" attributes="0"/>
+                                                  <Component id="cb_baleada" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jButton42" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -4544,9 +4568,9 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton42" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" attributes="0">
@@ -4557,7 +4581,7 @@
                                       <Component id="Pb_limite" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="bt" min="-2" pref="61" max="-2" attributes="0"/>
-                                      <EmptySpace pref="130" max="32767" attributes="0"/>
+                                      <EmptySpace pref="126" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -4623,11 +4647,6 @@
                                 <Property name="text" type="java.lang.String" value="Total:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="jTextField1">
-                              <Properties>
-                                <Property name="enabled" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JLabel" name="jLabel65">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -4673,6 +4692,14 @@
                               <AuxValues>
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
                               </AuxValues>
+                            </Component>
+                            <Component class="javax.swing.JButton" name="jButton42">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Ver Total"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton42MouseClicked"/>
+                              </Events>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -4735,16 +4762,14 @@
                                                   <Component id="jLabel72" alignment="0" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="bt1" alignment="0" min="-2" pref="174" max="-2" attributes="0"/>
-                                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="sp_cantArticulosGatos" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="fechaGatos" alignment="0" pref="174" max="32767" attributes="0"/>
-                                                      <Component id="cb_clientesOrdenGatos" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="cb_empleadoOrdenGatos" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="tf_totalNoeditablegatos" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="cb_gatos" alignment="0" max="32767" attributes="0"/>
-                                                  </Group>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="bt1" alignment="0" pref="174" max="32767" attributes="0"/>
+                                                  <Component id="sp_cantArticulosGatos" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="fechaGatos" alignment="0" pref="174" max="32767" attributes="0"/>
+                                                  <Component id="cb_clientesOrdenGatos" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cb_empleadoOrdenGatos" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cb_gatos" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jButton43" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -4780,9 +4805,9 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="tf_totalNoeditablegatos" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel70" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel70" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jButton43" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -4793,7 +4818,7 @@
                                       <Component id="Pb_limitegatos" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="bt1" min="-2" pref="61" max="-2" attributes="0"/>
-                                      <EmptySpace pref="130" max="32767" attributes="0"/>
+                                      <EmptySpace pref="126" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -4859,11 +4884,6 @@
                                 <Property name="text" type="java.lang.String" value="Total:"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="tf_totalNoeditablegatos">
-                              <Properties>
-                                <Property name="enabled" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
                             <Component class="javax.swing.JLabel" name="jLabel71">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -4909,6 +4929,14 @@
                                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
                               </AuxValues>
                             </Component>
+                            <Component class="javax.swing.JButton" name="jButton43">
+                              <Properties>
+                                <Property name="text" type="java.lang.String" value="Ver total"/>
+                              </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton43MouseClicked"/>
+                              </Events>
+                            </Component>
                           </SubComponents>
                         </Container>
                       </SubComponents>
@@ -4933,7 +4961,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jTabbedPane9" max="32767" attributes="0"/>
+                      <Component id="jTabbedPane9" pref="668" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -4967,7 +4995,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTabbedPane10" max="32767" attributes="0"/>
+                              <Component id="jTabbedPane10" pref="643" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -5030,9 +5058,9 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                           <Component id="jLabel73" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="tf_totalGatos" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <EmptySpace pref="397" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Component id="jButton45" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="384" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -5042,7 +5070,7 @@
                                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel73" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                              <Component id="tf_totalGatos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton45" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace pref="335" max="32767" attributes="0"/>
                                       </Group>
@@ -5055,10 +5083,13 @@
                                     <Property name="text" type="java.lang.String" value="Ganancias "/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="tf_totalGatos">
+                                <Component class="javax.swing.JButton" name="jButton45">
                                   <Properties>
-                                    <Property name="enabled" type="boolean" value="false"/>
+                                    <Property name="text" type="java.lang.String" value="ver Ganancia gatos"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton45MouseClicked"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -5107,9 +5138,9 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                                           <Component id="jLabel74" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="tf_totalBaleadas" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <EmptySpace pref="397" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Component id="jButton44" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="351" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -5119,7 +5150,7 @@
                                           <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="jLabel74" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                                              <Component id="tf_totalBaleadas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jButton44" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace pref="335" max="32767" attributes="0"/>
                                       </Group>
@@ -5132,10 +5163,13 @@
                                     <Property name="text" type="java.lang.String" value="Ganancias "/>
                                   </Properties>
                                 </Component>
-                                <Component class="javax.swing.JTextField" name="tf_totalBaleadas">
+                                <Component class="javax.swing.JButton" name="jButton44">
                                   <Properties>
-                                    <Property name="enabled" type="boolean" value="false"/>
+                                    <Property name="text" type="java.lang.String" value="Ver ganancia de Baleadas"/>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton44MouseClicked"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>
@@ -5159,7 +5193,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTabbedPane14" max="32767" attributes="0"/>
+                              <Component id="jTabbedPane14" pref="643" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
