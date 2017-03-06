@@ -164,7 +164,7 @@ public class Principal extends javax.swing.JFrame {
         lb_colorFamilia = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        cb_Padre = new javax.swing.JComboBox<>();
+        cb_Padre = new javax.swing.JComboBox();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
         cb_hijos = new javax.swing.JComboBox();
@@ -1180,7 +1180,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        cb_Padre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_Padre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         Familia2.add(jRadioButton3);
         jRadioButton3.setText("Familia");
@@ -3650,7 +3650,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 693, Short.MAX_VALUE)
+                .addComponent(jTabbedPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -4021,7 +4021,7 @@ public class Principal extends javax.swing.JFrame {
         Color colors;
         int edad;
         float Dinero;
-        Object padre = cb_Padre.getItemAt(cb_Padre.getSelectedIndex());
+        Familiar padre =(Familiar) cb_Padre.getItemAt(cb_Padre.getSelectedIndex());
         JTree Model = ArbolEmpleados;
 
         try {
@@ -4915,7 +4915,7 @@ public class Principal extends javax.swing.JFrame {
         //modificar gatos
         int altura, peso;
         float precio;
-
+        int pos = cats.size()-1;
         try {
 
             altura = Integer.parseInt(altura_gato1.getText());
@@ -4925,7 +4925,12 @@ public class Principal extends javax.swing.JFrame {
             cats.get(cb_GatoModificar.getSelectedIndex()).setAltura(altura);
             cats.get(cb_GatoModificar.getSelectedIndex()).setPeso(peso);
             cats.get(cb_GatoModificar.getSelectedIndex()).setPrecio(precio);
-
+            
+            cats.get(pos).setID(articulos.size() + 1);
+            
+            articulos.add((gatos) cats.get(pos));
+            
+            
             JOptionPane.showMessageDialog(this, "Tuvo exito modificando  gatos");
 
             altura_gato.setText("");
@@ -4942,6 +4947,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton35MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton35MouseClicked
 
+        int pos = baleadas.size();
+        
         try {
 
             float precio;
@@ -4949,6 +4956,12 @@ public class Principal extends javax.swing.JFrame {
             Baleadas baleada = cb_baleadaModificar.getItemAt(cb_baleadaModificar.getSelectedIndex());
             baleada.setIngredientes(ingredientes1);
             baleada.setPrecio(precio);
+            
+            baleadas.get(pos).setID(articulos.size() + 1);
+            
+            articulos.add((Baleadas) baleadas.get(pos));
+            
+            
             JOptionPane.showMessageDialog(this, "La baleada se ha modificado exitosamente");
             ingredientes1.clear();
             precio_baleadas1.setText("");
@@ -5326,6 +5339,8 @@ public class Principal extends javax.swing.JFrame {
         guardarBaleadas();
         guardarOrdenes();
         guardarEmpleados();
+        guardarFamiliar();
+      
         /*
         try {
             String carpeta = "";
@@ -5375,6 +5390,25 @@ public class Principal extends javax.swing.JFrame {
         escribirArchivo("Jefes", texto);
     }
     
+   static void guardarFamiliar(){
+        String texto = "";
+        for (Familiar temp : familiares) {
+            texto
+                   += temp.getNombre() + ","
+                    + temp.getID() + ","
+                    + temp.getColorPiel()+ ","
+                    + temp.getLugar_Nacimiento()+","
+                    + temp.getEdad()+ ","
+                    + temp.getFamiliar_padre()+ ","
+                    + temp.getNacionalidad() + ",";
+                    for(Familiar t2 : temp.getFamiliar()){
+                        texto += t2 + ",";
+                    }  
+         }
+        escribirArchivo("Familiar", texto);
+    }
+    
+    
     static void guardarClientes() {
         String texto = "";
         for (Clientes tempCliente : clientes) {
@@ -5412,8 +5446,7 @@ public class Principal extends javax.swing.JFrame {
                             + tempEmpleado.getSeccion_trabajo() + ","
                             + tempEmpleado.getHora_e() + ","
                             + tempEmpleado.getHora_s() + ","
-                            + tempEmpleado.getSueldo() + ","
-                            + tempEmpleado.getFamiliar() + ";";
+                            + tempEmpleado.getSueldo() + ";";
                             for (Familiar f : tempEmpleado.getFamiliar()) {
                                    texto+=f.getID()+"#";
                             }
@@ -5510,6 +5543,12 @@ public class Principal extends javax.swing.JFrame {
     
     static void CargarTodo() throws IOException{
         chargeGatos ();
+        chargeBaleadas();
+        chargeFamiliares();
+        chargeCliente();
+        chargeFamiliares();
+        chargeEmpleado();
+    
     }
     
     static void chargeGatos() throws IOException{
@@ -5524,8 +5563,8 @@ public class Principal extends javax.swing.JFrame {
             cats.add(new gatos());
             int pos = cats.size()-1;
             cats.get(pos).setPrecio(Float.parseFloat(sc2.next()));
-            cats.get(pos).setAltura(Integer.parseInt(sc2.next()));
             cats.get(pos).setPeso(Integer.parseInt(sc2.next()));
+            cats.get(pos).setAltura(Integer.parseInt(sc2.next()));
         }
     }
     
@@ -5546,15 +5585,16 @@ public class Principal extends javax.swing.JFrame {
             while (sc3.hasNext()){
                 baleadas.get(pos).getIngredientes().add(sc3.next());
             }
-        
+     
         
         }
         
     }
     
+         
     static void chargeFamiliares() throws IOException{
         familiares.clear();
-        Scanner sc = new Scanner(cargar("Familiares"));
+        Scanner sc = new Scanner(cargar("Familiar"));
         sc.useDelimiter(";");
         while(sc.hasNext()){
             
@@ -5564,14 +5604,101 @@ public class Principal extends javax.swing.JFrame {
             familiares.add(new Familiar());
             int pos = familiares.size()-1;
             
-            familiares.get(pos).setColorPiel(sc2.next());
+            familiares.get(pos).setNombre(sc2.next());
+            familiares.get(pos).setID(sc2.next());
+            familiares.get(pos).setColorPiel((sc2.next()));
+            familiares.get(pos).setLugar_Nacimiento(sc2.next());
+            familiares.get(pos).setEdad(Integer.parseInt(sc2.next()));
+            familiares.get(pos).setFamiliar_padre(new Familiar());
+            familiares.get(pos).getFamiliar_padre().setID(sc2.next());
+        
+            familiares.get(pos).setNacionalidad(sc2.next());
+            Scanner sc3 = new Scanner (sc2.next());
+            sc3.useDelimiter("#");
+            while (sc3.hasNext()){
+                  
+                 familiares.get(pos).getFamiliar().add(new Familiar());
+                familiares.get(pos).getFamiliar().get(
+                familiares.get(pos).getFamiliar().size()-1).setID(sc3.next());
+    
+            }
             
-       
-        
-        
+            for (Familiar f1 : familiares) {
+            for (Familiar f2 : familiares) {
+                if (f1.getFamiliar_padre().getID().equalsIgnoreCase(f2.getFamiliar_padre().getID())) {
+                    f1.setFamiliar_padre(f2);
+                }
+            }
         }
+            
+        }   
+           
         
     }
+    
+    static void chargeEmpleado() throws IOException{
+        empleados.clear();
+        Scanner sc = new Scanner(cargar("Empleados"));
+        sc.useDelimiter(";");
+        while(sc.hasNext()){
+            String emp = sc.next();
+            Scanner sc2 = new Scanner(emp);
+            sc2.useDelimiter(",");
+            empleados.add(new Empleados());
+            int pos = empleados.size()-1;
+            empleados.get(pos).setID(sc2.next());   
+            empleados.get(pos).setColorPiel(sc2.next());
+            empleados.get(pos).setLugar_Nacimiento(sc2.next());
+            empleados.get(pos).setEdad(Integer.parseInt(sc2.next()));
+            empleados.get(pos).setEstado(sc2.next());
+            empleados.get(pos).setNacionalidad(sc2.next());
+            empleados.get(pos).setSeccion_trabajo(sc2.next());
+            empleados.get(pos).setHora_e(Integer.parseInt(sc2.next()));
+            empleados.get(pos).setHora_s(Integer.parseInt(sc2.next()));
+            empleados.get(pos).setSueldo(Integer.parseInt(sc2.next()));
+            
+            Scanner sc3=new Scanner(System.in);
+            sc3.useDelimiter("#");
+            while(sc3.hasNext()){
+                empleados.get(pos).getFamiliar().add(new Familiar());
+                empleados.get(pos).getFamiliar().get(
+                empleados.get(pos).getFamiliar().size()-1).setID(sc3.next());
+            }
+                
+            }
+        }
+    
+     static void chargeCliente() throws IOException{
+        clientes.clear();
+        Scanner sc = new Scanner(cargar("Clientes"));
+        sc.useDelimiter(";");
+        while(sc.hasNext()){
+            String emp = sc.next();
+            Scanner sc2 = new Scanner(emp);
+            sc2.useDelimiter(",");
+            clientes.add(new Clientes());
+            int pos = clientes.size()-1;
+            clientes.get(pos).setNombre(sc2.next());   
+            clientes.get(pos).setID(sc2.next());
+            clientes.get(pos).setColorPiel(sc2.next());
+            clientes.get(pos).setLugar_Nacimiento((sc2.next()));
+            clientes.get(pos).setEdad(Integer.parseInt(sc2.next()));
+            clientes.get(pos).setTicket(Integer.parseInt(sc2.next()));
+            clientes.get(pos).setNacionalidad(sc2.next());
+            clientes.get(pos).setDinero_Diponible(Integer.parseInt(sc2.next()));
+            
+            Scanner sc3=new Scanner(System.in);
+            sc3.useDelimiter("#");
+            while(sc3.hasNext()){
+                clientes.get(pos).getFamiliar().add(new Familiar());
+                clientes.get(pos).getFamiliar().get(
+                clientes.get(pos).getFamiliar().size()-1).setID(sc3.next());
+            }
+                
+            }
+        }
+        
+    
 
     public boolean Guardo = false;
     public static File carpeta_guardada;
@@ -5674,7 +5801,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<Familiar> cb_Familia;
     private javax.swing.JComboBox<String> cb_GatoModificar;
     private javax.swing.JComboBox<String> cb_JefeModificar;
-    private javax.swing.JComboBox<String> cb_Padre;
+    private javax.swing.JComboBox cb_Padre;
     private javax.swing.JComboBox<String> cb_Padre1;
     private javax.swing.JComboBox<Baleadas> cb_baleada;
     private javax.swing.JComboBox<Baleadas> cb_baleadaModificar;
