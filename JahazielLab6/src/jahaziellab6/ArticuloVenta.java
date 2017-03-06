@@ -32,8 +32,10 @@ public class ArticuloVenta {
 
     @Override
     public String toString() {
-        return precio;
+        return "precio:" + precio;
     }
+
+   
     
     
     

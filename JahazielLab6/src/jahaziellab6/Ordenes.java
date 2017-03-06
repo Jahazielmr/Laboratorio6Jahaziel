@@ -11,7 +11,7 @@ class Ordenes {
     private Empleados empleado_atiende;
     private float total;
     Date fechaVenta;
-    
+    private int ID;
     
     
 
@@ -33,6 +33,14 @@ class Ordenes {
 
     public void setCantidad_articulos(int Cantidad_articulos) {
         this.Cantidad_articulos = Cantidad_articulos;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     

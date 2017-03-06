@@ -324,6 +324,8 @@ public class Principal extends javax.swing.JFrame {
         jButton20 = new javax.swing.JButton();
         jButton21 = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
         jPanel2 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -2544,6 +2546,8 @@ public class Principal extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Century", 0, 18)); // NOI18N
         jLabel23.setText("Seleccione una Opcion ");
 
+        jScrollPane14.setViewportView(jTree1);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -2564,6 +2568,10 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel23)
                         .addGap(102, 102, 102)))
                 .addGap(144, 144, 144))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2577,7 +2585,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Personas ", jPanel5);
@@ -2704,7 +2714,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2))
         );
 
         jTabbedPane7.addTab("Agregar", jPanel10);
@@ -3634,10 +3644,20 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem4.setText("About ");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem4);
 
         jMenuItem5.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem5.setText("Salir");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
@@ -3650,7 +3670,7 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jTabbedPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                .addComponent(jTabbedPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 693, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -4344,7 +4364,9 @@ public class Principal extends javax.swing.JFrame {
         double totalaux;
         float Money;
         int fechaTemp;
-
+        
+ int pos = cats.size()-1;
+            
         try {
 
             cliente = cb_clientesOrden.getItemAt(cb_clientesOrden.getSelectedIndex());
@@ -4356,28 +4378,29 @@ public class Principal extends javax.swing.JFrame {
 
             Money = cliente.getDinero_Diponible();
             total = Cant_articulos * baleada.getPrecio();
-            if (cliente.colorPiel.equalsIgnoreCase("blanco")) {
-                totalaux = (Cant_articulos * baleada.getPrecio()) * 0.25;
-                total = (float) totalaux;
-            } else {
-                total = Cant_articulos * baleada.getPrecio();
-            }
+         
+            
 
             if (empleado.getHora_e() < fechaTemp && empleado.getHora_s() < fechaTemp) {
                 if (Money >= total && Pb_limite.getValue() < 3) {
                     ordenes.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
-
+                    gananciaBaleadas += total; 
+                    cliente.setDinero_Diponible(Money-total);
                     JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
                     acumulador++;
                     Pb_limite.setValue(acumulador);
 
                 } else if (Money >= total && Pb_limite.getValue() == 3) {
                     ventas.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
+                    ventas.get(pos).setID(articulos.size() + 1);
+            
+                    articulos.add((gatos) cats.get(pos));
 
                     DefaultListModel modelo = (DefaultListModel) Jl_baleadasVenta.getModel();
                     modelo.addElement(new Venta(cliente, empleado, total, fechaCreacion));
                     Jl_baleadasVenta.setModel(modelo);
                     gananciaBaleadas += total;
+                    cliente.setDinero_Diponible(Money-total);
                     
                     JOptionPane.showMessageDialog(this, "Tuve exito agregando Clientes");
                     acumulador = 0;
@@ -4450,12 +4473,7 @@ public class Principal extends javax.swing.JFrame {
 
             totalGat = Cant_articulos * Gatos.getPrecio();
 
-            if (cliente.colorPiel.equalsIgnoreCase("blanco")) {
-                totalaux = (Cant_articulos * Gatos.getPrecio()) * 0.25;
-                totalGat = (float) totalaux;
-            } else {
-                totalGat = Cant_articulos * Gatos.getPrecio();
-            }
+         
 
             fechaTemp = fechaGatos.getDate().getHours();
             if (empleado.getHora_e() < fechaTemp && empleado.getHora_s() < fechaTemp) {
@@ -4464,14 +4482,20 @@ public class Principal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Tuve exito agregando Ordenes de gatos");
                     acumulador++;
                     Pb_limitegatos.setValue(acumulador);
+                    gananciaGatos += totalGat; 
+                    cliente.setDinero_Diponible(Money-totalGat);
+                    
 
                 } else if (Money >= totalGat && Pb_limite.getValue() == 3) {
                     ventas.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
-
+                    
+                    
                     DefaultListModel modelo = (DefaultListModel) Jl_gatosVenta.getModel();
                     modelo.addElement(new Venta(cliente, empleado, totalGat, fechaCreacion));
                     Jl_gatosVenta.setModel(modelo);
-                    gananciaGatos += totalGat;
+                    gananciaGatos += totalGat; 
+                    cliente.setDinero_Diponible(Money-totalGat);
+                    
                     
                     JOptionPane.showMessageDialog(this, "Tuve exito Ordenes de gatos");
                     acumulador = 0;
@@ -5332,6 +5356,14 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTabbedPane7MouseClicked
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        JOptionPane.showMessageDialog(this, "El proyecto trata acerca de un negocio que desea crear el presidente Trump en estados unidos, donde los latinos seran empleados y los jefes debend e ser estadounidense, este programa vendera baleadas y gatos, tambien contara con clientes, jefes, empleados y familiares que se veran en un arbol");
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     public static void guardarTodo() {
         guardarJefes();
         guardarClientes();
@@ -5362,32 +5394,32 @@ public class Principal extends javax.swing.JFrame {
 */
     }
 
+    
+    
     static void guardarJefes() {
         String texto = "";
-        for (Jefe tempJefe : jefes) {
+        for (Jefe t : jefes) {
             texto
-                    += tempJefe.getNombre() + ","
-                    + tempJefe.getID() + ","
-                    + tempJefe.getColorPiel() + ","
-                    + tempJefe.getLugar_Nacimiento()+","
-                            + tempJefe.getEdad() + ","
-                            + tempJefe.getSeccion_trabajo() + ","
-                            + tempJefe.getNacionalidad() + ","
-                            + tempJefe.getClientes_Atendidos() + ","
-                            
-                            + tempJefe.getGanancia_actual() + ","
-                            + tempJefe.getFamiliar() + ","
-                            + tempJefe.getEmpleados() +";";
-                            for (Empleados t1 : tempJefe.getEmpleados()) {
-                                 texto+=
-                                        t1.getID()+"#";// falta el fore de familiare y cambiar el arraylist familiares
-                            }
-                            
-                            for (Familiar f : tempJefe.getFamiliar()) {
-                                   texto+=f.getID()+"#";
-                            }
+                    += t.getID() + ","
+                    + t.getLugar_Nacimiento()+ ","
+                    + t.getNacionalidad() + ","
+                    + t.getNombre() + ","
+                    + t.getColorPiel()+ ","
+                    + t.getEdad() + ","
+                    + t.getSeccion_trabajo()+ ","
+                    + t.getGanancia_actual() + ","
+                    + t.getClientes_Atendidos() + ",";
+            for (Familiar t1 : t.getFamiliar()) {
+                texto += t1.getID() + "*";
+            }
+            texto += ",";
+            for (Empleados t1 : t.getEmpleados()) {
+                texto += t1.getID() + "*";
+            }
+            texto += ";";
         }
         escribirArchivo("Jefes", texto);
+    
     }
     
    static void guardarFamiliar(){
@@ -5493,21 +5525,22 @@ public class Principal extends javax.swing.JFrame {
     
     static void guardarOrdenes() {
         String texto = "";
-        SimpleDateFormat formato=new SimpleDateFormat("dd/MM/yyyy");
-        
-        for (Ordenes tempVentas : ventas) {
+        for (Ordenes t : ventas) {
             texto
-                            +=tempVentas.getTotal() + ","
-                            + tempVentas.getFechaVenta() + ","
-                            + formato.format(tempVentas.getCliente()) + ","
-                            + tempVentas.getCantidad_articulos()+","
-                            + tempVentas.getEmpleado_atiende() + ","
-                            + tempVentas.getCliente() + ";";
-                            for (ArticuloVenta f : tempVentas.getArticulos()) {
-                                   texto+=f.getID()+"#";
-                            }
+                    += t.getID() + ","
+                    + t.getCliente().getID() + ","
+                    + t.getEmpleado_atiende().getID() + ","
+                    + t.getFechaVenta().getYear() + ","
+                    + t.getFechaVenta().getMonth() + ","
+                    + t.getFechaVenta().getDate() + ",";
+            for (ArticuloVenta a : t.getArticulos()) {
+                texto += a.getID() + "*";
+            }
+            texto += ";";
         }
         escribirArchivo("Ventas", texto);
+    
+         
     }
 
     static void escribirArchivo(String nombreArchivo, String texto) {
@@ -5697,6 +5730,106 @@ public class Principal extends javax.swing.JFrame {
                 
             }
         }
+     
+     
+
+
+    static void cargarVentas() throws IOException {
+        ventas.clear();
+        Scanner sc = new Scanner(cargar("Ventas"));
+        sc.useDelimiter(";");
+        while (sc.hasNext()) {
+            String t = sc.next();
+            Scanner s2 = new Scanner(t);
+            s2.useDelimiter(",");
+            ventas.add(new Ordenes());
+            int pos = ventas.size() - 1;
+            ventas.get(pos).setID(s2.nextInt());
+            ventas.get(pos).setCliente(new Clientes());
+            ventas.get(pos).getCliente().setID(s2.next());
+            ventas.get(pos).setEmpleado_atiende(new Empleados());
+            ventas.get(pos).getEmpleado_atiende().setID(s2.next());
+            ventas.get(pos).setFechaVenta(
+                    new Date(s2.nextInt(), s2.nextInt(), s2.nextInt()));
+
+            Scanner s3 = new Scanner(s2.next());
+            s3.useDelimiter("*");
+            while (s3.hasNext()) {
+                ventas.get(pos).getArticulos().add(
+                        new ArticuloVenta());
+                ventas.get(pos).getArticulos().get(articulos.size() - 1).
+                        setID(s2.nextInt());
+            }
+
+            ventas.get(pos).setTotal(Float.parseFloat(s2.next()));
+            ventas.get(pos).setCantidad_articulos(Integer.parseInt(s2.next()));
+        }
+        for (Ordenes v : ventas) {
+            for (Empleados e : empleados) {
+                if (v.getEmpleado_atiende().getID().equalsIgnoreCase(e.getID())) {
+                    v.setEmpleado_atiende(e);
+                }
+            }
+            for (Clientes c : clientes) {
+                if (v.getCliente().getID().equalsIgnoreCase(c.getID())) {
+                    v.setCliente(c);
+                }
+            }
+            for (ArticuloVenta a : v.getArticulos()) {
+                for (ArticuloVenta a1 : articulos) {
+                    if (a.getID() == a1.getID()) {
+                        a = a1;
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    static void cargarJefes() throws IOException {
+        jefes.clear();
+        Scanner sc = new Scanner(cargar("Jefes"));
+        sc.useDelimiter(";");
+        while (sc.hasNext()) {
+            String t = sc.next();
+            Scanner s2 = new Scanner(t);
+            s2.useDelimiter(",");
+            jefes.add(new Jefe());
+            int pos = jefes.size() - 1;
+            jefes.get(pos).setID(sc.next());
+            jefes.get(pos).setLugar_Nacimiento(sc.next());
+            jefes.get(pos).setNacionalidad(sc.next());
+            jefes.get(pos).setNombre(sc.next());
+            jefes.get(pos).setColorPiel(sc.next());
+            jefes.get(pos).setEdad(sc.nextInt());
+            jefes.get(pos).setSeccion_trabajo(sc.next());
+            jefes.get(pos).setGanancia_actual(sc.nextFloat());
+            jefes.get(pos).setClientes_Atendidos(sc.nextInt());
+            Scanner s3 = new Scanner(s2.next());
+            s3.useDelimiter("*");
+            while (s3.hasNext()) {
+                jefes.get(pos).getFamiliar().add(new Familiar());
+                jefes.get(pos).getFamiliar().get(
+                        jefes.get(pos).getFamiliar().size() - 1).setID(s3.next());
+            }
+            Scanner s4 = new Scanner(s2.next());
+            s4.useDelimiter("*");
+            while (s4.hasNext()) {
+                jefes.get(pos).getEmpleados().add(new Empleados());
+                jefes.get(pos).getEmpleados().get(
+                        jefes.get(pos).getEmpleados().size() - 1).setID(s4.next());
+            }
+        }
+        for (Jefe e : jefes) {
+            for (Familiar f1 : e.getFamiliar()) {
+                for (Familiar f2 : familiares) {
+                    if (f1.getID().equalsIgnoreCase(f2.getID())) {
+                        f1 = f2;
+                    }
+                }
+            }
+        }
+    }
         
     
 
@@ -6084,6 +6217,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -6107,6 +6241,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JTabbedPane jTabbedPane8;
     private javax.swing.JTabbedPane jTabbedPane9;
+    private javax.swing.JTree jTree1;
     private javax.swing.JButton lb_color;
     private javax.swing.JButton lb_color1;
     private javax.swing.JButton lb_colorClientes;
@@ -6208,4 +6343,35 @@ public class Principal extends javax.swing.JFrame {
     
     static float total;
     static float totalGat;
+    
+    static DefaultTreeModel arbol(Persona persona){
+        DefaultMutableTreeNode raiz = new DefaultMutableTreeNode();
+        DefaultTreeModel modeloArbol = new DefaultTreeModel(raiz);
+        
+        for (Familiar f : persona.getFamiliar()) {
+            DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(recursivo(f));
+            raiz.add(nodo);
+        }
+        
+        
+        return modeloArbol ;
+        
+        
+    }
+    
+    static DefaultMutableTreeNode recursivo (Familiar familiar){
+        DefaultMutableTreeNode nodo = new DefaultMutableTreeNode(familiar);
+        
+        for (Familiar f : familiares) {
+            if (familiar.equals(f.getFamiliar_padre())){
+                nodo.add(recursivo(f));
+            } else{
+                nodo.add(new DefaultMutableTreeNode(f));
+            }
+        }
+        
+        return nodo;
+    }
+    
+    
 }
