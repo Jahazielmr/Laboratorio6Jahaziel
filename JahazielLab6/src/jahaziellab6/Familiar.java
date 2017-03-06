@@ -13,7 +13,7 @@ public class Familiar extends Persona {
         super();
     }
 
-    public Familiar(ArrayList familiares_Hijos, Object familiar_padre, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, Familiar familiar) {
+    public Familiar(ArrayList familiares_Hijos, Object familiar_padre, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, ArrayList <Familiar> familiar) {
         super(edad, nombre, colorPiel, ID, Nacionalidad, Lugar_Nacimiento, arbo_genealogico, familiar);
         this.familiar_padre = familiar_padre;
     }

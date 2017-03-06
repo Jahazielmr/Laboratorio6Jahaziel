@@ -1,6 +1,7 @@
 package jahaziellab6;
 
 import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
+import java.util.ArrayList;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -9,12 +10,12 @@ public class Persona {
     protected int edad;
     protected String nombre, colorPiel, ID,  Nacionalidad, Lugar_Nacimiento;
     protected JTree arbo_genealogico;
-    Familiar familiar;
+    ArrayList <Familiar> familiar = new ArrayList();
 
     public Persona() {
     }
 
-    public Persona(int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, Familiar familiar) {
+    public Persona(int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, ArrayList<Familiar> familiar) {
         this.edad = edad;
         this.nombre = nombre;
         this.colorPiel = colorPiel;
@@ -83,15 +84,17 @@ public class Persona {
         this.arbo_genealogico = arbo_genealogico;
     }
 
-    
-    
-    public Familiar getFamiliar() {
+    public ArrayList<Familiar> getFamiliar() {
         return familiar;
     }
 
-    public void setFamiliar(Familiar familiar) {
+    public void setFamiliar(ArrayList<Familiar> familiar) {
         this.familiar = familiar;
     }
+
+    
+    
+    
 
     @Override
     public String toString() {

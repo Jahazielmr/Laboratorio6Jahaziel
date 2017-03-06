@@ -15,7 +15,7 @@ public class Jefe extends Persona{
         super();
     }
 
-    public Jefe(String Seccion_trabajo, ArrayList<Empleados> empleados, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, Familiar familiar) {
+    public Jefe(String Seccion_trabajo, ArrayList<Empleados> empleados, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, ArrayList<Familiar> familiar) {
         super(edad, nombre, colorPiel, ID, Nacionalidad, Lugar_Nacimiento, arbo_genealogico, familiar);
         this.Seccion_trabajo = Seccion_trabajo;
         this.empleados = empleados;

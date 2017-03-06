@@ -2,6 +2,7 @@ package jahaziellab6;
 
 public class ArticuloVenta {
     
+    private int ID;
     private float precio;
 
     public ArticuloVenta() {
@@ -11,6 +12,16 @@ public class ArticuloVenta {
         this.precio = precio;
     }
 
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    
+    
     public float getPrecio() {
         return precio;
     }
@@ -21,7 +32,7 @@ public class ArticuloVenta {
 
     @Override
     public String toString() {
-        return "ArticuloVenta{" + "precio=" + precio + '}';
+        return precio;
     }
     
     

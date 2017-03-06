@@ -316,7 +316,6 @@ public class Principal extends javax.swing.JFrame {
         jPanel24 = new javax.swing.JPanel();
         jScrollPane13 = new javax.swing.JScrollPane();
         ArbolStart = new javax.swing.JTree();
-        jButton24 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -2464,13 +2463,6 @@ public class Principal extends javax.swing.JFrame {
         });
         jScrollPane13.setViewportView(ArbolStart);
 
-        jButton24.setText("Listar archivos en el arbol");
-        jButton24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton24ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
         jPanel24Layout.setHorizontalGroup(
@@ -2478,9 +2470,7 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
-                .addComponent(jButton24)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
         jPanel24Layout.setVerticalGroup(
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2488,10 +2478,6 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(147, 147, 147))
-            .addGroup(jPanel24Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jButton24)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
@@ -3348,7 +3334,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                .addComponent(jTabbedPane8)
                 .addContainerGap())
         );
         jPanel22Layout.setVerticalGroup(
@@ -3486,7 +3472,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel31Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                .addComponent(jTabbedPane10)
                 .addContainerGap())
         );
         jPanel31Layout.setVerticalGroup(
@@ -3585,7 +3571,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane14, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                .addComponent(jTabbedPane14)
                 .addContainerGap())
         );
         jPanel32Layout.setVerticalGroup(
@@ -3604,7 +3590,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
+                .addComponent(jTabbedPane9)
                 .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
@@ -4003,7 +3989,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton25jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton25jButton1MouseClicked
         int altura, peso;
         float precio;
-
+        int pos = cats.size()-1;
         try {
 
             altura = Integer.parseInt(altura_gato.getText());
@@ -4011,6 +3997,11 @@ public class Principal extends javax.swing.JFrame {
             precio = Float.parseFloat((precio_gato.getText()));
 
             cats.add(new gatos(altura, peso, precio));
+          
+            cats.get(pos).setID(articulos.size() + 1);
+            
+            articulos.add((gatos) cats.get(pos));
+            
             JOptionPane.showMessageDialog(this, "Tuvo exito agregando gatos");
 
             altura_gato.setText("");
@@ -4107,12 +4098,18 @@ public class Principal extends javax.swing.JFrame {
     private void jButton26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton26MouseClicked
 
         float precio;
-
+        int pos;
+        pos = baleadas.size()+1;
         try {
 
             precio = Float.parseFloat((precio_gato.getText()));
 
             baleadas.add(new Baleadas(ingredientes1, precio));
+            baleadas.get(pos).setID(articulos.size() + 1);
+            
+            articulos.add((Baleadas) baleadas.get(pos));
+            
+            
             JOptionPane.showMessageDialog(this, "Tuvo exito agregando gatos");
             ingredientes1.clear();
 
@@ -4375,7 +4372,7 @@ public class Principal extends javax.swing.JFrame {
                     Pb_limite.setValue(acumulador);
 
                 } else if (Money >= total && Pb_limite.getValue() == 3) {
-                    ventas.add(new Venta(cliente, empleado, total, fechaCreacion));
+                    ventas.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
 
                     DefaultListModel modelo = (DefaultListModel) Jl_baleadasVenta.getModel();
                     modelo.addElement(new Venta(cliente, empleado, total, fechaCreacion));
@@ -4469,7 +4466,7 @@ public class Principal extends javax.swing.JFrame {
                     Pb_limitegatos.setValue(acumulador);
 
                 } else if (Money >= totalGat && Pb_limite.getValue() == 3) {
-                    ventas.add(new Venta(cliente, empleado, totalGat, fechaCreacion));
+                    ventas.add(new Ordenes(null, Cant_articulos, cliente, empleado, total, fechaCreacion));
 
                     DefaultListModel modelo = (DefaultListModel) Jl_gatosVenta.getModel();
                     modelo.addElement(new Venta(cliente, empleado, totalGat, fechaCreacion));
@@ -5108,159 +5105,25 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_FamiliaActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-
-        JFileChooser jfc = new JFileChooser();
-        int seleccion = jfc.showSaveDialog(this);
-        File Empleado = jfc.getSelectedFile();
-        FileWriter fw;
-        BufferedWriter bw;
-        String empleadosAux = "";
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-                fw = new FileWriter(Empleado);
-                bw = new BufferedWriter(fw);
-                for (Empleados Empleado1 : empleados) {
-                    empleadosAux
-                            += Empleado1.getNombre() + ","
-                            + Empleado1.getID() + ","
-                            + Empleado1.getColorPiel() + ","
-                            + Empleado1.getEstado() + ","
-                            + Empleado1.getEdad() + ","
-                            + Empleado1.getSeccion_trabajo() + ","
-                            + Empleado1.getNacionalidad() + ","
-                            + Empleado1.getHora_e() + ","
-                            + Empleado1.getHora_s() + ","
-                            + Empleado1.getEdad() + ","
-                            + Empleado1.getFamiliar() + ","
-                            + Empleado1.getEstado() + ","
-                            + Empleado1.getSueldo() + ";";
-                }
-                bw.write(empleadosAux);
-                bw.flush();
-            } catch (IOException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showSaveDialog(this);
+        
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                File dir = fileChooser.getSelectedFile();
+                boolean fueCreado = dir.mkdir();
+                DefaultMutableTreeNode Raiz = new DefaultMutableTreeNode();
+                DefaultTreeModel modeloArbol = (DefaultTreeModel) ArbolStart.getModel();
+                DefaultMutableTreeNode directory = new DefaultMutableTreeNode(dir);
+                Raiz.add(directory);
+                carpeta_guardada = dir;
+               
+                guardarTodo();
+                JOptionPane.showMessageDialog(this, "Directorio creado exitosamente");
+        
             }
-        }
-
-        String ClientesAux = "";
-        File Cliente = jfc.getSelectedFile();
-
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-                fw = new FileWriter(Cliente);
-                bw = new BufferedWriter(fw);
-                for (Clientes clientes1 : clientes) {
-                    ClientesAux
-                            += clientes1.getNombre() + ","
-                            + clientes1.getID() + ","
-                            + clientes1.getColorPiel() + ","
-                            + clientes1.getDinero_Diponible() + ","
-                            + clientes1.getEdad() + ","
-                            + clientes1.getOrdenes() + ","
-                            + clientes1.getNacionalidad() + ","
-                            + clientes1.getOrdenes() + ","
-                            + clientes1.getEdad() + ","
-                            + clientes1.getFamiliar() + ";";
-                }
-                bw.write(ClientesAux);
-                bw.flush();
-            } catch (IOException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        String JefesAux = "";
-        File Jefes = jfc.getSelectedFile();
-
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-                fw = new FileWriter(Jefes);
-                bw = new BufferedWriter(fw);
-                for (Jefe jefe1 : jefes) {
-                    JefesAux
-                            += jefe1.getNombre() + ","
-                            + jefe1.getID() + ","
-                            + jefe1.getColorPiel() + ","
-                            + jefe1.getSeccion_trabajo() + ","
-                            + jefe1.getEdad() + ","
-                            + jefe1.getFamiliar() + ","
-                            + jefe1.getNacionalidad() + ","
-                            + jefe1.getEmpleados() + ","
-                            + jefe1.getEdad() + ","
-                            + jefe1.getFamiliar() + ";";
-                }
-                bw.write(JefesAux);
-                bw.flush();
-            } catch (IOException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        String gatos_auxiliar = "";
-        File Gatos = jfc.getSelectedFile();
-
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-                fw = new FileWriter(Gatos);
-                bw = new BufferedWriter(fw);
-                for (gatos gato1 : cats) {
-                    gatos_auxiliar
-                            += gato1.getPeso() + ","
-                            + gato1.getAltura() + ","
-                            + gato1.getPrecio() + ";";
-                }
-                bw.write(gatos_auxiliar);
-                bw.flush();
-            } catch (IOException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        String baleadas_auxiliar = "";
-        File Balea = jfc.getSelectedFile();
-
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-                fw = new FileWriter(Balea);
-                bw = new BufferedWriter(fw);
-                for (Baleadas baleada1 : baleadas) {
-                    baleadas_auxiliar
-                            += baleada1.getIngredientes() + ","
-                            + baleada1.getPrecio() + ";";
-                }
-                bw.write(baleadas_auxiliar);
-                bw.flush();
-            } catch (IOException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        String familiar_auxiliar = "";
-        File famili = jfc.getSelectedFile();
-
-        if (seleccion == JFileChooser.APPROVE_OPTION) {
-            try {
-                fw = new FileWriter(famili);
-                bw = new BufferedWriter(fw);
-                for (Familiar familiar1 : familiares) {
-                    familiar_auxiliar
-                            += familiar1.getColorPiel() + ","
-                            + familiar1.getNombre() + ","
-                            + familiar1.getEdad() + ","
-                            + familiar1.getFamiliar_padre() + ","
-                            + familiar1.getID() + ","
-                            + familiar1.getNacionalidad() + ","
-                            + familiar1.getFamiliar() + ","
-                            + familiar1.getLugar_Nacimiento() + ","
-                            + familiar1.getFamiliares_Hijos() + ";";
-                }
-                bw.write(familiar_auxiliar);
-                bw.flush();
-            } catch (IOException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
+        
+        
+        
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -5289,17 +5152,6 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        DefaultTreeModel m = (DefaultTreeModel) ArbolStart.getModel();
-        JFileChooser jf = new JFileChooser();
-        jf.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        int s = jf.showOpenDialog(this);
-        File f = jf.getSelectedFile();
-        m.setRoot(new DefaultMutableTreeNode(f.getName()));
-        listar_todoRecusivo(f, (DefaultMutableTreeNode) m.getRoot());
-
-    }//GEN-LAST:event_jButton24ActionPerformed
-
     String DirectAux="";
     Object aux;
     private void ArbolStartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ArbolStartMouseClicked
@@ -5325,7 +5177,11 @@ public class Principal extends javax.swing.JFrame {
         carpeta_guardada= archivo;
         Guardo=true;
         JOptionPane.showMessageDialog(this, "Se abrio su carpeta");
-        
+        try {
+            CargarTodo();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         
@@ -5466,7 +5322,9 @@ public class Principal extends javax.swing.JFrame {
     public static void guardarTodo() {
         guardarJefes();
         guardarClientes();
-        
+        guardarGatos();
+        guardarBaleadas();
+        guardarOrdenes();
         guardarEmpleados();
         /*
         try {
@@ -5507,18 +5365,11 @@ public class Principal extends javax.swing.JFrame {
                             + tempJefe.getEmpleados() +";";
                             for (Empleados t1 : tempJefe.getEmpleados()) {
                                  texto+=
-                                         t1.getNombre() +"#"
-                                        +t1.getColorPiel()+ "#"
-                                        +t1.getEdad() + "#"
-                                        +t1.getSeccion_trabajo()+"#"
-                                        +t1.getEstado()+"#"
-                                        +t1.getNacionalidad()+ "#"
-                                        +t1.getID()+"#"
-                                        +t1.getSeccion_trabajo()+"#"
-                                        +t1.getLugar_Nacimiento()+"#"
-                                        +t1.getHora_e()+"#"
-                                        +t1.getHora_s()+"#"
-                                        +t1.getFamiliar()+"#";// falta el fore de familiare y cambiar el arraylist familiares
+                                        t1.getID()+"#";// falta el fore de familiare y cambiar el arraylist familiares
+                            }
+                            
+                            for (Familiar f : tempJefe.getFamiliar()) {
+                                   texto+=f.getID()+"#";
                             }
         }
         escribirArchivo("Jefes", texto);
@@ -5535,9 +5386,13 @@ public class Principal extends javax.swing.JFrame {
                             + tempCliente.getEdad() + ","
                             + tempCliente.getTicket() + ","
                             + tempCliente.getNacionalidad() + ","
-                            + tempCliente.getOrdenes() + ","
-                            + tempCliente.getDinero_Diponible() + ","
-                            + tempCliente.getFamiliar() + ";";
+                            + tempCliente.getDinero_Diponible() +",";
+                            for (Familiar f : tempCliente.getFamiliar()) {
+                                   texto+=f.getID()+"#";
+                            }
+                            for (Ordenes t1 : tempCliente.getOrdenes()) {
+                                texto += ordenes+"#";
+                            }
         }
         escribirArchivo("Clientes",texto);
     }
@@ -5547,7 +5402,7 @@ public class Principal extends javax.swing.JFrame {
         String texto = "";
         for (Empleados tempEmpleado : empleados) {
             texto
-                           += tempEmpleado.getNombre() + ","
+                            += tempEmpleado.getNombre() + ","
                             + tempEmpleado.getID() + ","
                             + tempEmpleado.getColorPiel() + ","
                             + tempEmpleado.getLugar_Nacimiento()+","
@@ -5559,6 +5414,9 @@ public class Principal extends javax.swing.JFrame {
                             + tempEmpleado.getHora_s() + ","
                             + tempEmpleado.getSueldo() + ","
                             + tempEmpleado.getFamiliar() + ";";
+                            for (Familiar f : tempEmpleado.getFamiliar()) {
+                                   texto+=f.getID()+"#";
+                            }
         }
         escribirArchivo("Empleados", texto);
     }
@@ -5578,27 +5436,45 @@ public class Principal extends javax.swing.JFrame {
         String texto = "";
         for (Baleadas tempBaleadas : baleadas) {
             texto
-                            +=tempBaleadas.getPrecio() + ","
-                            + tempBaleadas.getIngredientes()+ ";";
+                            +=tempBaleadas.getPrecio() + ";";
+                            for (String f : tempBaleadas.getIngredientes()) {
+                                   texto+=f+"#";
+                            }
         }
         escribirArchivo("Baleadas", texto);
     }
+    
+    
+    public void guardarArticulos(){
+        String texto ="";
+        for (Jefe jefe : jefes) {
+            
+        }
+        for (Jefe jefe : jefes) {
+            
+        }
+        
+        
+    }
+    
     
     static void guardarOrdenes() {
         String texto = "";
         SimpleDateFormat formato=new SimpleDateFormat("dd/MM/yyyy");
         
-        for (Ordenes tempOrdenes : ordenes) {
+        for (Ordenes tempVentas : ventas) {
             texto
-                            +=tempOrdenes.getTotal() + ","
-                            + tempOrdenes.getFechaVenta() + ","
-                            + formato.format(tempOrdenes.getCliente()) + ","
-                            + tempOrdenes.getCantidad_articulos()+","
-                            + tempOrdenes.getEmpleado_atiende() + ","
-                            + tempOrdenes.getArticulos() + ","
-                            + tempOrdenes.getCliente() + ";";
+                            +=tempVentas.getTotal() + ","
+                            + tempVentas.getFechaVenta() + ","
+                            + formato.format(tempVentas.getCliente()) + ","
+                            + tempVentas.getCantidad_articulos()+","
+                            + tempVentas.getEmpleado_atiende() + ","
+                            + tempVentas.getCliente() + ";";
+                            for (ArticuloVenta f : tempVentas.getArticulos()) {
+                                   texto+=f.getID()+"#";
+                            }
         }
-        escribirArchivo("Ordenes", texto);
+        escribirArchivo("Ventas", texto);
     }
 
     static void escribirArchivo(String nombreArchivo, String texto) {
@@ -5618,15 +5494,82 @@ public class Principal extends javax.swing.JFrame {
 
     }
     
-    static void cargar() throws FileNotFoundException{
+    static String cargar(String nombre) throws FileNotFoundException, IOException{
         String arch = "";
-        arch +=carpeta_guardada+"Jefes.txt"+"Clientes.txt"+"Empleados.txt"+"Gatos.txt"+"Baleadas.txt"+"Ordenes.txt";
+        String text = "";
+        arch +=carpeta_guardada+"/"+nombre+".txt";
         
         FileReader fr= new FileReader(arch);
         BufferedReader br = new BufferedReader(fr);
        
-        String texto = br.toString();
+        text = br.readLine();
         
+        return text;
+        
+    }
+    
+    static void CargarTodo() throws IOException{
+        chargeGatos ();
+    }
+    
+    static void chargeGatos() throws IOException{
+        cats.clear();
+        Scanner sc = new Scanner(cargar("Gatos"));
+        sc.useDelimiter(";");
+        while(sc.hasNext()){
+            
+            String cat = sc.next();
+            Scanner sc2 = new Scanner(cat);
+            sc2.useDelimiter(",");
+            cats.add(new gatos());
+            int pos = cats.size()-1;
+            cats.get(pos).setPrecio(Float.parseFloat(sc2.next()));
+            cats.get(pos).setAltura(Integer.parseInt(sc2.next()));
+            cats.get(pos).setPeso(Integer.parseInt(sc2.next()));
+        }
+    }
+    
+    static void chargeBaleadas() throws IOException{
+        baleadas.clear();
+        Scanner sc = new Scanner(cargar("Baleadas"));
+        sc.useDelimiter(";");
+        while(sc.hasNext()){
+            
+            String cat = sc.next();
+            Scanner sc2 = new Scanner(cat);
+            sc2.useDelimiter(",");
+            baleadas.add(new Baleadas());
+            int pos = baleadas.size()-1;
+            baleadas.get(pos).setPrecio(Float.parseFloat(sc2.next()));
+            Scanner sc3 = new Scanner (sc2.next());
+            sc3.useDelimiter("#");
+            while (sc3.hasNext()){
+                baleadas.get(pos).getIngredientes().add(sc3.next());
+            }
+        
+        
+        }
+        
+    }
+    
+    static void chargeFamiliares() throws IOException{
+        familiares.clear();
+        Scanner sc = new Scanner(cargar("Familiares"));
+        sc.useDelimiter(";");
+        while(sc.hasNext()){
+            
+            String cat = sc.next();
+            Scanner sc2 = new Scanner(cat);
+            sc2.useDelimiter(",");
+            familiares.add(new Familiar());
+            int pos = familiares.size()-1;
+            
+            familiares.get(pos).setColorPiel(sc2.next());
+            
+       
+        
+        
+        }
         
     }
 
@@ -5777,7 +5720,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
@@ -6110,8 +6052,9 @@ public class Principal extends javax.swing.JFrame {
     static ArrayList<Empleados> temporal = new ArrayList();
     static ArrayList<Persona> personasNegras = new ArrayList();
     static ArrayList<Persona> personasblancas = new ArrayList();
+    static ArrayList <ArticuloVenta> articulos = new ArrayList();
 
-    static ArrayList<Venta> ventas = new ArrayList();
+    static ArrayList<Ordenes> ventas = new ArrayList();
 
     public void listar_todoRecusivo(File p_raiz, DefaultMutableTreeNode nodo) {
 

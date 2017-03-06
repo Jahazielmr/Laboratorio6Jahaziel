@@ -14,7 +14,7 @@ public class Clientes extends Persona{
         super();
     }
 
-    public Clientes(int ticket, float Dinero_Disponible, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, Familiar familiar) {
+    public Clientes(int ticket, float Dinero_Disponible, int edad, String nombre, String colorPiel, String ID, String Nacionalidad, String Lugar_Nacimiento, JTree arbo_genealogico, ArrayList <Familiar> familiar) {
         super(edad, nombre, colorPiel, ID, Nacionalidad, Lugar_Nacimiento, arbo_genealogico, familiar);
         this.ticket = ticket;
         this.Dinero_Diponible = Dinero_Disponible;
